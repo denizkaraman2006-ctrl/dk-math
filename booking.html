@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umów lekcję</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section>
+
+<h1>Umów lekcję</h1>
+
+<div class="card">
+
+<input type="text" id="imie" placeholder="Imię i nazwisko">
+
+<input type="email" id="email" placeholder="Adres e-mail">
+
+<input type="tel" id="telefon" placeholder="Telefon">
+
+<select id="klasa">
+<option>Klasa 4-8 szkoły podstawowej</option>
+<option>Liceum</option>
+<option>Technikum</option>
+</select>
+
+<select id="termin">
+<option>Poniedziałek 17:00</option>
+<option>Wtorek 18:00</option>
+<option>Środa 19:00</option>
+<option>Czwartek 18:00</option>
+<option>Sobota 12:00</option>
+</select>
+
+<textarea
+id="wiadomosc"
+placeholder="Napisz czego potrzebujesz..."
+rows="6">
+</textarea>
+
+<button onclick="bookLesson()">
+Wyślij zgłoszenie
+</button>
+
+</div>
+
+</section>
+
+<script src="booking.js"></script>
+
+</body>
+</html>

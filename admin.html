@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Administratora</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<section>
+<button onclick="logoutAdmin()" class="btn">
+Wyloguj administratora
+</button>
+<h1>Panel Administratora</h1>
+
+<div class="card">
+
+<h2>Lista uczniów</h2>
+
+<div id="users"></div>
+
+</div>
+
+<div class="card">
+
+<h2>Dodaj zadanie</h2>
+
+<input type="text" id="login" placeholder="Login ucznia">
+
+<input type="text" id="zadanie" placeholder="Treść zadania">
+
+<button onclick="addTask()">
+Dodaj zadanie
+</button>
+
+</div>
+<div class="card">
+
+<h2>Zmień hasło ucznia</h2>
+
+<input type="text" id="changeLogin"
+placeholder="Login ucznia">
+
+<input type="text" id="newPassword"
+placeholder="Nowe hasło">
+
+<button onclick="changePassword()">
+Zmień hasło
+</button>
+
+</div>
+<div class="card">
+
+<h2>Zgłoszenia na lekcje</h2>
+
+<div id="bookings"></div>
+
+</div>
+</section>
+
+<script src="admin.js"></script>
+
+</body>
+<script>
+
+if(
+localStorage.getItem("adminLogged")
+!== "true"
+){
+    window.location.href =
+    "loginadmin.html";
+}
+
+</script>
+</html>
