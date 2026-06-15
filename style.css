@@ -763,10 +763,12 @@ height:220px;
 .topbar{
 max-width:1400px;
 margin:auto;
-padding:20px 40px;
+padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+gap:20px;
+flex-wrap:wrap;
 }
 /* DESKTOP */
 
@@ -778,11 +780,11 @@ justify-content:center;
 }
 
 #menu{
-display:flex !important;
-flex-direction:row;
+display:flex;
+flex-wrap:wrap;
 justify-content:center;
 align-items:center;
-gap:25px;
+gap:20px;
 }
 
 .menu-btn{
@@ -807,4 +809,7 @@ height:260px;
 .hero{
 max-width:1400px;
 margin:auto;
+}
+.student-btn{
+white-space:nowrap;
 }
