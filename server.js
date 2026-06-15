@@ -259,7 +259,21 @@ app.post("/change-password", (req, res) => {
     );
 
 });
-
+db.run(`
+CREATE TABLE IF NOT EXISTS materials (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    login TEXT,
+    nazwa TEXT,
+    link TEXT
+)
+`);db.run(`
+CREATE TABLE IF NOT EXISTS materials (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    login TEXT,
+    nazwa TEXT,
+    link TEXT
+)
+`);
 const PORT = process.env.PORT || 3000;
 app.post("/add-opinion", (req, res) => {
 

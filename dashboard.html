@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -16,21 +17,31 @@ Wyloguj się
 <section>
 
 <h1 id="welcome"></h1>
-<div class="card">
-    <h3>Moje zadania</h3>
-    <div id="tasks"></div>
-</div>
-<div class="card">
-    <div class="card">
 
+<div class="card">
+<h3>📚 Moje zadania</h3>
+<div id="tasks"></div>
+</div>
+
+<div class="card">
+<h3>📅 Najbliższa lekcja</h3>
+<div id="lesson"></div>
+</div>
+
+<div class="card">
+<h3>📄 Materiały do pobrania</h3>
+<div id="materials"></div>
+</div>
+
+<div class="card">
 <h3>⭐ Dodaj opinię</h3>
 
 <select id="ocena">
-    <option value="5">⭐⭐⭐⭐⭐</option>
-    <option value="4">⭐⭐⭐⭐</option>
-    <option value="3">⭐⭐⭐</option>
-    <option value="2">⭐⭐</option>
-    <option value="1">⭐</option>
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
 </select>
 
 <textarea
@@ -38,135 +49,18 @@ id="opinia"
 placeholder="Napisz swoją opinię">
 </textarea>
 
+<br><br>
+
 <button onclick="addOpinion()">
 Wyślij opinię
 </button>
 
 </div>
 
-<h3>Najbliższa lekcja</h3>
-<p>Piątek 18:00</p>
-</div>
-
-<div class="card">
-<h3>Link do lekcji</h3>
-<a href="#">Dołącz</a>
-</div>
-
-<div class="card">
-<h3>Moje notatki</h3>
-
-<ul>
-<li>Ułamki zwykłe i dziesiętne</li>
-<li>Równania liniowe</li>
-<li>Pole i obwód figur</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Materiały do pobrania</h3>
-
-<a href="#">Powtórka przed sprawdzianem.pdf</a>
-<br><br>
-<a href="#">Zadania dodatkowe.pdf</a>
-</div>
-
-<div class="card">
-<h3>Następna lekcja</h3>
-
-<p>12 czerwca 2026</p>
-<p>Godzina: 18:00</p>
-<p>Online</p>
-</div>
-
 </section>
 
-<script>
+<script src="dashboard.js"></script>
 
-const user = localStorage.getItem("user");
-
-if(!user){
-    window.location.href = "login.html";
-}
-
-document.getElementById("welcome").innerText =
-"Witaj, " + user;
-fetch("/tasks/" + user)
-.then(res => res.json())
-.then(tasks => {
-
-    let html = "";
-
-    tasks.forEach(task => {
-        html += `<p>• ${task.zadanie}</p>`;
-    });
-
-    document.getElementById("tasks").innerHTML = html;
-
-});
-function logout(){
-    localStorage.removeItem("user");
-    window.location.href = "index.html";
-}
-function addOpinion(){
-
-    const ocena =
-    document.getElementById("ocena").value;
-
-    const tresc =
-    document.getElementById("opinia").value;
-
-    fetch("/add-opinion", {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            login:user,
-            ocena,
-            tresc
-        })
-    })
-    .then(res => res.text())
-    .then(data => {
-        alert(data);
-    });
-
-}
-<div class="card">
-
-<h3>📅 Następna lekcja</h3>
-
-<div id="lesson"></div>
-
-</div>
-fetch("/lesson/" + user)
-.then(res => res.json())
-.then(lesson => {
-
-    if(!lesson.id){
-        return;
-    }
-
-    document.getElementById("lesson")
-    .innerHTML = `
-        <p>${lesson.data}</p>
-        <p>${lesson.godzina}</p>
-        <a href="${lesson.link}"
-        target="_blank"
-        class="btn">
-        Dołącz
-        </a>
-    `;
-
-});
-<div class="card">
-
-<h3>📄 Materiały</h3>
-
-<div id="materials"></div>
-
-</div>
-</script>
 </body>
 </html>
+
