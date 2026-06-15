@@ -12,6 +12,8 @@
 
 <body>
 
+<div class="topbar">
+
 <div class="logo">
     <img src="images/dkmath-logo.png" alt="DK Math">
     <div class="logo-text">
@@ -19,8 +21,15 @@
         <p>Korepetycje Online</p>
     </div>
 </div>
+
+<button class="menu-btn" onclick="toggleMenu()">
+☰
+</button>
+
+</div>
+
 <nav>
-<ul>
+<ul id="menu">
     <li><a href="#about">O mnie</a></li>
     <li><a href="#experience">Doświadczenie</a></li>
     <li><a href="#offer">Oferta</a></li>
@@ -38,6 +47,8 @@
 🚀 Umów lekcję
 </a>
 </li>
+
+</ul>
 
 </nav>
 <section class="hero">
@@ -537,6 +548,14 @@ fetch("/accepted-opinions")
 });
 
 </script>
+<script>
 
+function toggleMenu(){
+document
+.getElementById("menu")
+.classList.toggle("show");
+}
+
+</script>
 </body>
 </html>
