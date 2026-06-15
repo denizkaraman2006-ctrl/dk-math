@@ -274,6 +274,23 @@ CREATE TABLE IF NOT EXISTS materials (
     link TEXT
 )
 `);
+app.post("/admin-login", (req,res)=>{
+
+    const {
+        login,
+        password
+    } = req.body;
+
+    if(
+        login === "ogretmen" &&
+        password === "Deniz.1984"
+    ){
+        return res.send("OK");
+    }
+
+    res.send("BŁĄD");
+
+});
 const PORT = process.env.PORT || 3000;
 app.post("/add-opinion", (req, res) => {
 

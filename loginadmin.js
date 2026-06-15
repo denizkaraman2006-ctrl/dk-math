@@ -1,4 +1,3 @@
-alert("admin js działa");
 function adminLogin(){
 
     const login =
@@ -7,23 +6,35 @@ function adminLogin(){
     const password =
     document.getElementById("password").value;
 
-    if(
-        login === "ogretmen" &&
-        password === "Deniz.1984"
-    ){
+    fetch("/admin-login",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            login,
+            password
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
 
-        localStorage.setItem(
-            "adminLogged",
-            "true"
-        );
+        if(data === "OK"){
 
-        window.location.href =
-        "admin.html";
+            localStorage.setItem(
+                "adminLogged",
+                "true"
+            );
 
-    }else{
+            window.location.href =
+            "admin.html";
 
-        alert("Błędne dane");
+        }else{
 
-    }
+            alert("Błędne dane");
+
+        }
+
+    });
 
 }
