@@ -20,7 +20,18 @@ fetch("/users")
     });
 
     document.getElementById("users").innerHTML = html;
+fetch("/stats")
+.then(res => res.json())
+.then(stats => {
 
+    document.getElementById("stats").innerHTML = `
+    <p>👨‍🎓 Uczniowie: ${stats.users}</p>
+    <p>📝 Zadania: ${stats.tasks}</p>
+    <p>⭐ Opinie: ${stats.opinions}</p>
+    <p>📅 Rezerwacje: ${stats.bookings}</p>
+    `;
+
+});
 });
 function addTask(){
 
@@ -149,6 +160,169 @@ function changePassword(){
         body:JSON.stringify({
             login,
             haslo
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert(data);
+    });
+
+}
+function logoutAdmin(){
+
+    localStorage.removeItem(
+        "adminLogged"
+    );
+
+    window.location.href =
+    "loginadmin.html";
+
+}
+fetch("/opinions")
+.then(res => res.json())
+.then(opinions => {
+
+    let html = "";
+
+    opinions.forEach(opinion => {
+
+        html += `
+        <div class="card">
+
+            <p><strong>Login:</strong> ${opinion.login}</p>
+
+            <p><strong>Ocena:</strong> ${opinion.ocena} ⭐</p>
+
+            <p><strong>Opinia:</strong> ${opinion.tresc}</p>
+<button onclick="acceptOpinion(${opinion.id})">
+✅ Akceptuj
+</button>
+
+<button onclick="deleteOpinion(${opinion.id})">
+🗑 Usuń
+</button>
+        </div>
+        `;
+
+    });
+
+    document.getElementById("opinions").innerHTML = html;
+
+});
+function acceptOpinion(id){
+
+    fetch("/accept-opinion", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            id:id
+        })
+    })
+    .then(res => res.text())
+    .then(() => {
+        location.reload();
+    });
+
+}
+
+function deleteOpinion(id){
+
+    fetch("/delete-opinion", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            id:id
+        })
+    })
+    .then(res => res.text())
+    .then(() => {
+        location.reload();
+    });
+
+}
+function addLesson(){
+
+    const login =
+    document.getElementById("lessonLogin").value;
+
+    const data =
+    document.getElementById("lessonDate").value;
+
+    const godzina =
+    document.getElementById("lessonTime").value;
+
+    const link =
+    document.getElementById("lessonLink").value;
+
+    fetch("/add-lesson", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            login,
+            data,
+            godzina,
+            link
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert(data);
+    });
+
+}
+fetch("/stats")
+.then(res => res.json())
+.then(stats => {
+
+    document.getElementById(
+        "usersCount"
+    ).innerText = stats.users;
+
+    document.getElementById(
+        "tasksCount"
+    ).innerText = stats.tasks;
+
+    document.getElementById(
+        "opinionsCount"
+    ).innerText = stats.opinions;
+
+    document.getElementById(
+        "bookingsCount"
+    ).innerText = stats.bookings;
+
+});
+function addMaterial(){
+
+    const login =
+    document.getElementById(
+        "materialLogin"
+    ).value;
+
+    const nazwa =
+    document.getElementById(
+        "materialName"
+    ).value;
+
+    const link =
+    document.getElementById(
+        "materialLink"
+    ).value;
+
+    fetch("/add-material",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            login,
+            nazwa,
+            link
         })
     })
     .then(res => res.text())

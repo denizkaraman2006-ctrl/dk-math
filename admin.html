@@ -14,7 +14,35 @@
 Wyloguj administratora
 </button>
 <h1>Panel Administratora</h1>
+<div class="cards">
+<div class="card">
 
+<h2>Statystyki</h2>
+
+<div id="stats"></div>
+
+</div>
+<div class="card">
+<h2 id="usersCount">0</h2>
+<p>Uczniów</p>
+</div>
+
+<div class="card">
+<h2 id="tasksCount">0</h2>
+<p>Zadań</p>
+</div>
+
+<div class="card">
+<h2 id="opinionsCount">0</h2>
+<p>Opinii</p>
+</div>
+
+<div class="card">
+<h2 id="bookingsCount">0</h2>
+<p>Rezerwacji</p>
+</div>
+
+</div>
 <div class="card">
 
 <h2>Lista uczniów</h2>
@@ -34,7 +62,52 @@ Wyloguj administratora
 <button onclick="addTask()">
 Dodaj zadanie
 </button>
+<div class="card">
 
+<h2>Dodaj lekcję</h2>
+<div class="card">
+
+<h2>Dodaj materiał</h2>
+
+<input
+type="text"
+id="materialLogin"
+placeholder="Login ucznia">
+
+<input
+type="text"
+id="materialName"
+placeholder="Nazwa materiału">
+
+<input
+type="text"
+id="materialLink"
+placeholder="Link do PDF">
+
+<button onclick="addMaterial()">
+Dodaj materiał
+</button>
+
+</div>
+<input type="text"
+id="lessonLogin"
+placeholder="Login ucznia">
+
+<input type="date"
+id="lessonDate">
+
+<input type="time"
+id="lessonTime">
+
+<input type="text"
+id="lessonLink"
+placeholder="Link Google Meet">
+
+<button onclick="addLesson()">
+Dodaj lekcję
+</button>
+
+</div>
 </div>
 <div class="card">
 
@@ -58,6 +131,21 @@ Zmień hasło
 <div id="bookings"></div>
 
 </div>
+
+<div class="card">
+
+<h2>Opinie uczniów</h2>
+
+<div id="opinions"></div>
+
+</div>
+
+<div id="opinions"></div>
+
+</div>
+<div id="bookings"></div>
+
+</div>
 </section>
 
 <script src="admin.js"></script>
@@ -72,6 +160,9 @@ localStorage.getItem("adminLogged")
     window.location.href =
     "loginadmin.html";
 }
+
+
+
 
 </script>
 </html>

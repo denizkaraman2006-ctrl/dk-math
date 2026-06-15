@@ -21,14 +21,31 @@ Wyloguj się
     <div id="tasks"></div>
 </div>
 <div class="card">
+    <div class="card">
+
+<h3>⭐ Dodaj opinię</h3>
+
+<select id="ocena">
+    <option value="5">⭐⭐⭐⭐⭐</option>
+    <option value="4">⭐⭐⭐⭐</option>
+    <option value="3">⭐⭐⭐</option>
+    <option value="2">⭐⭐</option>
+    <option value="1">⭐</option>
+</select>
+
+<textarea
+id="opinia"
+placeholder="Napisz swoją opinię">
+</textarea>
+
+<button onclick="addOpinion()">
+Wyślij opinię
+</button>
+
+</div>
 
 <h3>Najbliższa lekcja</h3>
 <p>Piątek 18:00</p>
-</div>
-
-<div class="card">
-<h3>Zadanie domowe</h3>
-<p>Rozwiąż zadania 1-10 ze strony 52.</p>
 </div>
 
 <div class="card">
@@ -91,7 +108,65 @@ function logout(){
     localStorage.removeItem("user");
     window.location.href = "index.html";
 }
+function addOpinion(){
 
+    const ocena =
+    document.getElementById("ocena").value;
+
+    const tresc =
+    document.getElementById("opinia").value;
+
+    fetch("/add-opinion", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            login:user,
+            ocena,
+            tresc
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert(data);
+    });
+
+}
+<div class="card">
+
+<h3>📅 Następna lekcja</h3>
+
+<div id="lesson"></div>
+
+</div>
+fetch("/lesson/" + user)
+.then(res => res.json())
+.then(lesson => {
+
+    if(!lesson.id){
+        return;
+    }
+
+    document.getElementById("lesson")
+    .innerHTML = `
+        <p>${lesson.data}</p>
+        <p>${lesson.godzina}</p>
+        <a href="${lesson.link}"
+        target="_blank"
+        class="btn">
+        Dołącz
+        </a>
+    `;
+
+});
+<div class="card">
+
+<h3>📄 Materiały</h3>
+
+<div id="materials"></div>
+
+</div>
 </script>
 </body>
 </html>

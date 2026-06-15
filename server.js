@@ -93,6 +93,15 @@ CREATE TABLE IF NOT EXISTS tasks (
 )
 `);
 db.run(`
+CREATE TABLE IF NOT EXISTS lessons (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    login TEXT,
+    data TEXT,
+    godzina TEXT,
+    link TEXT
+)
+`);
+db.run(`
 CREATE TABLE IF NOT EXISTS bookings (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     imie TEXT,
@@ -102,6 +111,16 @@ CREATE TABLE IF NOT EXISTS bookings (
     wiadomosc TEXT,
     termin TEXT,
     status TEXT DEFAULT 'Oczekuje'
+)
+`);
+db.run(`
+CREATE TABLE IF NOT EXISTS opinions (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    login TEXT,
+    ocena INTEGER,
+    tresc TEXT,
+    status TEXT DEFAULT 'Oczekuje',
+    odpowiedz TEXT
 )
 `);
 app.post("/add-task", (req, res) => {
@@ -242,7 +261,217 @@ app.post("/change-password", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+app.post("/add-opinion", (req, res) => {
 
+    const {
+        login,
+        ocena,
+        tresc
+    } = req.body;
+
+    db.run(
+        `INSERT INTO opinions
+        (login,ocena,tresc)
+        VALUES (?,?,?)`,
+        [login,ocena,tresc],
+        function(err){
+
+            if(err){
+                return res.send("Błąd");
+            }
+
+            res.send("Opinia wysłana");
+        }
+    );
+
+});
+
+app.get("/opinions", (req, res) => {
+
+    db.all(
+        "SELECT * FROM opinions",
+        [],
+        (err, rows) => {
+
+            if(err){
+                return res.json([]);
+            }
+
+            res.json(rows);
+
+        }
+    );
+
+});
+app.post("/accept-opinion", (req, res) => {
+
+    const { id } = req.body;
+
+    db.run(
+        "UPDATE opinions SET status='Akceptowana' WHERE id=?",
+        [id],
+        function(err){
+
+            if(err){
+                return res.send("Błąd");
+            }
+
+            res.send("OK");
+        }
+    );
+
+});
+app.post("/delete-opinion", (req, res) => {
+
+    const { id } = req.body;
+
+    db.run(
+        "DELETE FROM opinions WHERE id=?",
+        [id],
+        function(err){
+
+            if(err){
+                return res.send("Błąd");
+            }
+
+            res.send("OK");
+        }
+    );
+
+});
+app.get("/accepted-opinions", (req, res) => {
+
+    db.all(
+        "SELECT * FROM opinions WHERE status='Akceptowana'",
+        [],
+        (err, rows) => {
+
+            if(err){
+                return res.json([]);
+            }
+
+            res.json(rows);
+
+        }
+    );
+
+});
+app.post("/add-lesson", (req,res)=>{
+
+    const {
+        login,
+        data,
+        godzina,
+        link
+    } = req.body;
+
+    db.run(
+        `INSERT INTO lessons
+        (login,data,godzina,link)
+        VALUES (?,?,?,?)`,
+        [login,data,godzina,link],
+        function(err){
+
+            if(err){
+                return res.send("Błąd");
+            }
+
+            res.send("Lekcja dodana");
+
+        }
+    );
+
+});
+
+app.get("/lesson/:login", (req, res) => {
+
+    const login = req.params.login;
+
+    db.get(
+        "SELECT * FROM lessons WHERE login=? ORDER BY id DESC LIMIT 1",
+        [login],
+        (err, row) => {
+
+            if(err){
+                return res.json({});
+            }
+
+            res.json(row || {});
+        }
+    );
+
+});
+app.get("/stats", (req, res) => {
+
+    db.get(
+        `
+        SELECT
+        (SELECT COUNT(*) FROM users) as users,
+        (SELECT COUNT(*) FROM tasks) as tasks,
+        (SELECT COUNT(*) FROM opinions) as opinions,
+        (SELECT COUNT(*) FROM bookings) as bookings
+        `,
+        [],
+        (err, row) => {
+
+            if(err){
+                return res.json({});
+            }
+
+            res.json(row);
+
+        }
+    );
+
+});
+
+app.post("/add-material", (req,res)=>{
+
+    const {
+        login,
+        nazwa,
+        link
+    } = req.body;
+
+    db.run(
+        `INSERT INTO materials
+        (login,nazwa,link)
+        VALUES (?,?,?)`,
+        [login,nazwa,link],
+        function(err){
+
+            if(err){
+                return res.send("Błąd");
+            }
+
+            res.send(
+                "Materiał dodany"
+            );
+
+        }
+    );
+
+});
+app.get("/materials/:login", (req,res)=>{
+
+    const login =
+    req.params.login;
+
+    db.all(
+        "SELECT * FROM materials WHERE login=?",
+        [login],
+        (err,rows)=>{
+
+            if(err){
+                return res.json([]);
+            }
+
+            res.json(rows);
+
+        }
+    );
+
+});
 app.listen(PORT, () => {
     console.log("Serwer działa na porcie " + PORT);
 });

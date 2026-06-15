@@ -308,44 +308,11 @@ a nie naukę na pamięć.
 
 </section>
 
-<section id="opinie">
-
 <h2>Opinie uczniów i rodziców</h2>
 
-<div class="cards">
-
-<div class="card">
-⭐⭐⭐⭐⭐
-
-<p>
-Syn miał duże problemy z matematyką, ale dzięki spokojnemu tłumaczeniu zaczął lepiej rozumieć materiał i poprawił swoje oceny.
-</p>
-
-<p><strong>– Rodzic ucznia klasy 7</strong></p>
-</div>
-
-<div class="card">
-⭐⭐⭐⭐⭐
-
-<p>
-Bardzo cierpliwy korepetytor. Wszystko tłumaczy krok po kroku i zawsze można zadać dodatkowe pytania.
-</p>
-
-<p><strong>– Uczeń technikum</strong></p>
-</div>
-
-<div class="card">
-⭐⭐⭐⭐⭐
-
-<p>
-Zajęcia odbywają się w miłej atmosferze, a terminy można łatwo dopasować. Polecam.
-</p>
-
-<p><strong>– Rodzic uczennicy liceum</strong></p>
-</div>
+<div class="cards" id="opinionsContainer">
 
 </div>
-
 </section>
 <h2>Najczęściej zadawane pytania</h2>
 
@@ -444,7 +411,41 @@ class="whatsapp">
 class="whatsapp">
 💬
 </a>
+<script>
 
+fetch("/accepted-opinions")
+.then(res => res.json())
+.then(opinions => {
+
+    let html = "";
+
+    opinions.forEach(opinion => {
+
+        html += `
+        <div class="card">
+
+            <h3>${"⭐".repeat(opinion.ocena)}</h3>
+
+            <p>${opinion.tresc}</p>
+
+            <p>
+            <strong>
+            - ${opinion.login}
+            </strong>
+            </p>
+
+        </div>
+        `;
+
+    });
+
+    document.getElementById(
+        "opinionsContainer"
+    ).innerHTML = html;
+
+});
+
+</script>
 
 </body>
 </html>
