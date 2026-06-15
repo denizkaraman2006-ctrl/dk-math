@@ -7,24 +7,53 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-<section>
+<section class="booking-section">
 
-<h1>Umów lekcję</h1>
+<h1>🚀 Umów pierwszą lekcję</h1>
 
-<div class="card">
+<p class="booking-text">
+Wypełnij formularz, a skontaktuję się z Tobą
+i wspólnie ustalimy najlepszy termin zajęć.
+</p>
 
-<input type="text" id="imie" placeholder="Imię i nazwisko">
+<div class="benefits">
 
-<input type="email" id="email" placeholder="Adres e-mail">
+<div>✅ Indywidualne podejście</div>
 
-<input type="tel" id="telefon" placeholder="Telefon">
+<div>✅ Lekcje online</div>
+
+<div>✅ Pomoc przed sprawdzianami</div>
+
+<div>✅ Materiały i zadania</div>
+
+</div>
+
+<div class="card booking-card">
+
+<input
+type="text"
+id="imie"
+placeholder="👤 Imię i nazwisko">
+
+<input
+type="email"
+id="email"
+placeholder="📧 Adres e-mail">
+
+<input
+type="tel"
+id="telefon"
+placeholder="📱 Telefon">
 
 <select id="klasa">
 <option>Klasa 4-8 szkoły podstawowej</option>
 <option>Liceum</option>
 <option>Technikum</option>
+<option>Matura podstawowa</option>
+<option>Matura rozszerzona</option>
 </select>
 
 <select id="termin">
@@ -32,17 +61,17 @@
 <option>Wtorek 18:00</option>
 <option>Środa 19:00</option>
 <option>Czwartek 18:00</option>
+<option>Piątek 17:00</option>
 <option>Sobota 12:00</option>
 </select>
 
 <textarea
 id="wiadomosc"
-placeholder="Napisz czego potrzebujesz..."
-rows="6">
-</textarea>
+placeholder="Opisz czego potrzebujesz, z czym masz problem lub do czego chcesz się przygotować..."
+rows="6"></textarea>
 
 <button onclick="bookLesson()">
-Wyślij zgłoszenie
+🚀 Wyślij zgłoszenie
 </button>
 
 </div>
@@ -50,6 +79,8 @@ Wyślij zgłoszenie
 </section>
 
 <script src="booking.js"></script>
+
+</body>
 
 </body>
 </html>
