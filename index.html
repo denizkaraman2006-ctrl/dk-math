@@ -1,584 +1,581 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
 
-<link rel="icon" href="images/dkmath-logo.png">
+    <link rel="icon" href="images/dkmath-logo.png">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Korepetycje matematyki online dla szkoły podstawowej, liceum i technikum. Pomoc w sprawdzianach, kartkówkach i egzaminach.">
+    <meta name="description"
+        content="Korepetycje matematyki online dla szkoły podstawowej, liceum i technikum. Pomoc w sprawdzianach, kartkówkach i egzaminach.">
 
-<meta name="keywords" content="korepetycje matematyka, matematyka online, korepetytor matematyki, matura matematyka, matematyka liceum">
+    <meta name="keywords"
+        content="korepetycje matematyka, matematyka online, korepetytor matematyki, matura matematyka, matematyka liceum">
 
-<title>DK Math - Korepetycje Matematyki Online</title>
+    <title>DK Math - Korepetycje Matematyki Online</title>
 
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
-<nav>
-<div class="topbar">
+    <nav>
+        <div class="topbar">
 
-<div class="logo">
-    <img src="images/dkmath-logo.png" alt="DK Math">
-    <div class="logo-text">
-        <h3>DK Math</h3>
-        <p>Korepetycje Online</p>
+            <div class="logo">
+                <img src="images/dkmath-logo.png" alt="DK Math">
+                <div class="logo-text">
+                    <h3>DK Math</h3>
+                    <p>Korepetycje Online</p>
+                </div>
+            </div>
+
+            <button class="menu-btn" onclick="toggleMenu()">
+                ☰
+            </button>
+
+        </div>
+
+
+        <ul id="menu">
+            <li><a href="#about">O mnie</a></li>
+            <li><a href="#experience">Doświadczenie</a></li>
+            <li><a href="#offer">Oferta</a></li>
+            <li><a href="#pricing">Cennik</a></li>
+            <li><a href="#opinie">Opinie</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+            <li>
+                <a href="login.html" class="student-btn">
+                    📚 Panel ucznia
+                </a>
+            </li>
+
+            <li>
+                <a href="booking.html" class="student-btn">
+                    🚀 Umów lekcję
+                </a>
+            </li>
+            <a href="#contact" class="btn secondary-btn">
+                📞 Kontakt
+            </a>
+        </ul>
+
+    </nav>
+    <section class="hero">
+
+        <div class="hero-left">
+            <p class="hero-top">
+                ⭐ Korepetytor Matematyki Online
+            </p>
+            <h1>
+                Zrozum matematykę.<br>
+                Popraw oceny.<br>
+                Zdaj bez stresu.
+            </h1>
+
+            <div class="hero-rating">
+
+                ⭐⭐⭐⭐⭐ 5.0
+
+                <span>
+                    Zaufanie uczniów i rodziców
+                </span>
+
+            </div>
+            <p>
+                Pomagam uczniom szkoły podstawowej,
+                liceum i technikum zrozumieć matematykę
+                i osiągać lepsze wyniki.
+            </p>
+            <p>
+                Pomagam poprawić oceny, przygotować się do sprawdzianów i zrozumieć matematykę krok po kroku.
+            </p>
+            <div class="hero-badges">
+
+                <span>📚 Sprawdziany</span>
+
+                <span>🎓 Egzaminy</span>
+
+                <span>💻 Online</span>
+
+                <span>⭐ Indywidualnie</span>
+
+            </div>
+
+            <div class="hero-buttons">
+
+                <a href="booking.html" class="btn">
+                    🚀 Umów lekcję
+                </a>
+
+                <a href="login.html" class="btn secondary-btn">
+                    📚 Panel ucznia
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right">
+            <img src="images/deniz.png" alt="Deniz Karaman">
+        </div>
+        <div class="hero-badge">
+            ⭐ Wysoka skuteczność nauczania
+        </div>
+
+    </section>
+
+    <section id="stats-section">
+        <h2>Dlaczego uczniowie wybierają DK Math?</h2>
+
+        <h2>DK Math w liczbach</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2 id="lessons">15+</h2>
+                <p>Przeprowadzonych lekcji</p>
+            </div>
+
+            <div class="card">
+                <h2 id="students">10+</h2>
+                <p>Zadowolonych uczniów</p>
+            </div>
+
+            <div class="card">
+                <h2 id="rating">100%</h2>
+                <p>Pozytywnych opinii %</p>
+            </div>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>📈 Poprawa ocen</h3>
+                <p>Pomagam zrozumieć materiał i poprawić wyniki.</p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Indywidualne podejście</h3>
+                <p>Każdy uczeń pracuje we własnym tempie.</p>
+            </div>
+
+            <div class="card">
+                <h3>💻 100% Online</h3>
+                <p>Możesz uczyć się z każdego miejsca.</p>
+            </div>
+
+            <div class="card">
+                <h3>📝 Notatki po lekcji</h3>
+                <p>Najważniejsze informacje zostają z uczniem.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+
+        <h2>O mnie</h2>
+
+        <p>
+            Cześć! Mam na imię Deniz.
+            Od 2024 roku prowadzę korepetycje z matematyki.
+            Podczas zajęć stawiam na spokojne tłumaczenie,
+            indywidualne podejście oraz budowanie pewności siebie ucznia.
+        </p>
+
+        <p>
+            Tempo pracy zawsze dostosowuję do ucznia.
+            Moim celem jest nie tylko rozwiązanie zadania,
+            ale przede wszystkim zrozumienie materiału.
+        </p>
+
+    </section>
+
+    <section id="experience">
+
+        <h2>Doświadczenie</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Fundacja Dom Otwarty</h3>
+                <p>
+                    Praca z grupami dzieci i młodzieży
+                    z różnych krajów i kultur.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Korepetytor od 2024</h3>
+                <p>
+                    Pomoc uczniom w przygotowaniu do
+                    sprawdzianów, kartkówek i egzaminów.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Technikum Ekonomiczne</h3>
+                <p>
+                    Profil ekonomiczny z rozszerzoną matematyką.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="process">
+
+        <h2>Jak wygląda współpraca?</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>1️⃣ Kontakt</h3>
+                <p>
+                    Wypełniasz formularz lub kontaktujesz się telefonicznie.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>2️⃣ Rozmowa</h3>
+                <p>
+                    Poznaję potrzeby ucznia i ustalamy plan działania.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>3️⃣ Lekcje</h3>
+                <p>
+                    Regularne zajęcia online dopasowane do poziomu ucznia.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>4️⃣ Efekty</h3>
+                <p>
+                    Lepsze oceny, większa pewność siebie i mniej stresu.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="offer">
+
+        <h2>Oferta</h2>
+
+        <div class="card">
+
+            <h3>Indywidualne Korepetycje Online</h3>
+
+            <p>
+                Oferuję indywidualne zajęcia online z matematyki,
+                dostosowane do poziomu i potrzeb ucznia.
+                Pomagam w zrozumieniu materiału, przygotowaniu do
+                sprawdzianów, kartkówek oraz poprawie ocen.
+            </p>
+
+            <p>
+                Każda lekcja prowadzona jest w spokojnej atmosferze,
+                z naciskiem na praktyczne zrozumienie matematyki,
+                a nie naukę na pamięć.
+            </p>
+
+        </div>
+
+    
+
+
+    <h2>Co otrzymujesz?</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            📚 Materiały do nauki
+        </div>
+
+        <div class="card">
+            📝 Notatki po zajęciach
+        </div>
+
+        <div class="card">
+            📱 Kontakt między lekcjami
+        </div>
+
+        <div class="card">
+            🎯 Indywidualny plan nauki
+        </div>
+
     </div>
-</div>
-
-<button class="menu-btn" onclick="toggleMenu()">
-☰
-</button>
-
-</div>
 
 
-<ul id="menu">
-    <li><a href="#about">O mnie</a></li>
-    <li><a href="#experience">Doświadczenie</a></li>
-    <li><a href="#offer">Oferta</a></li>
-    <li><a href="#pricing">Cennik</a></li>
-    <li><a href="#opinie">Opinie</a></li>
-    <li><a href="#contact">Kontakt</a></li>
-<li>
-<a href="login.html" class="student-btn">
-📚 Panel ucznia
-</a>
-</li>
 
-<li>
-<a href="booking.html" class="student-btn">
-🚀 Umów lekcję
-</a>
-</li>
-<a href="#contact" class="btn secondary-btn">
-📞 Kontakt
-</a>
-</ul>
 
-</nav>
-<section class="hero">
+    <h2>Jak wyglądają zajęcia?</h2>
 
-<div class="hero-left">
-<p class="hero-top">
-⭐ Korepetytor Matematyki Online
-</p>
-<h1>
-Zrozum matematykę.<br>
-Popraw oceny.<br>
-Zdaj bez stresu.
-</h1>
+    <div class="cards">
 
-<div class="hero-rating">
+        <div class="card">
+            <h3>1️⃣ Poznajemy problem</h3>
+            <p>Sprawdzamy, z czym uczeń ma największą trudność.</p>
+        </div>
 
-⭐⭐⭐⭐⭐ 5.0
+        <div class="card">
+            <h3>2️⃣ Tłumaczenie krok po kroku</h3>
+            <p>Wyjaśniam temat prostym i zrozumiałym językiem.</p>
+        </div>
 
-<span>
-Zaufanie uczniów i rodziców
-</span>
+        <div class="card">
+            <h3>3️⃣ Wspólne zadania</h3>
+            <p>Rozwiązujemy przykłady aż temat stanie się zrozumiały.</p>
+        </div>
 
-</div>
-<p>
-Pomagam uczniom szkoły podstawowej,
-liceum i technikum zrozumieć matematykę
-i osiągać lepsze wyniki.
-</p>
-<p>
-Pomagam poprawić oceny, przygotować się do sprawdzianów i zrozumieć matematykę krok po kroku.
-</p>
-<div class="hero-badges">
+        <div class="card">
+            <h3>4️⃣ Notatki po lekcji</h3>
+            <p>Uczeń otrzymuje materiały i wskazówki do dalszej nauki.</p>
+        </div>
 
-<span>📚 Sprawdziany</span>
+    </div>
 
-<span>🎓 Egzaminy</span>
 
-<span>💻 Online</span>
 
-<span>⭐ Indywidualnie</span>
+    <h2>Dla kogo?</h2>
 
-</div>
+    <div class="cards">
 
-<div class="hero-buttons">
+        <div class="card">
+            <h3>🏫 Szkoła podstawowa</h3>
+            <p>Pomoc w bieżącej nauce i przygotowaniu do sprawdzianów.</p>
+        </div>
 
-<a href="booking.html" class="btn">
-🚀 Umów lekcję
-</a>
+        <div class="card">
+            <h3>🎓 Liceum</h3>
+            <p>Przygotowanie do kartkówek, sprawdzianów i matury.</p>
+        </div>
 
-<a href="login.html" class="btn secondary-btn">
-📚 Panel ucznia
-</a>
+        <div class="card">
+            <h3>📈 Technikum</h3>
+            <p>Matematyka podstawowa i rozszerzona krok po kroku.</p>
+        </div>
 
-</div>
-
-</div>
-
-<div class="hero-right">
-<img src="images/deniz.png" alt="Deniz Karaman">
-</div>
-<div class="hero-badge">
-⭐ Wysoka skuteczność nauczania
-</div>
+    </div>
 </section>
 
+    <section id="pricing">
 
-<h2>Dlaczego uczniowie wybierają DK Math?</h2>
-<section id="stats-section">
+        <h2>Cennik</h2>
 
-<h2>DK Math w liczbach</h2>
+        <div class="cards">
 
-<div class="cards">
+            <div class="card">
+                <h3>45 minut</h3>
+                <p>45 zł</p>
+            </div>
 
-<div class="card">
-<h2 id="lessons">15+</h2>
-<p>Przeprowadzonych lekcji</p>
-</div>
+            <div class="card">
+                <h3>60 minut</h3>
+                <p>60 zł</p>
+            </div>
 
-<div class="card">
-<h2 id="students">10+</h2>
-<p>Zadowolonych uczniów</p>
-</div>
+            <div class="card">
+                <h3>90 minut</h3>
+                <p>75 zł</p>
+            </div>
 
-<div class="card">
-<h2 id="rating">100%</h2>
-<p>Pozytywnych opinii %</p>
-</div>
+        </div>
 
-</div>
 
-</section>
-<div class="cards">
+    </section>
 
-<div class="card">
-<h3>📈 Poprawa ocen</h3>
-<p>Pomagam zrozumieć materiał i poprawić wyniki.</p>
-</div>
+    <section class="why">
 
-<div class="card">
-<h3>🎯 Indywidualne podejście</h3>
-<p>Każdy uczeń pracuje we własnym tempie.</p>
-</div>
+        <h2>Dlaczego warto?</h2>
 
-<div class="card">
-<h3>💻 100% Online</h3>
-<p>Możesz uczyć się z każdego miejsca.</p>
-</div>
+        <div class="cards">
 
-<div class="card">
-<h3>📝 Notatki po lekcji</h3>
-<p>Najważniejsze informacje zostają z uczniem.</p>
-</div>
+            <div class="card">
+                <h3>2+</h3>
+                <p>Lata doświadczenia</p>
+            </div>
 
-</div>
+            <div class="card">
+                <h3>2024</h3>
+                <p>Od kiedy prowadzę zajęcia</p>
+            </div>
 
-</section>
+            <div class="card">
+                <h3>Online</h3>
+                <p>Zajęcia z całej Polski</p>
+            </div>
 
-<section id="about">
+        </div>
 
-<h2>O mnie</h2>
 
-<p>
-Cześć! Mam na imię Deniz.
-Od 2024 roku prowadzę korepetycje z matematyki.
-Podczas zajęć stawiam na spokojne tłumaczenie,
-indywidualne podejście oraz budowanie pewności siebie ucznia.
-</p>
+        <div class="cards">
 
-<p>
-Tempo pracy zawsze dostosowuję do ucznia.
-Moim celem jest nie tylko rozwiązanie zadania,
-ale przede wszystkim zrozumienie materiału.
-</p>
+            <div class="card">✅ Indywidualne podejście</div>
+            <div class="card">✅ Notatki po lekcji</div>
+            <div class="card">✅ Lekcje online</div>
+            <div class="card">✅ Elastyczne godziny</div>
+            <div class="card">✅ Weekendy</div>
+            <div class="card">
+                ✅ Przyjazna atmosfera
+            </div>
 
-</section>
+        </div>
 
-<section id="experience">
+    </section>
 
-<h2>Doświadczenie</h2>
+    <h2>Dostępność</h2>
 
-<div class="cards">
+    <div class="card">
 
-<div class="cards">
+        <p>
+            📅 Poniedziałek - Piątek: indywidualnie
+        </p>
 
-<div class="card">
-<h3>1️⃣ Kontakt</h3>
-<p>
-Wypełniasz formularz lub kontaktujesz się telefonicznie.
-</p>
-</div>
+        <p>
+            📅 Sobota i Niedziela: dostępne terminy
+        </p>
 
-<div class="card">
-<h3>2️⃣ Rozmowa</h3>
-<p>
-Poznaję potrzeby ucznia i ustalamy plan działania.
-</p>
-</div>
+        <p>
+            ⏰ Godziny ustalane indywidualnie
+        </p>
 
-<div class="card">
-<h3>3️⃣ Lekcje</h3>
-<p>
-Regularne zajęcia online dopasowane do poziomu ucznia.
-</p>
-</div>
+    </div>
 
-<div class="card">
-<h3>4️⃣ Efekty</h3>
-<p>
-Lepsze oceny, większa pewność siebie i mniej stresu.
-</p>
-</div>
 
-</div>
+    <section id="opinie">
+        <h2>Opinie uczniów i rodziców</h2>
 
-</section>
+        <div class="cards" id="opinionsContainer">
 
-<section id="process">
+            <div class="card">
+                <h3>⭐⭐⭐⭐⭐</h3>
+                <p>Bardzo dobre tłumaczenie i spokojne podejście do ucznia.</p>
+                <p><strong>- Uczeń</strong></p>
+            </div>
 
-<h2>Jak wygląda współpraca?</h2>
+            <div class="card">
+                <h3>⭐⭐⭐⭐⭐</h3>
+                <p>Pomoc przed sprawdzianem bardzo się przydała.</p>
+                <p><strong>- Rodzic</strong></p>
+            </div>
 
-<div class="cards">
+            <div class="card">
+                <h3>⭐⭐⭐⭐⭐</h3>
+                <p>Matematyka stała się dużo prostsza.</p>
+                <p><strong>- Uczeń</strong></p>
+            </div>
+        </div>
+    </section>
+    <section id="faq">
+        <h2>Najczęściej zadawane pytania</h2>
 
-<div class="card">
-<h3>Fundacja Dom Otwarty</h3>
-<p>
-Praca z grupami dzieci i młodzieży
-z różnych krajów i kultur.
-</p>
-</div>
+        <div class="card">
+            <h3>Czy zajęcia są tylko online?</h3>
+            <p>Tak, wszystkie zajęcia odbywają się online.</p>
+        </div>
 
-<div class="card">
-<h3>Korepetytor od 2024</h3>
-<p>
-Pomoc uczniom w przygotowaniu do
-sprawdzianów, kartkówek i egzaminów.
-</p>
-</div>
+        <div class="card">
+            <h3>Jak wygląda pierwsza lekcja?</h3>
+            <p>Poznaje potrzeby ucznia i sprawdzam poziom wiedzy.</p>
+        </div>
 
-<div class="card">
-<h3>Technikum Ekonomiczne</h3>
-<p>
-Profil ekonomiczny z rozszerzoną matematyką.
-</p>
-</div>
+        <div class="card">
+            <h3>Czy pomagasz przed sprawdzianami?</h3>
+            <p>Tak, pomagam przygotować się do sprawdzianów, kartkówek i egzaminów.</p>
+        </div>
 
-</div>
+        <div class="card">
+            <h3>Czy zajęcia odbywają się w weekendy?</h3>
+            <p>Tak, dostępne są również terminy weekendowe.</p>
+        </div>
 
-</section>
+    </section>
 
-<section id="offer">
+    <section id="lesson">
 
-<h2>Oferta</h2>
+        <h2>Umów pierwszą lekcję</h2>
 
-<div class="card">
+        <div class="card">
 
-<h3>Indywidualne Korepetycje Online</h3>
+            <p>
+                Jeżeli chcesz umówić zajęcia lub zapytać o wolne terminy,
+                skontaktuj się ze mną telefonicznie lub mailowo.
+                Odpowiadam możliwie najszybciej.
+            </p>
+            <div class="contact-buttons">
 
-<p>
-Oferuję indywidualne zajęcia online z matematyki,
-dostosowane do poziomu i potrzeb ucznia.
-Pomagam w zrozumieniu materiału, przygotowaniu do
-sprawdzianów, kartkówek oraz poprawie ocen.
-</p>
+                <a href="tel:739496701" class="btn">
+                    Zadzwoń teraz
+                </a>
 
-<p>
-Każda lekcja prowadzona jest w spokojnej atmosferze,
-z naciskiem na praktyczne zrozumienie matematyki,
-a nie naukę na pamięć.
-</p>
+                <a href="https://wa.me/48739496701" class="btn">
+                    Napisz na WhatsApp
+                </a>
 
-</div>
+            </div>
+        </div>
 
-</section>
+    </section>
+    <section id="contact">
 
+        <h2>Kontakt</h2>
 
-<h2>Co otrzymujesz?</h2>
+        <div class="card">
 
-<div class="cards">
+            <p>📞 739 496 701</p>
+            <p>📧 deniz.karaman2006@gmail.com</p>
+            <p>💻 Korepetycje wyłącznie online</p>
 
-<div class="card">
-📚 Materiały do nauki
-</div>
+        </div>
 
-<div class="card">
-📝 Notatki po zajęciach
-</div>
+    </section>
 
-<div class="card">
-📱 Kontakt między lekcjami
-</div>
+    <footer>
 
-<div class="card">
-🎯 Indywidualny plan nauki
-</div>
+        <h3>DK Math</h3>
 
-</div>
+        <p>Korepetycje Matematyki Online</p>
 
-</section>
+        <p>📞 739 496 701</p>
 
+        <p>📧 deniz.karaman2006@gmail.com</p>
 
-<h2>Jak wyglądają zajęcia?</h2>
+        <p>📍 Zajęcia online na terenie całej Polski</p>
 
-<div class="cards">
+        <p>© 2026 DK Math</p>
 
-<div class="card">
-<h3>1️⃣ Poznajemy problem</h3>
-<p>Sprawdzamy, z czym uczeń ma największą trudność.</p>
-</div>
+    </footer>
+    <script src="script.js"></script>
 
-<div class="card">
-<h3>2️⃣ Tłumaczenie krok po kroku</h3>
-<p>Wyjaśniam temat prostym i zrozumiałym językiem.</p>
-</div>
 
-<div class="card">
-<h3>3️⃣ Wspólne zadania</h3>
-<p>Rozwiązujemy przykłady aż temat stanie się zrozumiały.</p>
-</div>
+    <a href="https://wa.me/48739496701" class="whatsapp">
+        💬
+    </a>
+    <script>
 
-<div class="card">
-<h3>4️⃣ Notatki po lekcji</h3>
-<p>Uczeń otrzymuje materiały i wskazówki do dalszej nauki.</p>
-</div>
+        fetch("/accepted-opinions")
+            .then(res => res.json())
+            .then(opinions => {
 
-</div>
+                let html = "";
 
-</section>
+                opinions.forEach(opinion => {
 
-
-<h2>Dla kogo?</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>🏫 Szkoła podstawowa</h3>
-<p>Pomoc w bieżącej nauce i przygotowaniu do sprawdzianów.</p>
-</div>
-
-<div class="card">
-<h3>🎓 Liceum</h3>
-<p>Przygotowanie do kartkówek, sprawdzianów i matury.</p>
-</div>
-
-<div class="card">
-<h3>📈 Technikum</h3>
-<p>Matematyka podstawowa i rozszerzona krok po kroku.</p>
-</div>
-
-</div>
-
-</section>
-<section id="pricing">
-
-<h2>Cennik</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>45 minut</h3>
-<p>45 zł</p>
-</div>
-
-<div class="card">
-<h3>60 minut</h3>
-<p>60 zł</p>
-</div>
-
-<div class="card">
-<h3>90 minut</h3>
-<p>75 zł</p>
-</div>
-
-</div>
-
-
-</section>
-
-<section class="why">
-
-<h2>Dlaczego warto?</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>2+</h3>
-<p>Lata doświadczenia</p>
-</div>
-
-<div class="card">
-<h3>2024</h3>
-<p>Od kiedy prowadzę zajęcia</p>
-</div>
-
-<div class="card">
-<h3>Online</h3>
-<p>Zajęcia z całej Polski</p>
-</div>
-
-</div>
-
-
-</div>
-
-<div class="cards">
-
-<div class="card">✅ Indywidualne podejście</div>
-<div class="card">✅ Notatki po lekcji</div>
-<div class="card">✅ Lekcje online</div>
-<div class="card">✅ Elastyczne godziny</div>
-<div class="card">✅ Weekendy</div>
-<div class="card">✅ Przyjazna atmosfera</div>
-
-</div>
-
-</section>
-
-<h2>Dostępność</h2>
-
-<div class="card">
-
-<p>
-📅 Poniedziałek - Piątek: indywidualnie
-</p>
-
-<p>
-📅 Sobota i Niedziela: dostępne terminy
-</p>
-
-<p>
-⏰ Godziny ustalane indywidualnie
-</p>
-
-</div>
-
-</section>
-
-<h2>Opinie uczniów i rodziców</h2>
-
-<div class="cards" id="opinionsContainer">
-
-<div class="card">
-<h3>⭐⭐⭐⭐⭐</h3>
-<p>Bardzo dobre tłumaczenie i spokojne podejście do ucznia.</p>
-<p><strong>- Uczeń</strong></p>
-</div>
-
-<div class="card">
-<h3>⭐⭐⭐⭐⭐</h3>
-<p>Pomoc przed sprawdzianem bardzo się przydała.</p>
-<p><strong>- Rodzic</strong></p>
-</div>
-
-<div class="card">
-<h3>⭐⭐⭐⭐⭐</h3>
-<p>Matematyka stała się dużo prostsza.</p>
-<p><strong>- Uczeń</strong></p>
-</div>
-</section>
-<section id="faq">
-<h2>Najczęściej zadawane pytania</h2>
-
-<div class="card">
-<h3>Czy zajęcia są tylko online?</h3>
-<p>Tak, wszystkie zajęcia odbywają się online.</p>
-</div>
-
-<div class="card">
-<h3>Jak wygląda pierwsza lekcja?</h3>
-<p>Poznaje potrzeby ucznia i sprawdzam poziom wiedzy.</p>
-</div>
-
-<div class="card">
-<h3>Czy pomagasz przed sprawdzianami?</h3>
-<p>Tak, pomagam przygotować się do sprawdzianów, kartkówek i egzaminów.</p>
-</div>
-
-<div class="card">
-<h3>Czy zajęcia odbywają się w weekendy?</h3>
-<p>Tak, dostępne są również terminy weekendowe.</p>
-</div>
-
-</section>
-
-<section id="lesson">
-
-<h2>Umów pierwszą lekcję</h2>
-
-<div class="card">
-
-<p>
-Jeżeli chcesz umówić zajęcia lub zapytać o wolne terminy,
-skontaktuj się ze mną telefonicznie lub mailowo.
-Odpowiadam możliwie najszybciej.
-</p>
-<div class="contact-buttons">
-
-<a href="tel:739496701" class="btn">
-Zadzwoń teraz
-</a>
-
-<a href="https://wa.me/48739496701" class="btn">
-Napisz na WhatsApp
-</a>
-
-</div>
-</div>
-
-</section>
-<section id="contact">
-
-<h2>Kontakt</h2>
-
-<div class="card">
-
-<p>📞 739 496 701</p>
-<p>📧 deniz.karaman2006@gmail.com</p>
-<p>💻 Korepetycje wyłącznie online</p>
-
-</div>
-
-</section>
-
-<footer>
-
-<h3>DK Math</h3>
-
-<p>Korepetycje Matematyki Online</p>
-
-<p>📞 739 496 701</p>
-
-<p>📧 deniz.karaman2006@gmail.com</p>
-
-<p>📍 Zajęcia online na terenie całej Polski</p>
-
-<p>© 2026 DK Math</p>
-
-</footer>
-<script src="script.js"></script>
-
-<a href="https://wa.me/48739496701"
-class="whatsapp">
-💬
-</a>
-
-<a href="https://wa.me/48739496701"
-class="whatsapp">
-💬
-</a>
-<script>
-
-fetch("/accepted-opinions")
-.then(res => res.json())
-.then(opinions => {
-
-    let html = "";
-
-    opinions.forEach(opinion => {
-
-        html += `
+                    html += `
         <div class="card">
 
             <h3>${"⭐".repeat(opinion.ocena)}</h3>
@@ -594,23 +591,24 @@ fetch("/accepted-opinions")
         </div>
         `;
 
-    });
+                });
 
-    document.getElementById(
-        "opinionsContainer"
-    ).innerHTML = html;
-
-});
-
-</script>
-<script>
-
-function toggleMenu(){
-document
-.getElementById("menu")
-.classList.toggle("show");
+              if(opinions.length > 0){
+    document.getElementById("opinionsContainer").innerHTML = html;
 }
 
-</script>
+            });
+
+    </script>
+    <script>
+
+        function toggleMenu() {
+            document
+                .getElementById("menu")
+                .classList.toggle("show");
+        }
+
+    </script>
 </body>
+
 </html>
