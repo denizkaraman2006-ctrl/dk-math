@@ -1,3 +1,4 @@
+alert("JS działa");
 function adminLogin(){
 
     const login =
