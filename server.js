@@ -68,6 +68,21 @@ Email: ${email}
 Login: ${login}`
     })
 });
+fetch(`https://api.telegram.org/botTWÓJ_NOWY_TOKEN/sendMessage`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        chat_id: "6040495781",
+        text: `👨‍🎓 NOWY UCZEŃ
+
+Imię: ${imie}
+Nazwisko: ${nazwisko}
+Email: ${email}
+Login: ${login}`
+    })
+});
             res.send("Konto utworzone");
         }
     );
@@ -88,8 +103,24 @@ app.post("/login", (req, res) => {
             console.log("WYNIK:", row);
 
             if(row){
-                res.send("OK");
-            } else {
+
+    fetch(`https://api.telegram.org/botTWÓJ_NOWY_TOKEN/sendMessage`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            chat_id: "6040495781",
+            text: `🔑 Logowanie ucznia
+
+Login: ${login}`
+        })
+    });
+
+    res.send("OK");
+
+}
+            else {
                 res.send("BŁĄD");
             }
 
@@ -361,6 +392,21 @@ app.post("/add-opinion", (req, res) => {
                 return res.send("Błąd");
             }
 fetch(`https://api.telegram.org/bot8928129670:AAF6SqYOnmBZXTm5ZLYQolG-VHX8EByEA8k/sendMessage`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        chat_id: "6040495781",
+        text: `⭐ NOWA OPINIA
+
+Login: ${login}
+Ocena: ${ocena}/5
+
+${tresc}`
+    })
+});
+fetch(`https://api.telegram.org/botTWÓJ_NOWY_TOKEN/sendMessage`, {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
