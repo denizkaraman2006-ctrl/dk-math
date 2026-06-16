@@ -28,7 +28,16 @@ CREATE TABLE IF NOT EXISTS visits (
 )
 `);
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "index.html"));
+
+    db.run(
+        "INSERT INTO visits (data) VALUES (?)",
+        [new Date().toISOString()]
+    );
+
+    res.sendFile(
+        path.join(__dirname, "index.html")
+    );
+
 });
 app.post("/register", (req, res) => {
 
@@ -44,7 +53,21 @@ app.post("/register", (req, res) => {
             if(err){
                 return res.send("Login już istnieje");
             }
+fetch(`https://api.telegram.org/bot8928129670:AAF6SqYOnmBZXTm5ZLYQolG-VHX8EByEA8k/sendMessage`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        chat_id: "6040495781",
+        text: `🆕 NOWE KONTO
 
+Imię: ${imie}
+Nazwisko: ${nazwisko}
+Email: ${email}
+Login: ${login}`
+    })
+});
             res.send("Konto utworzone");
         }
     );
@@ -337,7 +360,21 @@ app.post("/add-opinion", (req, res) => {
             if(err){
                 return res.send("Błąd");
             }
+fetch(`https://api.telegram.org/bot8928129670:AAF6SqYOnmBZXTm5ZLYQolG-VHX8EByEA8k/sendMessage`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        chat_id: "6040495781",
+        text: `⭐ NOWA OPINIA
 
+Login: ${login}
+Ocena: ${ocena}/5
+
+${tresc}`
+    })
+});
             res.send("Opinia wysłana");
         }
     );
@@ -525,6 +562,32 @@ app.get("/materials/:login", (req,res)=>{
             }
 
             res.json(rows);
+
+        }
+    );
+
+});
+db.run(`
+CREATE TABLE IF NOT EXISTS visits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data TEXT
+)
+`);
+
+app.get("/visits", (req, res) => {
+
+    db.get(
+        "SELECT COUNT(*) as visits FROM visits",
+        [],
+        (err, row) => {
+
+            if(err){
+                return res.json({
+                    visits: 0
+                });
+            }
+
+            res.json(row);
 
         }
     );

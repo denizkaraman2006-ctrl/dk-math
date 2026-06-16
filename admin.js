@@ -297,6 +297,15 @@ fetch("/stats")
     ).innerText = stats.bookings;
 
 });
+fetch("/visits")
+.then(res => res.json())
+.then(data => {
+
+    document.getElementById(
+        "visitsCount"
+    ).innerText = data.visits;
+
+});
 function addMaterial(){
 
     const login =
