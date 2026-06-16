@@ -187,7 +187,28 @@ app.post("/book-lesson", (req, res) => {
             if(err){
                 return res.send("Błąd");
             }
+fetch(
+`https://api.telegram.org/bot8928129670:AAF6SqYOnmBZXTm5ZLYQolG-VHX8EByEA8k/sendMessage`,
+{
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+        chat_id:"6040495781",
+        text:
+`📚 NOWE ZGŁOSZENIE
 
+Imię: ${imie}
+Email: ${email}
+Telefon: ${telefon}
+Klasa: ${klasa}
+Termin: ${termin}
+
+Wiadomość:
+${wiadomosc}`
+    })
+});
             res.send("Zgłoszenie wysłane");
         }
     );
