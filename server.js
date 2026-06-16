@@ -27,6 +27,12 @@ CREATE TABLE IF NOT EXISTS visits (
     data TEXT
 )
 `);
+db.run(`
+CREATE TABLE IF NOT EXISTS available_slots (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    termin TEXT
+)
+`);
 app.get("/", (req, res) => {
 
     db.run(
