@@ -20,7 +20,13 @@ CREATE TABLE IF NOT EXISTS users (
     haslo TEXT
 )
 `);
-
+db.run(`
+CREATE TABLE IF NOT EXISTS visits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ip TEXT,
+    data TEXT
+)
+`);
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });

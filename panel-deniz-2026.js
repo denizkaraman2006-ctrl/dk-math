@@ -26,8 +26,7 @@ function adminLogin(){
                 "true"
             );
 
-            window.location.href =
-            "admin.html";
+           window.location.href = "panel-deniz-2026.html";
 
         }else{
 
