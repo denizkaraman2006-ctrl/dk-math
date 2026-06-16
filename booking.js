@@ -12,7 +12,7 @@ function bookLesson(){
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
+        body: window.JSON.stringify({
             imie,
             email,
             telefon,
