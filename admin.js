@@ -175,7 +175,7 @@ function logoutAdmin(){
     );
 
     window.location.href =
-    "loginadmin.html";
+    "panel-deniz-2026.html";
 
 }
 fetch("/opinions")
