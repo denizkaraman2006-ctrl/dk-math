@@ -8,11 +8,11 @@ function bookLesson(){
     const wiadomosc = document.getElementById("wiadomosc").value;
 
     fetch("/book-lesson", {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
             imie,
             email,
             telefon,
