@@ -12,100 +12,375 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+
+        /* =====================================================
+           TEST POZIOMUJĄCY — DK MATH
+           ===================================================== */
+
         body {
             margin: 0;
             min-height: 100vh;
-            background: #172235;
-            color: white;
+            background: #050d1b;
+            color: #ffffff;
             font-family: Arial, sans-serif;
         }
 
+
+        /* ================= HEADER ================= */
+
+        .test-header-bar {
+            width: 100%;
+            background: rgba(4, 12, 25, 0.96);
+            border-bottom: 1px solid rgba(80, 150, 230, 0.14);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+        }
+
+        .test-nav {
+            max-width: 1250px;
+            margin: 0 auto;
+            min-height: 76px;
+            padding: 0 25px;
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .test-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .test-brand img {
+            width: 46px !important;
+            height: 46px !important;
+            max-width: 46px !important;
+            max-height: 46px !important;
+            object-fit: contain !important;
+            flex-shrink: 0;
+        }
+
+        .test-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .test-brand-text strong {
+            font-size: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .test-brand-text span {
+            color: #8ea2bd;
+            font-size: 13px;
+        }
+
+        .test-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .test-nav-links a {
+            color: #cbd7e7;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .test-nav-links a:hover {
+            color: #4da3ff;
+        }
+
+        .test-nav-links .active {
+            color: #4da3ff;
+        }
+
+
+        /* ================= GŁÓWNY WRAPPER ================= */
+
         .test-wrapper {
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px 60px;
+            padding: 65px 20px 90px;
             box-sizing: border-box;
         }
 
-        .test-header {
+
+        /* ================= TYTUŁ ================= */
+
+        .test-page-heading {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 42px;
         }
 
-        .test-logo {
-            width: 75px;
-            height: 75px;
-            object-fit: contain;
+        .test-page-heading .test-logo {
+            width: 80px !important;
+            height: 80px !important;
+            max-width: 80px !important;
+            max-height: 80px !important;
+            object-fit: contain !important;
+            margin-bottom: 15px;
+        }
+
+        .test-page-heading h1 {
+            margin: 0 0 14px;
+            font-size: clamp(34px, 5vw, 52px);
+            line-height: 1.1;
+        }
+
+        .test-page-heading h1 span {
+            color: #3c9aff;
+        }
+
+        .test-page-heading p {
+            margin: 6px 0;
+            color: #aebed2;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+
+        /* ================= GŁÓWNA KARTA ================= */
+
+        .test-card {
+            width: 100%;
+            box-sizing: border-box;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(12, 34, 64, 0.98),
+                    rgba(6, 19, 37, 0.98)
+                );
+
+            border: 1px solid rgba(65, 145, 230, 0.25);
+
+            border-radius: 24px;
+
+            padding: 42px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.32);
+
+            overflow: hidden;
+        }
+
+
+        /* ================= START ================= */
+
+        .start-screen {
+            text-align: center;
+        }
+
+        .start-icon {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            background: rgba(8, 124, 255, 0.12);
+
+            border: 1px solid rgba(8, 124, 255, 0.25);
+
+            font-size: 42px;
+        }
+
+        .start-screen h2 {
+            margin: 0 0 16px;
+            font-size: 32px;
+        }
+
+        .start-screen > p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+
+            color: #b4c3d6;
+
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+        /* ================= ZASADY ================= */
+
+        .test-rules {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+
+            margin: 32px 0;
+        }
+
+        .rule {
+            padding: 22px 15px;
+
+            border-radius: 16px;
+
+            background: #081a31;
+
+            border: 1px solid rgba(90, 140, 195, 0.2);
+
+            transition: 0.2s ease;
+        }
+
+        .rule:hover {
+            transform: translateY(-3px);
+            border-color: rgba(8, 124, 255, 0.45);
+
+            background: #0a203c;
+        }
+
+        .rule-icon {
+            font-size: 28px;
             margin-bottom: 10px;
         }
 
-        .test-header h1 {
-            margin: 5px 0 12px;
-            font-size: 38px;
+        .rule strong {
+            display: block;
+            font-size: 15px;
         }
 
-        .test-header p {
-            color: #cbd5e1;
+
+        /* ================= START BUTTON ================= */
+
+        .start-button {
+            width: 100%;
+            max-width: 430px;
+
+            border: none;
+            border-radius: 14px;
+
+            padding: 17px 25px;
+
             font-size: 17px;
-            line-height: 1.6;
-            margin: 5px 0;
+            font-weight: 800;
+
+            color: white;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #0056d6
+                );
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                filter 0.2s ease;
         }
 
-        .test-card {
-            background: #202d42;
-            border-radius: 22px;
-            padding: 35px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        .start-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 35px rgba(8, 124, 255, 0.28);
+
+            filter: brightness(1.08);
         }
+
+
+        /* ================= POSTĘP ================= */
 
         .progress-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             margin-bottom: 10px;
-            color: #cbd5e1;
+
+            color: #aebed2;
             font-size: 14px;
+            font-weight: 700;
         }
 
         .progress-bar {
             width: 100%;
             height: 9px;
-            background: #334155;
+
+            background: #0b213b;
+
             border-radius: 20px;
+
             overflow: hidden;
-            margin-bottom: 35px;
+
+            margin-bottom: 38px;
         }
 
         .progress-fill {
             height: 100%;
             width: 5%;
-            background: linear-gradient(90deg, #7c3aed, #ec4899);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #087cff,
+                    #3c9aff
+                );
+
             border-radius: 20px;
+
             transition: width 0.4s ease;
         }
 
+
+        /* ================= PYTANIE ================= */
+
         .question-number {
             display: inline-block;
-            padding: 7px 14px;
+
+            padding: 8px 15px;
+
             border-radius: 20px;
-            background: #312e81;
-            color: #ddd6fe;
-            font-size: 14px;
-            font-weight: bold;
+
+            background: rgba(8, 124, 255, 0.13);
+
+            border: 1px solid rgba(8, 124, 255, 0.25);
+
+            color: #5eaeff;
+
+            font-size: 13px;
+            font-weight: 800;
+
             margin-bottom: 18px;
         }
 
         .question {
             font-size: 25px;
             line-height: 1.5;
-            margin: 0 0 28px;
+
+            margin: 0 0 30px;
+
+            color: #ffffff;
         }
+
+
+        /* ================= ODPOWIEDZI ================= */
 
         .answers {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 13px;
         }
 
         .answer {
@@ -122,229 +397,364 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            padding: 18px 20px;
-            border: 2px solid #3b4a61;
-            border-radius: 15px;
-            background: #182438;
+
+            padding: 17px 19px;
+
+            border: 2px solid rgba(80, 130, 180, 0.22);
+
+            border-radius: 14px;
+
+            background: #071a31;
+
             cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s ease;
+
+            font-size: 17px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease;
         }
 
         .answer label:hover {
-            border-color: #8b5cf6;
-            background: #25334b;
+            border-color: rgba(8, 124, 255, 0.65);
+
+            background: #0a213d;
+
             transform: translateY(-2px);
         }
 
         .answer-letter {
-            width: 36px;
-            height: 36px;
-            min-width: 36px;
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             border-radius: 50%;
-            background: #334155;
-            font-weight: bold;
+
+            background: #102945;
+
+            color: #b8c9dc;
+
+            font-weight: 800;
+
+            transition: 0.2s ease;
         }
 
         .answer input:checked + label {
-            border-color: #a78bfa;
-            background: #312e81;
-            box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.15);
+            border-color: #087cff;
+
+            background:
+                rgba(8, 124, 255, 0.12);
+
+            box-shadow:
+                0 0 0 3px rgba(8, 124, 255, 0.08);
         }
 
         .answer input:checked + label .answer-letter {
-            background: #8b5cf6;
+            background: #087cff;
             color: white;
         }
+
+
+        /* ================= PRZYCISKI TESTU ================= */
 
         .buttons {
             display: flex;
             justify-content: space-between;
             gap: 15px;
+
             margin-top: 35px;
         }
 
         .test-button {
             border: none;
             border-radius: 12px;
+
             padding: 14px 25px;
-            font-size: 16px;
-            font-weight: bold;
+
+            font-size: 15px;
+            font-weight: 800;
+
             cursor: pointer;
-            transition: 0.2s;
-        }
 
-        .back-button {
-            background: #334155;
-            color: white;
-        }
-
-        .next-button {
-            background: linear-gradient(90deg, #7c3aed, #ec4899);
-            color: white;
-            margin-left: auto;
+            transition:
+                transform 0.2s ease,
+                filter 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .test-button:hover {
             transform: translateY(-2px);
-            opacity: 0.92;
         }
 
-        .start-screen {
+        .back-button {
+            background: #142a43;
+            color: #d4dfec;
+
+            border: 1px solid rgba(100, 140, 180, 0.22);
+        }
+
+        .back-button:hover {
+            background: #1a3552;
+        }
+
+        .next-button {
+            margin-left: auto;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #0056d6
+                );
+
+            color: white;
+        }
+
+        .next-button:hover {
+            box-shadow:
+                0 10px 25px rgba(8, 124, 255, 0.25);
+        }
+
+
+        /* ================= OSTRZEŻENIE ================= */
+
+        .warning {
+            min-height: 20px;
+
+            color: #f4c95d;
+
             text-align: center;
-        }
 
-        .start-icon {
-            font-size: 70px;
-            margin-bottom: 10px;
-        }
+            margin-top: 15px;
 
-        .start-screen h2 {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .start-screen p {
-            color: #cbd5e1;
-            line-height: 1.7;
-            font-size: 17px;
-        }
-
-        .test-rules {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin: 30px 0;
-        }
-
-        .rule {
-            background: #182438;
-            border: 1px solid #334155;
-            border-radius: 14px;
-            padding: 18px 10px;
-        }
-
-        .rule-icon {
-            font-size: 25px;
-            margin-bottom: 8px;
-        }
-
-        .rule strong {
-            display: block;
             font-size: 14px;
         }
 
-        .start-button {
-            width: 100%;
-            max-width: 400px;
-            border: none;
-            border-radius: 14px;
-            padding: 17px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            background: linear-gradient(90deg, #7c3aed, #ec4899);
-            transition: 0.2s;
-        }
 
-        .start-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
-        }
+        /* ================= WYNIK ================= */
 
-       .result-screen {
-    text-align: center;
-    overflow: hidden;
-    box-sizing: border-box;
-}
+        .result-screen {
+            text-align: center;
+        }
 
         .result-icon {
-            font-size: 75px;
+            font-size: 65px;
+            margin-bottom: 10px;
         }
 
         .result-screen h2 {
             font-size: 32px;
-            margin: 10px 0;
+            margin: 0 0 10px;
         }
 
         .score {
-    font-size: 60px;
-    font-weight: bold;
-    margin: 20px 0;
-    color: white;
-    background: none;
-    -webkit-text-fill-color: white;
-}
+            font-size: 64px !important;
+            font-weight: 900;
 
-      .result-message {
-    color: #cbd5e1;
-    font-size: 18px;
-    line-height: 1.7;
-    margin: 0 auto 30px;
-    max-width: 650px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 15px;
-    text-align: center;
-}
+            margin: 22px 0;
+
+            color: #4da3ff !important;
+
+            background: transparent !important;
+
+            width: auto !important;
+            height: auto !important;
+            min-height: 0 !important;
+
+            display: block !important;
+
+            -webkit-text-fill-color: #4da3ff !important;
+        }
+
+        .result-message {
+            color: #b4c3d6;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            margin: 0 auto 30px;
+
+            max-width: 650px;
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 0 10px;
+
+            text-align: center;
+        }
 
         .result-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            align-items: center;
+
+            gap: 14px;
+
             flex-wrap: wrap;
         }
 
         .result-buttons a,
         .result-buttons button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
             border: none;
+
             text-decoration: none;
+
             border-radius: 12px;
+
             padding: 14px 22px;
-            font-size: 16px;
-            font-weight: bold;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
             cursor: pointer;
+
+            transition: 0.2s ease;
         }
 
         .retry-button {
-            background: #334155;
+            background: #142a43;
             color: white;
+
+            border: 1px solid rgba(100, 140, 180, 0.22) !important;
+        }
+
+        .retry-button:hover {
+            background: #1a3552;
+            transform: translateY(-2px);
         }
 
         .lesson-button {
-            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #0056d6
+                );
+
             color: white;
         }
 
-        .hidden {
-            display: none;
+        .lesson-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(8, 124, 255, 0.25);
         }
 
-        .warning {
-            color: #fbbf24;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
+
+        /* ================= HIDDEN ================= */
+
+        .hidden {
+            display: none !important;
         }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .test-nav {
+                min-height: 68px;
+                padding: 0 18px;
+            }
+
+            .test-nav-links {
+                gap: 15px;
+            }
+
+            .test-nav-links a:nth-child(2),
+            .test-nav-links a:nth-child(3) {
+                display: none;
+            }
+
+            .test-wrapper {
+                padding-top: 45px;
+            }
+
+            .test-card {
+                padding: 30px;
+            }
+        }
+
 
         @media (max-width: 600px) {
 
+            .test-brand-text span {
+                display: none;
+            }
+
+            .test-brand img {
+                width: 42px !important;
+                height: 42px !important;
+                max-width: 42px !important;
+                max-height: 42px !important;
+            }
+
+            .test-nav-links {
+                gap: 12px;
+            }
+
+            .test-nav-links a {
+                font-size: 12px;
+            }
+
             .test-wrapper {
-                padding: 25px 12px 40px;
+                padding: 35px 12px 60px;
+            }
+
+            .test-page-heading {
+                margin-bottom: 30px;
+            }
+
+            .test-page-heading .test-logo {
+                width: 65px !important;
+                height: 65px !important;
+                max-width: 65px !important;
+                max-height: 65px !important;
+            }
+
+            .test-page-heading h1 {
+                font-size: 32px;
+            }
+
+            .test-page-heading p {
+                font-size: 15px;
             }
 
             .test-card {
                 padding: 22px 17px;
-                border-radius: 18px;
+                border-radius: 19px;
             }
 
-            .test-header h1 {
-                font-size: 28px;
+            .start-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 34px;
+            }
+
+            .start-screen h2 {
+                font-size: 27px;
+            }
+
+            .start-screen > p {
+                font-size: 15px;
+            }
+
+            .test-rules {
+                grid-template-columns: 1fr;
             }
 
             .question {
@@ -356,10 +766,6 @@
                 font-size: 16px;
             }
 
-            .test-rules {
-                grid-template-columns: 1fr;
-            }
-
             .buttons {
                 flex-direction: column;
             }
@@ -368,176 +774,324 @@
                 margin-left: 0;
             }
 
+            .back-button,
+            .next-button {
+                width: 100%;
+            }
+
             .score {
-                font-size: 50px;
+                font-size: 50px !important;
+            }
+
+            .result-buttons {
+                flex-direction: column;
+            }
+
+            .result-buttons a,
+            .result-buttons button {
+                width: 100%;
+                box-sizing: border-box;
             }
         }
+
     </style>
 </head>
 
+
 <body>
 
-<div class="test-wrapper">
 
-    <div class="test-header">
+<!-- ================= HEADER ================= -->
 
-        <img
-            src="images/dkmath-logo.png"
-            alt="DK Math"
-            class="test-logo"
-        >
+<header class="test-header-bar">
 
-        <h1>🧠 Test poziomujący</h1>
+    <div class="test-nav">
 
-        <p>
-            Sprawdź swój poziom matematyki
-        </p>
+        <a href="index.html" class="test-brand">
 
-        <p>
-            Klasy 4–8 • przygotowanie do egzaminu ósmoklasisty
-        </p>
+            <img
+                src="images/dkmath-logo.png"
+                alt="DK Math"
+            >
 
-    </div>
-
-
-    <!-- EKRAN STARTOWY -->
-
-    <div id="startScreen" class="test-card start-screen">
-
-        <div class="start-icon">🚀</div>
-
-        <h2>Gotowy na wyzwanie?</h2>
-
-        <p>
-            Ten test pomoże określić, które zagadnienia z matematyki
-            masz już opanowane, a nad którymi warto jeszcze popracować.
-        </p>
-
-        <div class="test-rules">
-
-            <div class="rule">
-                <div class="rule-icon">📝</div>
-                <strong>20 pytań</strong>
+            <div class="test-brand-text">
+                <strong>DK MATH</strong>
+                <span>Matematyka bez stresu</span>
             </div>
 
-            <div class="rule">
-                <div class="rule-icon">⏱️</div>
-                <strong>Bez limitu czasu</strong>
-            </div>
-
-            <div class="rule">
-                <div class="rule-icon">🧮</div>
-                <strong>Bez kalkulatora</strong>
-            </div>
-
-        </div>
-
-        <p>
-            <strong>Ważne:</strong> wybierz odpowiedź, która Twoim zdaniem
-            jest prawidłowa. Nie przejmuj się, jeśli nie znasz wszystkich odpowiedzi.
-        </p>
-
-        <button class="start-button" onclick="startTest()">
-            🚀 Rozpocznij test
-        </button>
-
-    </div>
+        </a>
 
 
-    <!-- TEST -->
+        <nav class="test-nav-links">
 
-    <div id="testScreen" class="test-card hidden">
-
-        <div class="progress-info">
-
-            <span id="questionCounter">Pytanie 1 z 20</span>
-
-            <span id="progressPercent">5%</span>
-
-        </div>
-
-        <div class="progress-bar">
-            <div id="progressFill" class="progress-fill"></div>
-        </div>
-
-
-        <div id="questionContainer"></div>
-
-
-        <div class="buttons">
-
-            <button
-                id="backButton"
-                class="test-button back-button"
-                onclick="previousQuestion()"
-            >
-                ← Wstecz
-            </button>
-
-            <button
-                id="nextButton"
-                class="test-button next-button"
-                onclick="nextQuestion()"
-            >
-                Dalej →
-            </button>
-
-        </div>
-
-        <div id="warning" class="warning"></div>
-
-    </div>
-
-
-    <!-- WYNIK -->
-
-    <div id="resultScreen" class="test-card result-screen hidden">
-
-        <div id="resultIcon" class="result-icon">
-            🎉
-        </div>
-
-        <h2>Test zakończony!</h2>
-
-        <div
-    <div id="score" style="
-    font-size: 60px;
-    font-weight: bold;
-    margin: 20px 0;
-    color: white;
-    background: transparent;
-    width: auto;
-    height: auto;
-    min-height: 0;
-    display: block;
-">
-    0/20
-</div>
-
-        <div id="resultMessage" class="result-message"></div>
-
-        <div class="result-buttons">
-
-            <button
-                class="retry-button"
-                onclick="restartTest()"
-            >
-                🔄 Rozwiąż ponownie
-            </button>
-
-            <a
-                href="booking.html"
-                class="lesson-button"
-            >
-                📚 Umów korepetycje
+            <a href="index.html">
+                Strona główna
             </a>
 
+            <a href="index.html#oferta">
+                Oferta
+            </a>
+
+            <a href="index.html#cennik">
+                Cennik
+            </a>
+
+            <a href="test.html" class="active">
+                Test poziomujący
+            </a>
+
+            <a href="booking.html">
+                Umów lekcję
+            </a>
+
+            <a href="login.html">
+                Panel ucznia
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CONTENT ================= -->
+
+<main>
+
+    <div class="test-wrapper">
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="test-page-heading">
+
+            <img
+                src="images/dkmath-logo.png"
+                alt="DK Math"
+                class="test-logo"
+            >
+
+            <h1>
+                🧠 Test <span>poziomujący</span>
+            </h1>
+
+            <p>
+                Sprawdź swój poziom matematyki
+            </p>
+
+            <p>
+                Klasy 4–8 • przygotowanie do egzaminu ósmoklasisty
+            </p>
+
+        </div>
+
+
+        <!-- ================= START ================= -->
+
+        <div
+            id="startScreen"
+            class="test-card start-screen"
+        >
+
+            <div class="start-icon">
+                🚀
+            </div>
+
+            <h2>
+                Gotowy na wyzwanie?
+            </h2>
+
+            <p>
+                Ten test pomoże określić, które zagadnienia z matematyki
+                masz już opanowane, a nad którymi warto jeszcze popracować.
+            </p>
+
+
+            <div class="test-rules">
+
+                <div class="rule">
+
+                    <div class="rule-icon">
+                        📝
+                    </div>
+
+                    <strong>
+                        20 pytań
+                    </strong>
+
+                </div>
+
+
+                <div class="rule">
+
+                    <div class="rule-icon">
+                        ⏱️
+                    </div>
+
+                    <strong>
+                        Bez limitu czasu
+                    </strong>
+
+                </div>
+
+
+                <div class="rule">
+
+                    <div class="rule-icon">
+                        🧮
+                    </div>
+
+                    <strong>
+                        Bez kalkulatora
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <p>
+                <strong>Ważne:</strong>
+                wybierz odpowiedź, która Twoim zdaniem jest prawidłowa.
+                Nie przejmuj się, jeśli nie znasz wszystkich odpowiedzi.
+            </p>
+
+
+            <button
+                class="start-button"
+                onclick="startTest()"
+            >
+                🚀 Rozpocznij test
+            </button>
+
+        </div>
+
+
+        <!-- ================= TEST ================= -->
+
+        <div
+            id="testScreen"
+            class="test-card hidden"
+        >
+
+            <div class="progress-info">
+
+                <span id="questionCounter">
+                    Pytanie 1 z 20
+                </span>
+
+                <span id="progressPercent">
+                    5%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill"
+                ></div>
+
+            </div>
+
+
+            <div id="questionContainer"></div>
+
+
+            <div class="buttons">
+
+                <button
+                    id="backButton"
+                    class="test-button back-button"
+                    onclick="previousQuestion()"
+                >
+                    ← Wstecz
+                </button>
+
+
+                <button
+                    id="nextButton"
+                    class="test-button next-button"
+                    onclick="nextQuestion()"
+                >
+                    Dalej →
+                </button>
+
+            </div>
+
+
+            <div
+                id="warning"
+                class="warning"
+            ></div>
+
+        </div>
+
+
+        <!-- ================= RESULT ================= -->
+
+        <div
+            id="resultScreen"
+            class="test-card result-screen hidden"
+        >
+
+            <div
+                id="resultIcon"
+                class="result-icon"
+            >
+                🎉
+            </div>
+
+
+            <h2>
+                Test zakończony!
+            </h2>
+
+
+            <div
+                id="score"
+                class="score"
+            >
+                0/20
+            </div>
+
+
+            <div
+                id="resultMessage"
+                class="result-message"
+            ></div>
+
+
+            <div class="result-buttons">
+
+                <button
+                    class="retry-button"
+                    onclick="restartTest()"
+                >
+                    🔄 Rozwiąż ponownie
+                </button>
+
+
+                <a
+                    href="booking.html"
+                    class="lesson-button"
+                >
+                    📚 Umów korepetycje
+                </a>
+
+            </div>
+
         </div>
 
     </div>
 
-</div>
+</main>
 
+
+<!-- ================= JS ================= -->
 
 <script src="test.js"></script>
 
