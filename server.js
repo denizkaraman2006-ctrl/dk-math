@@ -1,7 +1,12 @@
 const express = require("express");
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
+const { createClient } = require("@supabase/supabase-js");
 
+const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SECRET_KEY
+);
 const app = express();
 
 app.use(express.json());
@@ -129,24 +134,22 @@ Login: ${login}`
     );
 
 });
-app.get("/users", (req, res) => {
+app.get("/users", async (req, res) => {
 
-    db.all(
-        "SELECT * FROM users",
-        [],
-        (err, rows) => {
+    const { data, error } = await supabase
+        .from("users")
+        .select("*")
+        .order("id", { ascending: true });
 
-            if(err){
-                return res.json([]);
-            }
+    if (error) {
+        console.error("Błąd Supabase:", error);
+        return res.json([]);
+    }
 
-            res.json(rows);
-
-        }
-    );
+    res.json(data);
 
 });
-app.post("/add-user", (req, res) => {
+app.post("/add-user", async (req, res) => {
 
     const { imie, nazwisko, email, login, haslo } = req.body;
 
@@ -154,24 +157,28 @@ app.post("/add-user", (req, res) => {
         return res.send("Uzupełnij wszystkie pola");
     }
 
-    db.run(
-        `INSERT INTO users
-        (imie, nazwisko, email, login, haslo)
-        VALUES (?, ?, ?, ?, ?)`,
-        [imie, nazwisko, email, login, haslo],
-        function(err) {
-
-            if (err) {
-                return res.send("Login już istnieje");
+    const { error } = await supabase
+        .from("users")
+        .insert([
+            {
+                imie,
+                nazwisko,
+                email,
+                login,
+                haslo
             }
+        ]);
 
-            res.send("Uczeń został dodany");
-        }
-    );
+    if (error) {
+        console.error("Błąd Supabase:", error);
+        return res.send("Login już istnieje");
+    }
+
+    res.send("Uczeń został dodany");
 });
 
 
-app.post("/delete-user", (req, res) => {
+app.post("/delete-user", async (req, res) => {
 
     const { id } = req.body;
 
@@ -179,18 +186,17 @@ app.post("/delete-user", (req, res) => {
         return res.send("Brak ID ucznia");
     }
 
-    db.run(
-        "DELETE FROM users WHERE id = ?",
-        [id],
-        function(err) {
+    const { error } = await supabase
+        .from("users")
+        .delete()
+        .eq("id", id);
 
-            if (err) {
-                return res.send("Błąd podczas usuwania");
-            }
+    if (error) {
+        console.error("Błąd Supabase:", error);
+        return res.send("Błąd podczas usuwania");
+    }
 
-            res.send("Uczeń został usunięty");
-        }
-    );
+    res.send("Uczeń został usunięty");
 });
 
 db.run(`
