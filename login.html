@@ -1,35 +1,542 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="icon" href="images/dkmath-logo.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DK Math - Logowanie</title>
-<link rel="stylesheet" href="style.css">
+
+    <title>DK Math - Logowanie</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(8, 124, 255, 0.12),
+                    transparent 35%
+                ),
+                #050d1b;
+
+            color: white;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* ================= GÓRNY PASEK ================= */
+
+        .login-header {
+            width: 100%;
+
+            background: rgba(4, 12, 25, 0.96);
+
+            border-bottom:
+                1px solid rgba(80, 150, 230, 0.15);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .login-header-inner {
+            max-width: 1250px;
+
+            min-height: 76px;
+
+            margin: 0 auto;
+
+            padding: 0 25px;
+
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .login-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: white;
+            text-decoration: none;
+        }
+
+        .login-brand img {
+            width: 46px !important;
+            height: 46px !important;
+
+            max-width: 46px !important;
+            max-height: 46px !important;
+
+            object-fit: contain !important;
+        }
+
+        .login-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .login-brand-text strong {
+            font-size: 18px;
+            letter-spacing: 0.4px;
+        }
+
+        .login-brand-text span {
+            color: #8297b1;
+            font-size: 12px;
+        }
+
+
+        /* ================= LOGOWANIE ================= */
+
+        .login-page {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px 20px 70px;
+
+            box-sizing: border-box;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 460px;
+
+            box-sizing: border-box;
+
+            padding: 42px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(12, 34, 64, 0.98),
+                    rgba(6, 19, 37, 0.98)
+                );
+
+            border:
+                1px solid rgba(65, 145, 230, 0.25);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.35);
+
+            text-align: center;
+        }
+
+
+        /* ================= LOGO ================= */
+
+        .login-logo {
+            width: 78px !important;
+            height: 78px !important;
+
+            max-width: 78px !important;
+            max-height: 78px !important;
+
+            object-fit: contain !important;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* ================= TYTUŁ ================= */
+
+        .login-box h1 {
+            margin: 0 0 10px;
+
+            font-size: 32px;
+        }
+
+        .login-box h1 span {
+            color: #3c9aff;
+        }
+
+        .login-subtitle {
+            margin: 0 0 30px;
+
+            color: #91a5be;
+
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+
+        /* ================= IKONA ================= */
+
+        .login-icon {
+            width: 52px;
+            height: 52px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                rgba(8, 124, 255, 0.12);
+
+            border:
+                1px solid rgba(8, 124, 255, 0.25);
+
+            font-size: 23px;
+        }
+
+
+        /* ================= POLA ================= */
+
+        .login-field {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .login-field label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #c4d2e2;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .login-box input {
+            width: 100%;
+
+            min-height: 52px;
+
+            box-sizing: border-box;
+
+            padding: 0 15px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(100, 140, 180, 0.22);
+
+            background: #07182d;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+
+            font-family: Arial, sans-serif;
+
+            transition: 0.2s ease;
+        }
+
+        .login-box input::placeholder {
+            color: #627995;
+        }
+
+        .login-box input:focus {
+            border-color: #087cff;
+
+            box-shadow:
+                0 0 0 3px rgba(8, 124, 255, 0.10);
+        }
+
+
+        /* ================= PRZYCISK ================= */
+
+        .login-button {
+            width: 100%;
+
+            min-height: 52px;
+
+            margin-top: 8px;
+
+            border: none;
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #0056d6
+                );
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                filter 0.2s ease;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 13px 30px rgba(8, 124, 255, 0.25);
+
+            filter: brightness(1.08);
+        }
+
+
+        /* ================= DOLNY LINK ================= */
+
+        .login-back {
+            margin: 25px 0 0;
+        }
+
+        .login-back a {
+            color: #6fb4ff;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .login-back a:hover {
+            color: white;
+        }
+
+
+        /* ================= INFORMACJA ================= */
+
+        .login-info {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 25px;
+
+            padding: 13px 15px;
+
+            text-align: left;
+
+            border-radius: 12px;
+
+            background:
+                rgba(8, 124, 255, 0.06);
+
+            border:
+                1px solid rgba(8, 124, 255, 0.13);
+
+            color: #8297b1;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .login-info span {
+            font-size: 18px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .login-header-inner {
+                padding: 0 16px;
+            }
+
+            .login-brand img {
+                width: 42px !important;
+                height: 42px !important;
+            }
+
+            .login-brand-text strong {
+                font-size: 16px;
+            }
+
+            .login-brand-text span {
+                display: none;
+            }
+
+            .login-page {
+                padding: 35px 14px 50px;
+            }
+
+            .login-box {
+                padding: 30px 20px;
+
+                border-radius: 20px;
+            }
+
+            .login-logo {
+                width: 65px !important;
+                height: 65px !important;
+
+                max-width: 65px !important;
+                max-height: 65px !important;
+            }
+
+            .login-box h1 {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<div class="login-box">
 
-<h1>Logowanie</h1>
+<!-- ================= HEADER ================= -->
 
-<p>Zaloguj się do swojego konta</p>
+<header class="login-header">
 
-<input type="text" id="username" placeholder="Login">
+    <div class="login-header-inner">
 
-<input type="password" id="password" placeholder="Hasło">
+        <a
+            href="index.html"
+            class="login-brand"
+        >
 
-<button onclick="login()">Zaloguj się</button>
+            <img
+                src="images/dkmath-logo.png"
+                alt="DK Math"
+            >
+
+            <div class="login-brand-text">
+
+                <strong>
+                    DK MATH
+                </strong>
+
+                <span>
+                    Matematyka bez stresu
+                </span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</header>
 
 
-<p>
-<a href="index.html">← Powrót do strony głównej</a>
-</p>
+<!-- ================= LOGOWANIE ================= -->
 
-</div>
-<form autocomplete="off"></form>
+<main class="login-page">
+
+    <div class="login-box">
+
+
+        <img
+            src="images/dkmath-logo.png"
+            alt="DK Math"
+            class="login-logo"
+        >
+
+
+        <div class="login-icon">
+            🔐
+        </div>
+
+
+        <h1>
+            Logowanie do <span>panelu</span>
+        </h1>
+
+
+        <p class="login-subtitle">
+            Zaloguj się, aby przejść do swojego panelu ucznia.
+        </p>
+
+
+        <div class="login-field">
+
+            <label for="username">
+                Login
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Wpisz swój login"
+                autocomplete="username"
+            >
+
+        </div>
+
+
+        <div class="login-field">
+
+            <label for="password">
+                Hasło
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Wpisz swoje hasło"
+                autocomplete="current-password"
+            >
+
+        </div>
+
+
+        <button
+            onclick="login()"
+            class="login-button"
+        >
+            🔐 Zaloguj się
+        </button>
+
+
+        <div class="login-info">
+
+            <span>💡</span>
+
+            <div>
+                Dane logowania otrzymasz od administratora.
+            </div>
+
+        </div>
+
+
+        <p class="login-back">
+
+            <a href="index.html">
+                ← Powrót do strony głównej
+            </a>
+
+        </p>
+
+    </div>
+
+</main>
+
+
 <script src="login.js"></script>
 
 </body>
+
 </html>
