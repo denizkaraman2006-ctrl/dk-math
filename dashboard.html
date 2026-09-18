@@ -1,67 +1,245 @@
-
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
+
     <link rel="icon" href="images/dkmath-logo.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DK Math - Panel Ucznia</title>
-<link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DK Math - Panel Ucznia</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-<button onclick="logout()" class="btn">
-Wyloguj się
-</button>
-
 <section>
 
-<h1 id="welcome"></h1>
+    <!-- GÓRA -->
 
-<div class="card">
-<h3>📚 Moje zadania</h3>
-<div id="tasks"></div>
-</div>
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:20px;
+        flex-wrap:wrap;
+        margin-bottom:30px;
+    ">
 
-<div class="card">
-<h3>📅 Najbliższa lekcja</h3>
-<div id="lesson"></div>
-</div>
+        <div>
 
-<div class="card">
-<h3>📄 Materiały do pobrania</h3>
-<div id="materials"></div>
-</div>
+            <h1 id="welcome" style="margin-bottom:5px;">
+                Witaj!
+            </h1>
 
-<div class="card">
-<h3>⭐ Dodaj opinię</h3>
+            <p style="
+                margin:0;
+                color:#94a3b8;
+            ">
+                Twój panel DK Math
+            </p>
 
-<select id="ocena">
-<option value="5">⭐⭐⭐⭐⭐</option>
-<option value="4">⭐⭐⭐⭐</option>
-<option value="3">⭐⭐⭐</option>
-<option value="2">⭐⭐</option>
-<option value="1">⭐</option>
-</select>
+        </div>
 
-<textarea
-id="opinia"
-placeholder="Napisz swoją opinię">
-</textarea>
 
-<br><br>
+        <button
+            onclick="logout()"
+            class="btn"
+        >
+            🚪 Wyloguj się
+        </button>
 
-<button onclick="addOpinion()">
-Wyślij opinię
-</button>
+    </div>
 
-</div>
+
+    <!-- STATYSTYKI -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h2 id="tasksCount">
+                0
+            </h2>
+
+            <p>
+                📝 Zadania
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2 id="materialsCount">
+                0
+            </h2>
+
+            <p>
+                📚 Materiały
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2 id="lessonStatus">
+                —
+            </h2>
+
+            <p>
+                📅 Najbliższa lekcja
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ZADANIA -->
+
+    <div class="card">
+
+        <h2>
+            📝 Moje zadania
+        </h2>
+
+        <p style="
+            color:#94a3b8;
+            margin-bottom:20px;
+        ">
+            Zadania przygotowane dla Ciebie.
+        </p>
+
+        <div id="tasks">
+
+            <p>
+                Ładowanie zadań...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- LEKCJA -->
+
+    <div class="card">
+
+        <h2>
+            📅 Najbliższa lekcja
+        </h2>
+
+        <div id="lesson">
+
+            <p>
+                Ładowanie informacji...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- MATERIAŁY -->
+
+    <div class="card">
+
+        <h2>
+            📚 Materiały do nauki
+        </h2>
+
+        <p style="
+            color:#94a3b8;
+            margin-bottom:20px;
+        ">
+            Materiały udostępnione przez nauczyciela.
+        </p>
+
+        <div id="materials">
+
+            <p>
+                Ładowanie materiałów...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- OPINIA -->
+
+    <div class="card">
+
+        <h2>
+            ⭐ Twoja opinia
+        </h2>
+
+        <p style="
+            color:#94a3b8;
+            margin-bottom:20px;
+        ">
+            Oceń swoje doświadczenie z DK Math.
+        </p>
+
+
+        <select id="ocena">
+
+            <option value="5">
+                ⭐⭐⭐⭐⭐
+            </option>
+
+            <option value="4">
+                ⭐⭐⭐⭐
+            </option>
+
+            <option value="3">
+                ⭐⭐⭐
+            </option>
+
+            <option value="2">
+                ⭐⭐
+            </option>
+
+            <option value="1">
+                ⭐
+            </option>
+
+        </select>
+
+
+        <textarea
+            id="opinia"
+            placeholder="Napisz swoją opinię..."
+            rows="5"
+        ></textarea>
+
+
+        <button
+            onclick="addOpinion()"
+            class="btn"
+        >
+            ⭐ Wyślij opinię
+        </button>
+
+    </div>
+
 
 </section>
 
+
 <script src="dashboard.js"></script>
 
-</body>
-</html>
 
+</body>
+
+</html>
