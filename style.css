@@ -2248,3 +2248,241 @@ input[type="datetime-local"] {
         height: 27px;
     }
 }
+
+/* =========================================================
+   POTWIERDZENIE WYSŁANIA ZGŁOSZENIA
+   ========================================================= */
+
+.booking-success {
+    text-align: center;
+    padding: 35px 20px 25px;
+}
+
+.success-icon {
+    width: 82px;
+    height: 82px;
+
+    margin: 0 auto 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(8, 124, 255, 0.12);
+
+    border: 2px solid rgba(8, 124, 255, 0.45);
+
+    color: #4da3ff;
+
+    font-size: 42px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 35px rgba(8, 124, 255, 0.12);
+}
+
+.success-kicker {
+    display: inline-block;
+
+    color: #4da3ff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 12px;
+}
+
+.booking-success h2 {
+    margin: 0 0 16px;
+
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.booking-success > p {
+    max-width: 580px;
+
+    margin: 0 auto 28px;
+
+    color: #aebed2;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* ===== INFORMACJE ===== */
+
+.success-info {
+    max-width: 560px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.success-info-item {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 17px 18px;
+
+    text-align: left;
+
+    border-radius: 14px;
+
+    background: #071a31;
+
+    border: 1px solid rgba(80, 140, 200, 0.2);
+}
+
+.success-info-item > span {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(8, 124, 255, 0.12);
+
+    font-size: 19px;
+}
+
+.success-info-item strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 14px;
+}
+
+.success-info-item small {
+    color: #8297b1;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* ===== PRZYCISK ===== */
+
+.success-home-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #087cff,
+        #0056d6
+    );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    transition: 0.2s ease;
+}
+
+.success-home-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(8, 124, 255, 0.25);
+}
+
+
+/* =========================================================
+   KOMUNIKAT BŁĘDU
+   ========================================================= */
+
+.booking-message {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 15px 17px;
+
+    margin-bottom: 20px;
+
+    border-radius: 13px;
+
+    background: rgba(244, 201, 93, 0.08);
+
+    border: 1px solid rgba(244, 201, 93, 0.25);
+}
+
+.booking-message-icon {
+    font-size: 20px;
+}
+
+.booking-message strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 14px;
+}
+
+.booking-message p {
+    margin: 0;
+
+    color: #aebed2;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 600px) {
+
+    .booking-success {
+        padding: 25px 10px 15px;
+    }
+
+    .success-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 35px;
+    }
+
+    .booking-success h2 {
+        font-size: 27px;
+    }
+
+    .success-info-item {
+        padding: 14px;
+    }
+}
+

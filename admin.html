@@ -2,304 +2,1269 @@
 <html lang="pl">
 
 <head>
-    <link rel="icon" href="images/dkmath-logo.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="images/dkmath-logo.png">
+
     <title>DK Math - Panel Administratora</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           DK MATH — PANEL ADMINISTRATORA
+           ===================================================== */
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(8, 124, 255, 0.10),
+                    transparent 35%
+                ),
+                #050d1b;
+
+            color: #ffffff;
+
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .admin-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(4, 12, 25, 0.96);
+
+            border-bottom:
+                1px solid rgba(80, 150, 230, 0.15);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .admin-header-inner {
+            max-width: 1250px;
+
+            min-height: 78px;
+
+            margin: 0 auto;
+
+            padding: 0 25px;
+
+            box-sizing: border-box;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+            color: white;
+        }
+
+        .admin-brand img {
+            width: 48px !important;
+            height: 48px !important;
+
+            max-width: 48px !important;
+            max-height: 48px !important;
+
+            object-fit: contain !important;
+        }
+
+        .admin-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .admin-brand-text strong {
+            font-size: 18px;
+        }
+
+        .admin-brand-text span {
+            color: #8297b1;
+            font-size: 12px;
+        }
+
+        .admin-header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #b8c7dc;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        /* ================= GŁÓWNA ZAWARTOŚĆ ================= */
+
+        .admin-container {
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 55px 25px 90px;
+
+            box-sizing: border-box;
+        }
+
+
+        /* ================= TYTUŁ ================= */
+
+        .admin-welcome {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            gap: 25px;
+
+            margin-bottom: 38px;
+        }
+
+        .admin-welcome-text span {
+            display: inline-block;
+
+            color: #4da3ff;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 10px;
+        }
+
+        .admin-welcome h1 {
+            margin: 0 0 10px;
+
+            font-size: clamp(32px, 5vw, 46px);
+
+            line-height: 1.1;
+        }
+
+        .admin-welcome p {
+            margin: 0;
+
+            color: #8fa3bd;
+
+            font-size: 16px;
+        }
+
+
+        /* ================= WYLOGUJ ================= */
+
+        .admin-logout {
+            border: 1px solid rgba(255, 100, 100, 0.20);
+
+            background: rgba(255, 80, 80, 0.07);
+
+            color: #ffb0b0;
+
+            padding: 13px 18px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .admin-logout:hover {
+            background: rgba(255, 80, 80, 0.13);
+
+            border-color: rgba(255, 100, 100, 0.35);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           STATYSTYKI
+           ===================================================== */
+
+        .admin-stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 30px;
+        }
+
+        .admin-stat {
+            position: relative;
+
+            padding: 23px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(12, 34, 64, 0.98),
+                    rgba(6, 19, 37, 0.98)
+                );
+
+            border:
+                1px solid rgba(65, 145, 230, 0.20);
+
+            overflow: hidden;
+
+            transition: 0.2s ease;
+        }
+
+        .admin-stat:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(8, 124, 255, 0.40);
+        }
+
+        .admin-stat::after {
+            content: "";
+
+            position: absolute;
+
+            width: 90px;
+            height: 90px;
+
+            right: -45px;
+            top: -45px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(8, 124, 255, 0.10);
+        }
+
+        .admin-stat-icon {
+            font-size: 20px;
+
+            margin-bottom: 14px;
+        }
+
+        .admin-stat h2 {
+            margin: 0 0 5px;
+
+            font-size: 31px;
+
+            color: #4da3ff;
+        }
+
+        .admin-stat p {
+            margin: 0;
+
+            color: #9fb0c8;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           SEKCJE
+           ===================================================== */
+
+        .admin-card {
+            margin-bottom: 25px;
+
+            padding: 30px;
+
+            border-radius: 21px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(10, 28, 53, 0.98),
+                    rgba(5, 17, 33, 0.98)
+                );
+
+            border:
+                1px solid rgba(65, 145, 230, 0.20);
+
+            box-shadow:
+                0 18px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .admin-card-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 23px;
+        }
+
+        .admin-card-icon {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                rgba(8, 124, 255, 0.12);
+
+            border:
+                1px solid rgba(8, 124, 255, 0.25);
+
+            font-size: 20px;
+        }
+
+        .admin-card-header h2 {
+            margin: 0 0 4px;
+
+            font-size: 23px;
+        }
+
+        .admin-card-header p {
+            margin: 0;
+
+            color: #8297b1;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           FORMULARZE
+           ===================================================== */
+
+        .admin-form-box {
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background: rgba(255, 255, 255, 0.025);
+
+            border:
+                1px solid rgba(100, 140, 180, 0.12);
+
+            margin-bottom: 25px;
+        }
+
+        .admin-form-title {
+            margin: 0 0 17px;
+
+            font-size: 16px;
+        }
+
+        .admin-form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+        }
+
+        .admin-input {
+            width: 100%;
+
+            min-height: 48px;
+
+            box-sizing: border-box;
+
+            padding: 0 14px;
+
+            border-radius: 11px;
+
+            border:
+                1px solid rgba(100, 140, 180, 0.22);
+
+            background: #07182d;
+
+            color: white;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition: 0.2s ease;
+        }
+
+        .admin-input::placeholder {
+            color: #667d99;
+        }
+
+        .admin-input:focus {
+            border-color: #087cff;
+
+            box-shadow:
+                0 0 0 3px rgba(8, 124, 255, 0.10);
+        }
+
+        .admin-form-button {
+            min-height: 48px;
+
+            padding: 0 20px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #0056d6
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .admin-form-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(8, 124, 255, 0.23);
+        }
+
+
+        /* =====================================================
+           WYSZUKIWARKA
+           ===================================================== */
+
+        .admin-search {
+            position: relative;
+
+            margin-bottom: 20px;
+        }
+
+        .admin-search input {
+            width: 100%;
+
+            min-height: 52px;
+
+            box-sizing: border-box;
+
+            padding: 0 18px 0 48px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(100, 140, 180, 0.22);
+
+            background: #07182d;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        .admin-search::before {
+            content: "🔎";
+
+            position: absolute;
+
+            left: 17px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 16px;
+
+            z-index: 2;
+        }
+
+        .admin-search input:focus {
+            border-color: #087cff;
+
+            box-shadow:
+                0 0 0 3px rgba(8, 124, 255, 0.10);
+        }
+
+
+        /* =====================================================
+           ELEMENTY GENEROWANE PRZEZ ADMIN.JS
+           ===================================================== */
+
+        #users,
+        #bookings,
+        #opinions {
+            width: 100%;
+        }
+
+        #users > *,
+        #bookings > *,
+        #opinions > * {
+            margin-bottom: 12px;
+        }
+
+        #users button,
+        #bookings button,
+        #opinions button {
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 9px 13px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        #users button:hover,
+        #bookings button:hover,
+        #opinions button:hover {
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           FOOTER ADMINA
+           ===================================================== */
+
+        .admin-footer {
+            text-align: center;
+
+            color: #526983;
+
+            font-size: 12px;
+
+            margin-top: 45px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .admin-stats {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+        }
+
+
+        @media (max-width: 750px) {
+
+            .admin-header-title {
+                display: none;
+            }
+
+            .admin-container {
+                padding:
+                    40px 16px 60px;
+            }
+
+            .admin-welcome {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+            .admin-stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .admin-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-card {
+                padding: 22px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .admin-header-inner {
+                padding: 0 15px;
+            }
+
+            .admin-brand-text span {
+                display: none;
+            }
+
+            .admin-brand img {
+                width: 42px !important;
+                height: 42px !important;
+            }
+
+            .admin-brand-text strong {
+                font-size: 16px;
+            }
+
+            .admin-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-card {
+                padding: 18px;
+                border-radius: 17px;
+            }
+
+            .admin-welcome h1 {
+                font-size: 31px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<section>
 
-    <!-- GÓRA PANELU -->
-    <div style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        gap:20px;
-        flex-wrap:wrap;
-        margin-bottom:30px;
-    ">
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
 
-        <div>
-            <h1 style="margin-bottom:5px;">
+<header class="admin-header">
+
+    <div class="admin-header-inner">
+
+        <a
+            href="index.html"
+            class="admin-brand"
+        >
+
+            <img
+                src="images/dkmath-logo.png"
+                alt="DK Math"
+            >
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    DK MATH
+                </strong>
+
+                <span>
+                    Panel administratora
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="admin-header-title">
+
+            🛠️
+            Zarządzanie serwisem
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+<main class="admin-container">
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <div class="admin-welcome">
+
+        <div class="admin-welcome-text">
+
+            <span>
+                PANEL ADMINISTRACYJNY
+            </span>
+
+            <h1>
                 👨‍💼 Panel Administratora
             </h1>
 
-            <p style="margin:0; color:#94a3b8;">
-                Zarządzanie DK Math
+            <p>
+                Zarządzaj uczniami, zadaniami, lekcjami,
+                materiałami, opiniami i rezerwacjami.
             </p>
+
         </div>
 
-        <button onclick="logoutAdmin()" class="btn">
+
+        <button
+            onclick="logoutAdmin()"
+            class="admin-logout"
+        >
             🚪 Wyloguj administratora
         </button>
 
     </div>
 
 
-    <!-- STATYSTYKI -->
-    <div class="cards">
+    <!-- =====================================================
+         STATYSTYKI
+         ===================================================== -->
 
-        <div class="card">
-            <h2 id="usersCount">0</h2>
-            <p>👨‍🎓 Uczniów</p>
+    <div class="admin-stats">
+
+
+        <div class="admin-stat">
+
+            <div class="admin-stat-icon">
+                👨‍🎓
+            </div>
+
+            <h2 id="usersCount">
+                0
+            </h2>
+
+            <p>
+                Uczniów
+            </p>
+
         </div>
 
-        <div class="card">
-            <h2 id="tasksCount">0</h2>
-            <p>📝 Zadań</p>
+
+        <div class="admin-stat">
+
+            <div class="admin-stat-icon">
+                📝
+            </div>
+
+            <h2 id="tasksCount">
+                0
+            </h2>
+
+            <p>
+                Zadań
+            </p>
+
         </div>
 
-        <div class="card">
-            <h2 id="opinionsCount">0</h2>
-            <p>⭐ Opinii</p>
+
+        <div class="admin-stat">
+
+            <div class="admin-stat-icon">
+                ⭐
+            </div>
+
+            <h2 id="opinionsCount">
+                0
+            </h2>
+
+            <p>
+                Opinii
+            </p>
+
         </div>
 
-        <div class="card">
-            <h2 id="bookingsCount">0</h2>
-            <p>📅 Rezerwacji</p>
+
+        <div class="admin-stat">
+
+            <div class="admin-stat-icon">
+                📅
+            </div>
+
+            <h2 id="bookingsCount">
+                0
+            </h2>
+
+            <p>
+                Rezerwacji
+            </p>
+
         </div>
 
-        <div class="card">
-            <h2 id="visitsCount">0</h2>
-            <p>👁️ Odwiedzin strony</p>
+
+        <div class="admin-stat">
+
+            <div class="admin-stat-icon">
+                👁️
+            </div>
+
+            <h2 id="visitsCount">
+                0
+            </h2>
+
+            <p>
+                Odwiedzin strony
+            </p>
+
         </div>
 
     </div>
 
 
-    <!-- DODAWANIE UCZNIA + LISTA -->
-    <div class="card">
+    <!-- =====================================================
+         UCZNIOWIE
+         ===================================================== -->
 
-        <h2>👨‍🎓 Zarządzanie uczniami</h2>
+    <section class="admin-card">
 
-        <p style="color:#94a3b8;">
-            Dodawaj, wyszukuj i usuwaj konta uczniów.
-        </p>
+        <div class="admin-card-header">
+
+            <div class="admin-card-icon">
+                👨‍🎓
+            </div>
+
+            <div>
+
+                <h2>
+                    Zarządzanie uczniami
+                </h2>
+
+                <p>
+                    Dodawaj, wyszukuj i zarządzaj kontami uczniów.
+                </p>
+
+            </div>
+
+        </div>
 
 
         <!-- DODAJ UCZNIA -->
-        <div style="
-            padding:25px;
-            margin-top:20px;
-            border-radius:15px;
-            background:rgba(255,255,255,0.04);
-        ">
 
-            <h3>➕ Dodaj ucznia</h3>
+        <div class="admin-form-box">
 
-            <input
-                type="text"
-                id="newImie"
-                placeholder="Imię"
-            >
-
-            <input
-                type="text"
-                id="newNazwisko"
-                placeholder="Nazwisko"
-            >
-
-            <input
-                type="email"
-                id="newEmail"
-                placeholder="E-mail"
-            >
-
-            <input
-                type="text"
-                id="newLogin"
-                placeholder="Login"
-            >
-
-            <input
-                type="password"
-                id="newHaslo"
-                placeholder="Hasło"
-            >
-
-            <button onclick="addUser()" class="btn">
+            <h3 class="admin-form-title">
                 ➕ Dodaj ucznia
-            </button>
+            </h3>
+
+            <div class="admin-form-grid">
+
+                <input
+                    type="text"
+                    id="newImie"
+                    class="admin-input"
+                    placeholder="Imię"
+                >
+
+                <input
+                    type="text"
+                    id="newNazwisko"
+                    class="admin-input"
+                    placeholder="Nazwisko"
+                >
+
+                <input
+                    type="email"
+                    id="newEmail"
+                    class="admin-input"
+                    placeholder="E-mail"
+                >
+
+                <input
+                    type="text"
+                    id="newLogin"
+                    class="admin-input"
+                    placeholder="Login"
+                >
+
+                <input
+                    type="password"
+                    id="newHaslo"
+                    class="admin-input"
+                    placeholder="Hasło"
+                >
+
+                <button
+                    onclick="addUser()"
+                    class="admin-form-button"
+                >
+                    ➕ Dodaj ucznia
+                </button>
+
+            </div>
 
         </div>
 
 
         <!-- WYSZUKIWARKA -->
-        <div style="margin-top:30px;">
 
-            <h3>📋 Lista uczniów</h3>
+        <div class="admin-search">
 
             <input
                 type="text"
                 id="searchStudent"
-                placeholder="🔎 Szukaj po imieniu, nazwisku, loginie lub e-mailu"
+                placeholder="Szukaj po imieniu, nazwisku, loginie lub e-mailu..."
                 oninput="searchStudents()"
-                style="width:100%;"
             >
 
         </div>
 
 
         <!-- LISTA -->
-        <div id="users" style="margin-top:20px;"></div>
 
-    </div>
+        <div id="users"></div>
 
-
-    <!-- ZADANIA -->
-    <div class="card">
-
-        <h2>📝 Dodaj zadanie</h2>
-
-        <input
-            type="text"
-            id="login"
-            placeholder="Login ucznia"
-        >
-
-        <input
-            type="text"
-            id="zadanie"
-            placeholder="Treść zadania"
-        >
-
-        <button onclick="addTask()" class="btn">
-            ➕ Dodaj zadanie
-        </button>
-
-    </div>
+    </section>
 
 
-    <!-- LEKCJA -->
-    <div class="card">
+    <!-- =====================================================
+         ZADANIA
+         ===================================================== -->
 
-        <h2>📅 Dodaj lekcję</h2>
+    <section class="admin-card">
 
-        <input
-            type="text"
-            id="lessonLogin"
-            placeholder="Login ucznia"
-        >
+        <div class="admin-card-header">
 
-        <input
-            type="date"
-            id="lessonDate"
-        >
+            <div class="admin-card-icon">
+                📝
+            </div>
 
-        <input
-            type="time"
-            id="lessonTime"
-        >
+            <div>
 
-        <input
-            type="text"
-            id="lessonLink"
-            placeholder="Link do Google Meet"
-        >
+                <h2>
+                    Dodaj zadanie
+                </h2>
 
-        <button onclick="addLesson()" class="btn">
-            ➕ Dodaj lekcję
-        </button>
+                <p>
+                    Przypisz zadanie konkretnemu uczniowi.
+                </p>
 
-    </div>
+            </div>
+
+        </div>
 
 
-    <!-- MATERIAŁ -->
-    <div class="card">
+        <div class="admin-form-grid">
 
-        <h2>📚 Dodaj materiał</h2>
+            <input
+                type="text"
+                id="login"
+                class="admin-input"
+                placeholder="Login ucznia"
+            >
 
-        <input
-            type="text"
-            id="materialLogin"
-            placeholder="Login ucznia"
-        >
+            <input
+                type="text"
+                id="zadanie"
+                class="admin-input"
+                placeholder="Treść zadania"
+            >
 
-        <input
-            type="text"
-            id="materialName"
-            placeholder="Nazwa materiału"
-        >
+            <button
+                onclick="addTask()"
+                class="admin-form-button"
+            >
+                ➕ Dodaj zadanie
+            </button>
 
-        <input
-            type="text"
-            id="materialLink"
-            placeholder="Link do PDF / materiału"
-        >
+        </div>
 
-        <button onclick="addMaterial()" class="btn">
-            ➕ Dodaj materiał
-        </button>
-
-    </div>
+    </section>
 
 
-    <!-- ZMIANA HASŁA -->
-    <div class="card">
+    <!-- =====================================================
+         LEKCJE
+         ===================================================== -->
 
-        <h2>🔑 Zmień hasło ucznia</h2>
+    <section class="admin-card">
 
-        <input
-            type="text"
-            id="changeLogin"
-            placeholder="Login ucznia"
-        >
+        <div class="admin-card-header">
 
-        <input
-            type="text"
-            id="newPassword"
-            placeholder="Nowe hasło"
-        >
+            <div class="admin-card-icon">
+                📅
+            </div>
 
-        <button onclick="changePassword()" class="btn">
-            🔑 Zmień hasło
-        </button>
+            <div>
 
-    </div>
+                <h2>
+                    Dodaj lekcję
+                </h2>
+
+                <p>
+                    Zaplanuj lekcję i dodaj link do Google Meet.
+                </p>
+
+            </div>
+
+        </div>
 
 
-    <!-- REZERWACJE -->
-    <div class="card">
+        <div class="admin-form-grid">
 
-        <h2>📅 Zgłoszenia na lekcje</h2>
+            <input
+                type="text"
+                id="lessonLogin"
+                class="admin-input"
+                placeholder="Login ucznia"
+            >
+
+            <input
+                type="date"
+                id="lessonDate"
+                class="admin-input"
+            >
+
+            <input
+                type="time"
+                id="lessonTime"
+                class="admin-input"
+            >
+
+            <input
+                type="text"
+                id="lessonLink"
+                class="admin-input"
+                placeholder="Link do Google Meet"
+            >
+
+            <button
+                onclick="addLesson()"
+                class="admin-form-button"
+            >
+                ➕ Dodaj lekcję
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MATERIAŁY
+         ===================================================== -->
+
+    <section class="admin-card">
+
+        <div class="admin-card-header">
+
+            <div class="admin-card-icon">
+                📚
+            </div>
+
+            <div>
+
+                <h2>
+                    Dodaj materiał
+                </h2>
+
+                <p>
+                    Udostępnij uczniowi materiały do nauki.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-form-grid">
+
+            <input
+                type="text"
+                id="materialLogin"
+                class="admin-input"
+                placeholder="Login ucznia"
+            >
+
+            <input
+                type="text"
+                id="materialName"
+                class="admin-input"
+                placeholder="Nazwa materiału"
+            >
+
+            <input
+                type="text"
+                id="materialLink"
+                class="admin-input"
+                placeholder="Link do PDF / materiału"
+            >
+
+            <button
+                onclick="addMaterial()"
+                class="admin-form-button"
+            >
+                ➕ Dodaj materiał
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HASŁO
+         ===================================================== -->
+
+    <section class="admin-card">
+
+        <div class="admin-card-header">
+
+            <div class="admin-card-icon">
+                🔑
+            </div>
+
+            <div>
+
+                <h2>
+                    Zmień hasło ucznia
+                </h2>
+
+                <p>
+                    Ustaw nowe hasło dla wybranego konta.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-form-grid">
+
+            <input
+                type="text"
+                id="changeLogin"
+                class="admin-input"
+                placeholder="Login ucznia"
+            >
+
+            <input
+                type="text"
+                id="newPassword"
+                class="admin-input"
+                placeholder="Nowe hasło"
+            >
+
+            <button
+                onclick="changePassword()"
+                class="admin-form-button"
+            >
+                🔑 Zmień hasło
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         REZERWACJE
+         ===================================================== -->
+
+    <section class="admin-card">
+
+        <div class="admin-card-header">
+
+            <div class="admin-card-icon">
+                📅
+            </div>
+
+            <div>
+
+                <h2>
+                    Zgłoszenia na lekcje
+                </h2>
+
+                <p>
+                    Sprawdzaj i zarządzaj zgłoszeniami uczniów.
+                </p>
+
+            </div>
+
+        </div>
+
 
         <div id="bookings"></div>
 
-    </div>
+    </section>
 
 
-    <!-- OPINIE -->
-    <div class="card">
+    <!-- =====================================================
+         OPINIE
+         ===================================================== -->
 
-        <h2>⭐ Opinie uczniów</h2>
+    <section class="admin-card">
+
+        <div class="admin-card-header">
+
+            <div class="admin-card-icon">
+                ⭐
+            </div>
+
+            <div>
+
+                <h2>
+                    Opinie uczniów
+                </h2>
+
+                <p>
+                    Zarządzaj opiniami wyświetlanymi na stronie.
+                </p>
+
+            </div>
+
+        </div>
+
 
         <div id="opinions"></div>
 
+    </section>
+
+
+    <div class="admin-footer">
+        DK Math • Panel administratora • 2026
     </div>
 
-</section>
+</main>
 
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
 
 <script src="admin.js"></script>
 
 
 <script>
 
-if (localStorage.getItem("adminLogged") !== "true") {
+    if (localStorage.getItem("adminLogged") !== "true") {
 
-    window.location.href = "panel-deniz-2026.html";
+        window.location.href = "panel-deniz-2026.html";
 
-}
+    }
 
 </script>
 
-</body>
 
+</body>
 </html>
