@@ -256,9 +256,11 @@
             box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
         }
 
-        .result-screen {
-            text-align: center;
-        }
+       .result-screen {
+    text-align: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
 
         .result-icon {
             font-size: 75px;
@@ -278,12 +280,17 @@
     -webkit-text-fill-color: white;
 }
 
-        .result-message {
-            color: #cbd5e1;
-            font-size: 18px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-        }
+      .result-message {
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0 auto 30px;
+    max-width: 650px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    text-align: center;
+}
 
         .result-buttons {
             display: flex;
