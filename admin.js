@@ -14,7 +14,11 @@ fetch("/users")
             <p><strong>Email:</strong> ${user.email}</p>
             <p><strong>Login:</strong> ${user.login}</p>
             <p><strong>Hasło:</strong> ${user.haslo}</p>
-        </div>
+        <button onclick="deleteUser(${user.id})"
+    style="background:#dc2626; color:white; margin-top:10px;">
+    🗑️ Usuń ucznia
+</button>
+            </div>
         `;
 
     });
