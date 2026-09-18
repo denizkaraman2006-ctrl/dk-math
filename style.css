@@ -1,32 +1,34 @@
 /* =========================================================
-   DK MATH — PREMIUM DESIGN SYSTEM
+   DK MATH — NOWY DESIGN
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+/* =========================================================
+   ZMIENNE
+   ========================================================= */
 
 :root {
     --bg: #030914;
-    --bg-soft: #071426;
-    --bg-card: rgba(12, 31, 55, 0.72);
-    --bg-card-strong: #0b1d34;
+    --bg2: #071426;
+    --card: #0b1b31;
+    --card2: #0d213a;
 
-    --blue: #1683ff;
-    --blue-light: #5bb1ff;
-    --blue-dark: #075bc4;
+    --blue: #167df2;
+    --blue2: #48a5ff;
+    --blue-dark: #0754b8;
 
     --white: #ffffff;
     --text: #eaf3ff;
-    --muted: #9db1c9;
-    --muted-light: #bfd0e4;
+    --text2: #b5c7dc;
+    --text3: #8095ad;
 
-    --border: rgba(100, 170, 255, 0.16);
-    --border-light: rgba(255, 255, 255, 0.09);
-
-    --shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
-    --blue-glow: 0 0 50px rgba(22, 131, 255, 0.22);
+    --border: rgba(91, 163, 239, 0.18);
 
     --radius: 24px;
-    --max-width: 1400px;
+
+    --shadow:
+        0 25px 70px rgba(0, 0, 0, 0.30);
 }
 
 /* =========================================================
@@ -41,87 +43,115 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 110px;
 }
 
 body {
-    font-family: "Inter", sans-serif;
-    background:
-        radial-gradient(circle at 80% 5%, rgba(21, 117, 255, 0.10), transparent 28%),
-        radial-gradient(circle at 10% 30%, rgba(0, 102, 255, 0.06), transparent 30%),
-        linear-gradient(180deg, #020812 0%, #04101f 45%, #020913 100%);
-    color: var(--text);
     min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(17, 111, 232, 0.13),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 45%,
+            rgba(13, 91, 190, 0.08),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #020812 0%,
+            #041020 50%,
+            #020812 100%
+        );
+
     line-height: 1.7;
+
     overflow-x: hidden;
 }
 
-/* subtelna siatka w tle */
-
 body::before {
     content: "";
+
     position: fixed;
+
     inset: 0;
+
     pointer-events: none;
-    z-index: -1;
 
     background-image:
-        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+        linear-gradient(
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        );
 
     background-size: 70px 70px;
 
     mask-image: linear-gradient(
         to bottom,
         black,
-        transparent 80%
+        transparent 75%
     );
+
+    z-index: -1;
 }
 
 /* =========================================================
-   TYPOGRAPHY
+   TYPOGRAFIA
    ========================================================= */
 
 h1,
 h2,
 h3,
-h4,
-button,
-.btn {
-    font-family: "Poppins", sans-serif;
-}
-
-h1,
-h2,
-h3,
 h4 {
+    font-family: "Poppins", sans-serif;
+
     color: var(--white);
+
     line-height: 1.15;
 }
 
 h1 {
-    font-size: clamp(3rem, 6vw, 6.5rem);
+    font-size: clamp(3.2rem, 6vw, 6.5rem);
+
     font-weight: 800;
+
     letter-spacing: -0.055em;
 }
 
 h2 {
-    font-size: clamp(2.4rem, 4vw, 4.2rem);
+    font-size: clamp(2.5rem, 4vw, 4rem);
+
     font-weight: 800;
+
     letter-spacing: -0.045em;
+
+    text-align: center;
 }
 
 h3 {
     font-size: 1.35rem;
+
     font-weight: 700;
 }
 
 p {
-    color: var(--muted-light);
+    color: var(--text2);
 }
 
 a {
     color: inherit;
+
     text-decoration: none;
 }
 
@@ -131,32 +161,42 @@ a {
 
 section {
     position: relative;
+
     width: 100%;
-    max-width: var(--max-width);
+
+    max-width: 1450px;
+
     margin: 0 auto;
-    padding: 115px 45px;
+
+    padding: 120px 45px;
 }
 
 section > h2 {
-    text-align: center;
     margin-bottom: 70px;
 }
 
 section > h2::after {
     content: "";
+
     display: block;
-    width: 72px;
+
+    width: 70px;
+
     height: 4px;
+
     margin: 22px auto 0;
-    border-radius: 999px;
 
-    background: linear-gradient(
-        90deg,
-        var(--blue-dark),
-        var(--blue-light)
-    );
+    border-radius: 50px;
 
-    box-shadow: 0 0 25px rgba(42, 145, 255, 0.7);
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue-dark),
+            var(--blue2)
+        );
+
+    box-shadow:
+        0 0 25px rgba(40, 145, 255, 0.65);
 }
 
 /* =========================================================
@@ -165,133 +205,159 @@ section > h2::after {
 
 header {
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
     width: 100%;
 
-    background: rgba(2, 9, 18, 0.82);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background:
+        rgba(2, 8, 17, 0.88);
 
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(22px);
+
+    -webkit-backdrop-filter: blur(22px);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
 
     box-shadow:
-        0 10px 40px rgba(0,0,0,0.18);
-}
-
-header .container,
-header > div {
-    max-width: 1500px;
-    margin: auto;
+        0 10px 45px rgba(0,0,0,0.18);
 }
 
 /* =========================================================
    LOGO
    ========================================================= */
 
-.logo,
-.brand,
 header img {
     transition: 0.3s ease;
 }
 
-.logo:hover,
-.brand:hover,
 header img:hover {
-    transform: translateY(-2px);
+    transform: scale(1.04);
 }
 
 /* =========================================================
-   NAVIGATION
+   NAWIGACJA
    ========================================================= */
 
 nav {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
-    gap: 10px;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
 }
 
 nav a {
     position: relative;
 
-    padding: 11px 15px;
+    display: inline-flex;
 
-    color: #c9d7e8;
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 15px;
+
+    color: #c9d8e9;
 
     font-size: 0.95rem;
+
     font-weight: 600;
 
-    border-radius: 12px;
+    border-radius: 13px;
 
     transition:
-        color 0.25s ease,
-        background 0.25s ease,
-        transform 0.25s ease;
+        0.25s ease;
 }
 
 nav a:hover {
     color: white;
-    background: rgba(255,255,255,0.055);
-    transform: translateY(-2px);
+
+    background:
+        rgba(255,255,255,0.06);
+
+    transform:
+        translateY(-2px);
 }
 
 nav a::after {
     content: "";
 
     position: absolute;
+
     left: 15px;
+
     right: 15px;
+
     bottom: 5px;
 
     height: 2px;
 
-    background: var(--blue);
+    border-radius: 20px;
 
-    transform: scaleX(0);
-    transform-origin: center;
+    background:
+        var(--blue2);
 
-    transition: transform 0.25s ease;
+    transform:
+        scaleX(0);
+
+    transition:
+        transform 0.25s ease;
 }
 
 nav a:hover::after {
-    transform: scaleX(1);
+    transform:
+        scaleX(1);
 }
 
 /* =========================================================
-   BUTTONS
+   PRZYCISKI
    ========================================================= */
 
 button,
 .btn {
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
-    gap: 9px;
 
-    min-height: 48px;
-    padding: 13px 22px;
+    gap: 8px;
 
-    border: 1px solid rgba(255,255,255,0.08);
+    min-height: 50px;
+
+    padding: 13px 23px;
+
+    border: 0;
+
     border-radius: 15px;
 
     color: white;
 
+    background:
+        linear-gradient(
+            135deg,
+            #086be0,
+            #178cff
+        );
+
+    font-family: "Poppins", sans-serif;
+
     font-size: 0.96rem;
+
     font-weight: 700;
 
     cursor: pointer;
 
-    background:
-        linear-gradient(
-            135deg,
-            #0872ed,
-            #168cff
-        );
-
     box-shadow:
-        0 12px 30px rgba(0, 110, 255, 0.22);
+        0 12px 30px rgba(13, 119, 239, 0.25);
 
     transition:
         transform 0.25s ease,
@@ -301,16 +367,20 @@ button,
 
 button:hover,
 .btn:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.08);
+    transform:
+        translateY(-3px);
+
+    filter:
+        brightness(1.08);
 
     box-shadow:
-        0 18px 45px rgba(0, 110, 255, 0.34);
+        0 18px 45px rgba(13, 119, 239, 0.38);
 }
 
 button:active,
 .btn:active {
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 /* =========================================================
@@ -320,42 +390,46 @@ button:active,
 .hero {
     position: relative;
 
-    min-height: calc(100vh - 100px);
-
-    display: flex;
-    align-items: center;
+    min-height:
+        calc(100vh - 100px);
 
     max-width: 1500px;
+
     margin: 0 auto;
 
-    padding: 90px 70px 120px;
+    padding:
+        100px 70px 120px;
+
+    display: flex;
+
+    align-items: center;
 
     overflow: hidden;
 }
-
-/* światło za hero */
 
 .hero::before {
     content: "";
 
     position: absolute;
 
-    width: 700px;
-    height: 700px;
+    width: 750px;
 
-    right: -180px;
-    top: 30px;
+    height: 750px;
+
+    right: -230px;
+
+    top: 0;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(19, 125, 255, 0.25),
+            rgba(22, 126, 243, 0.25),
             transparent 65%
         );
 
-    filter: blur(30px);
+    filter: blur(35px);
 
     pointer-events: none;
 }
@@ -365,10 +439,12 @@ button:active,
 
     position: absolute;
 
-    width: 500px;
-    height: 500px;
+    width: 450px;
+
+    height: 450px;
 
     left: -250px;
+
     bottom: -250px;
 
     border-radius: 50%;
@@ -376,7 +452,7 @@ button:active,
     background:
         radial-gradient(
             circle,
-            rgba(24, 101, 255, 0.13),
+            rgba(12, 93, 205, 0.16),
             transparent 65%
         );
 
@@ -384,230 +460,156 @@ button:active,
 }
 
 /* =========================================================
-   HERO CONTENT
+   HERO — TREŚĆ
    ========================================================= */
 
 .hero-content {
     position: relative;
+
     z-index: 2;
 
     max-width: 820px;
 }
 
 .hero-content h1 {
-    margin: 25px 0 28px;
+    margin:
+        28px 0 30px;
 
     background:
         linear-gradient(
             180deg,
             #ffffff 0%,
-            #dcecff 100%
+            #d8eaff 100%
         );
 
     -webkit-background-clip: text;
+
     background-clip: text;
 
     color: transparent;
-
-    text-shadow:
-        0 10px 40px rgba(255,255,255,0.04);
 }
 
 .hero-content p {
-    max-width: 720px;
-
-    font-size: 1.2rem;
-    color: #afc3da;
+    max-width: 700px;
 
     margin-bottom: 35px;
+
+    color: #afc3da;
+
+    font-size: 1.18rem;
 }
+
+/* =========================================================
+   BADGE
+   ========================================================= */
 
 .hero-badge {
     display: inline-flex;
+
     align-items: center;
+
     gap: 9px;
 
-    padding: 11px 18px;
+    padding:
+        11px 19px;
+
+    border:
+        1px solid rgba(71, 158, 255, 0.25);
 
     border-radius: 999px;
 
+    color: #dcecff;
+
     background:
-        linear-gradient(
-            135deg,
-            rgba(25, 127, 255, 0.14),
-            rgba(20, 69, 130, 0.08)
-        );
-
-    border: 1px solid rgba(74, 160, 255, 0.22);
-
-    color: #d9ebff;
-
-    font-weight: 700;
+        rgba(17, 91, 166, 0.10);
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,0.18);
+        0 10px 40px rgba(0,0,0,0.16);
 }
+
+/* =========================================================
+   HERO — PRZYCISKI
+   ========================================================= */
 
 .hero-buttons {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 14px;
 }
 
 .hero-buttons .secondary,
 .secondary {
+    color: #dcecff;
+
     background:
         rgba(255,255,255,0.035);
 
-    border: 1px solid rgba(110, 165, 220, 0.18);
+    border:
+        1px solid rgba(100, 162, 220, 0.20);
 
     box-shadow: none;
 }
 
 .hero-buttons .secondary:hover,
 .secondary:hover {
-    background: rgba(255,255,255,0.07);
+    background:
+        rgba(255,255,255,0.075);
 }
 
 /* =========================================================
-   HERO IMAGE
+   ZDJĘCIE W HERO
    ========================================================= */
 
 .hero-image {
     position: absolute;
 
     right: 7%;
+
     bottom: 7%;
 
     z-index: 2;
 }
 
 .hero-image img {
-    width: min(420px, 30vw);
+    width:
+        min(430px, 31vw);
+
+    aspect-ratio: 1;
+
+    object-fit: cover;
 
     border-radius: 50%;
 
-    border: 5px solid #147cf0;
+    border:
+        5px solid #1680ef;
 
     box-shadow:
-        0 0 0 12px rgba(20, 124, 240, 0.08),
-        0 0 70px rgba(20, 124, 240, 0.28),
-        0 30px 80px rgba(0,0,0,0.5);
+        0 0 0 12px rgba(22,128,239,0.08),
+        0 0 75px rgba(22,128,239,0.30),
+        0 35px 90px rgba(0,0,0,0.55);
 
-    animation: floating 5s ease-in-out infinite;
+    animation:
+        floatImage 5s ease-in-out infinite;
 }
 
-@keyframes floating {
-    0%, 100% {
-        transform: translateY(0);
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-12px);
+        transform:
+            translateY(-12px);
     }
 }
 
 /* =========================================================
-   STATYSTYKI
-   ========================================================= */
-
-.stats,
-.statistics,
-.stat-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 22px;
-
-    margin-top: 45px;
-}
-
-.stat,
-.stat-card {
-    position: relative;
-
-    padding: 42px 30px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(15, 38, 68, 0.82),
-            rgba(7, 23, 42, 0.78)
-        );
-
-    border: 1px solid var(--border);
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.18);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.stat::before,
-.stat-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: -80px;
-    top: -80px;
-
-    border-radius: 50%;
-
-    background: rgba(33, 126, 255, 0.10);
-}
-
-.stat:hover,
-.stat-card:hover {
-    transform: translateY(-7px);
-
-    border-color: rgba(55, 151, 255, 0.35);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.3),
-        0 0 35px rgba(15, 119, 255, 0.08);
-}
-
-.stat strong,
-.stat-number {
-    display: block;
-
-    color: #62b2ff;
-
-    font-family: "Poppins", sans-serif;
-
-    font-size: clamp(2.7rem, 4vw, 4rem);
-
-    font-weight: 800;
-
-    line-height: 1;
-}
-
-.stat span {
-    display: block;
-
-    margin-top: 15px;
-
-    color: var(--muted-light);
-
-    font-size: 1rem;
-}
-
-/* =========================================================
-   KARTY
+   KARTY — OGÓLNE
    ========================================================= */
 
 .card,
@@ -615,29 +617,29 @@ button:active,
 .offer-card,
 .experience-card,
 .info-card,
-.feature-card {
+.feature-card,
+.review-card,
+.price-card,
+.step-card {
     position: relative;
-
-    padding: 32px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(14, 36, 63, 0.84),
-            rgba(7, 22, 40, 0.74)
+            rgba(14, 37, 65, 0.90),
+            rgba(6, 21, 39, 0.86)
         );
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: var(--radius);
-
-    overflow: hidden;
+    border-radius:
+        var(--radius);
 
     box-shadow:
-        0 18px 55px rgba(0,0,0,0.16);
+        0 20px 65px rgba(0,0,0,0.18);
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
 
     transition:
         transform 0.3s ease,
@@ -650,20 +652,26 @@ button:active,
 .offer-card::before,
 .experience-card::before,
 .info-card::before,
-.feature-card::before {
+.feature-card::before,
+.review-card::before,
+.price-card::before,
+.step-card::before {
     content: "";
 
     position: absolute;
 
-    width: 150px;
-    height: 150px;
+    width: 170px;
 
-    right: -80px;
-    top: -80px;
+    height: 170px;
+
+    right: -100px;
+
+    top: -100px;
 
     border-radius: 50%;
 
-    background: rgba(31, 121, 255, 0.09);
+    background:
+        rgba(30, 125, 255, 0.09);
 
     pointer-events: none;
 }
@@ -673,14 +681,19 @@ button:active,
 .offer-card:hover,
 .experience-card:hover,
 .info-card:hover,
-.feature-card:hover {
-    transform: translateY(-6px);
+.feature-card:hover,
+.review-card:hover,
+.price-card:hover,
+.step-card:hover {
+    transform:
+        translateY(-7px);
 
-    border-color: rgba(56, 153, 255, 0.32);
+    border-color:
+        rgba(61, 157, 255, 0.34);
 
     box-shadow:
-        0 28px 70px rgba(0,0,0,0.25),
-        0 0 35px rgba(20, 120, 255, 0.07);
+        0 30px 80px rgba(0,0,0,0.30),
+        0 0 40px rgba(20,120,255,0.07);
 }
 
 .card h3,
@@ -688,8 +701,12 @@ button:active,
 .offer-card h3,
 .experience-card h3,
 .info-card h3,
-.feature-card h3 {
-    margin-bottom: 13px;
+.feature-card h3,
+.review-card h3,
+.price-card h3,
+.step-card h3 {
+    margin-bottom:
+        13px;
 }
 
 .card p,
@@ -697,9 +714,14 @@ button:active,
 .offer-card p,
 .experience-card p,
 .info-card p,
-.feature-card p {
-    font-size: 1rem;
-    color: var(--muted-light);
+.feature-card p,
+.review-card p,
+.step-card p {
+    color:
+        var(--text2);
+
+    font-size:
+        1rem;
 }
 
 /* =========================================================
@@ -711,38 +733,203 @@ button:active,
 .features,
 .offer-grid,
 .experience-grid,
-.steps,
 .why-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(3, 1fr);
 
-    gap: 22px;
+    gap:
+        22px;
 }
 
 .steps {
-    grid-template-columns: repeat(4, 1fr);
-}
+    display: grid;
 
-.features {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:
+        22px;
 }
 
 /* =========================================================
-   OFFER
+   STATYSTYKI
+   ========================================================= */
+
+.stats,
+.statistics,
+.stat-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        22px;
+}
+
+.stat,
+.stat-card {
+    position: relative;
+
+    padding:
+        45px 30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14, 38, 68, 0.92),
+            rgba(7, 23, 42, 0.88)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        25px;
+
+    overflow: hidden;
+
+    transition:
+        0.3s ease;
+}
+
+.stat:hover,
+.stat-card:hover {
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(60,155,255,0.35);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.28);
+}
+
+.stat strong,
+.stat-number {
+    display: block;
+
+    color:
+        #60b2ff;
+
+    font-family:
+        "Poppins", sans-serif;
+
+    font-size:
+        clamp(2.8rem, 4vw, 4rem);
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+}
+
+.stat span {
+    display: block;
+
+    margin-top:
+        16px;
+
+    color:
+        var(--text2);
+}
+
+/* =========================================================
+   DOŚWIADCZENIE
+   ========================================================= */
+
+.experience-card {
+    padding:
+        35px;
+}
+
+.experience-card h3 {
+    font-size:
+        1.35rem;
+}
+
+/* =========================================================
+   OFERTA
    ========================================================= */
 
 .offer-card {
-    padding: 38px;
+    padding:
+        38px;
 }
 
 .offer-card h3 {
-    font-size: 1.45rem;
+    font-size:
+        1.45rem;
 }
 
 .offer-card p {
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-size:
+        1.05rem;
+
+    line-height:
+        1.8;
+}
+
+/* =========================================================
+   CECHY
+   ========================================================= */
+
+.feature-card {
+    padding:
+        32px;
+}
+
+.feature-card h3 {
+    font-size:
+        1.15rem;
+}
+
+/* =========================================================
+   KROKI
+   ========================================================= */
+
+.step-card {
+    padding:
+        32px;
+}
+
+.step-card .number {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 38px;
+
+    height: 38px;
+
+    margin-bottom:
+        20px;
+
+    border-radius:
+        10px;
+
+    color:
+        white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #167df2,
+            #55acff
+        );
+
+    font-weight:
+        800;
+
+    box-shadow:
+        0 8px 25px rgba(22,125,242,0.28);
 }
 
 /* =========================================================
@@ -750,57 +937,50 @@ button:active,
    ========================================================= */
 
 .price-card {
-    position: relative;
+    padding:
+        45px 30px;
 
-    padding: 45px 30px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(13, 35, 62, 0.95),
-            rgba(6, 20, 38, 0.94)
-        );
-
-    border: 1px solid rgba(79, 151, 226, 0.18);
-
-    border-radius: 26px;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.2);
-
-    transition: 0.3s ease;
-}
-
-.price-card:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(65, 153, 255, 0.45);
-
-    box-shadow:
-        0 35px 90px rgba(0,0,0,0.3),
-        0 0 45px rgba(18, 119, 255, 0.1);
+    text-align:
+        center;
 }
 
 .price-card h3 {
-    font-size: 1.25rem;
+    font-size:
+        1.3rem;
 }
 
 .price-card .price {
-    margin: 22px 0;
+    margin:
+        22px 0;
 
-    font-family: "Poppins", sans-serif;
+    color:
+        #61b3ff;
 
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-family:
+        "Poppins", sans-serif;
 
-    color: #61b1ff;
+    font-size:
+        3.5rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
 }
 
 .price-card .price small {
-    font-size: 1rem;
-    color: var(--muted);
+    color:
+        var(--text3);
+
+    font-family:
+        "Inter", sans-serif;
+
+    font-size:
+        0.95rem;
+
+    font-weight:
+        500;
 }
 
 /* =========================================================
@@ -808,54 +988,43 @@ button:active,
    ========================================================= */
 
 .review-card {
-    position: relative;
-
-    padding: 34px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(12, 32, 57, 0.88),
-            rgba(6, 21, 39, 0.82)
-        );
-
-    border: 1px solid var(--border);
-
-    border-radius: 24px;
-
-    box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-
-    transition: 0.3s ease;
-}
-
-.review-card:hover {
-    transform: translateY(-5px);
-
-    border-color: rgba(65, 157, 255, 0.32);
+    padding:
+        35px;
 }
 
 .stars {
-    color: #ffd33d;
+    margin-bottom:
+        18px;
 
-    font-size: 1.35rem;
+    color:
+        #ffd43b;
 
-    letter-spacing: 3px;
+    font-size:
+        1.35rem;
 
-    margin-bottom: 18px;
+    letter-spacing:
+        3px;
 }
 
 .review-card p {
-    font-size: 1.05rem;
+    font-size:
+        1.05rem;
+
+    line-height:
+        1.8;
 }
 
 .review-author {
     display: block;
 
-    margin-top: 18px;
+    margin-top:
+        18px;
 
-    color: white;
+    color:
+        white;
 
-    font-weight: 700;
+    font-weight:
+        700;
 }
 
 /* =========================================================
@@ -864,172 +1033,50 @@ button:active,
 
 .faq,
 .faq-container {
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width:
+        1100px;
+
+    margin:
+        0 auto;
 }
 
 .faq-item {
-    margin-bottom: 12px;
+    margin-bottom:
+        14px;
 
-    padding: 27px 30px;
+    padding:
+        28px 30px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(13, 34, 59, 0.86),
-            rgba(6, 21, 39, 0.82)
+            rgba(14,36,62,0.90),
+            rgba(6,21,39,0.86)
         );
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    transition: 0.25s ease;
+    transition:
+        0.25s ease;
 }
 
 .faq-item:hover {
-    border-color: rgba(55, 151, 255, 0.3);
+    border-color:
+        rgba(62,155,255,0.32);
 }
 
 .faq-item h3 {
-    margin-bottom: 10px;
+    margin-bottom:
+        10px;
 }
 
 .faq-item p {
-    color: var(--muted-light);
-}
-
-/* =========================================================
-   KONTAKT
-   ========================================================= */
-
-#contact .card,
-.contact-card {
-    max-width: 850px;
-
-    margin: auto;
-
-    padding: 50px;
-
-    text-align: center;
-}
-
-#contact a,
-.contact-card a {
-    display: inline-block;
-
-    color: #62b2ff;
-
-    font-size: 1.25rem;
-    font-weight: 700;
-
-    transition: 0.25s ease;
-}
-
-#contact a:hover,
-.contact-card a:hover {
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* =========================================================
-   FORMULARZE
-   ========================================================= */
-
-form {
-    max-width: 850px;
-
-    margin: 0 auto;
-
-    padding: 38px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(13, 35, 61, 0.92),
-            rgba(6, 21, 39, 0.9)
-        );
-
-    border: 1px solid var(--border);
-
-    border-radius: 26px;
-
-    box-shadow: var(--shadow);
-}
-
-input,
-textarea,
-select {
-    width: 100%;
-
-    margin-bottom: 17px;
-
-    padding: 15px 17px;
-
-    color: white;
-
-    background:
-        rgba(3, 13, 26, 0.75);
-
-    border: 1px solid rgba(104, 157, 214, 0.18);
-
-    border-radius: 14px;
-
-    outline: none;
-
-    font-family: inherit;
-    font-size: 1rem;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
-}
-
-input::placeholder,
-textarea::placeholder {
-    color: #7389a3;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    background: rgba(4, 17, 33, 0.95);
-
-    border-color: rgba(50, 149, 255, 0.65);
-
-    box-shadow:
-        0 0 0 4px rgba(28, 132, 255, 0.08);
-}
-
-textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-/* =========================================================
-   DOSTĘPNOŚĆ
-   ========================================================= */
-
-.availability,
-#availability {
-    max-width: 1400px;
-    margin: auto;
-}
-
-.availability-card {
-    padding: 35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(14, 39, 69, 0.9),
-            rgba(6, 22, 40, 0.85)
-        );
-
-    border: 1px solid var(--border);
-
-    border-radius: 24px;
+    color:
+        var(--text2);
 }
 
 /* =========================================================
@@ -1039,41 +1086,208 @@ textarea {
 .test-promo {
     position: relative;
 
-    max-width: 1200px;
+    max-width:
+        1200px;
 
-    margin: 70px auto;
+    margin:
+        70px auto;
 
-    padding: 70px 45px;
+    padding:
+        75px 45px;
 
-    text-align: center;
+    text-align:
+        center;
 
     background:
         radial-gradient(
             circle at 50% 0%,
-            rgba(122, 54, 255, 0.20),
-            transparent 40%
+            rgba(132,58,255,0.20),
+            transparent 42%
         ),
         linear-gradient(
             145deg,
-            #1b2e4b,
-            #15243c
+            #1b2d49,
+            #14243c
         );
 
-    border: 1px solid rgba(128, 157, 204, 0.22);
+    border:
+        1px solid rgba(135,165,210,0.22);
 
-    border-radius: 30px;
+    border-radius:
+        30px;
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,0.28);
+        0 35px 100px rgba(0,0,0,0.30);
 }
 
 .test-promo h2 {
-    margin-bottom: 20px;
+    margin-bottom:
+        20px;
 }
 
 .test-promo p {
-    max-width: 750px;
-    margin: 0 auto 28px;
+    max-width:
+        750px;
+
+    margin:
+        0 auto 28px;
+}
+
+/* =========================================================
+   KONTAKT
+   ========================================================= */
+
+#contact .card,
+.contact-card {
+    max-width:
+        850px;
+
+    margin:
+        0 auto;
+
+    padding:
+        50px;
+
+    text-align:
+        center;
+}
+
+#contact a,
+.contact-card a {
+    color:
+        #61b3ff;
+
+    font-size:
+        1.25rem;
+
+    font-weight:
+        700;
+
+    transition:
+        0.25s ease;
+}
+
+#contact a:hover,
+.contact-card a:hover {
+    color:
+        white;
+}
+
+/* =========================================================
+   FORMULARZE
+   ========================================================= */
+
+form {
+    max-width:
+        850px;
+
+    margin:
+        0 auto;
+
+    padding:
+        40px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(14,37,64,0.94),
+            rgba(6,21,39,0.92)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        26px;
+
+    box-shadow:
+        var(--shadow);
+}
+
+input,
+textarea,
+select {
+    width:
+        100%;
+
+    padding:
+        15px 17px;
+
+    margin-bottom:
+        17px;
+
+    color:
+        white;
+
+    background:
+        rgba(2,12,25,0.75);
+
+    border:
+        1px solid rgba(101,157,215,0.18);
+
+    border-radius:
+        14px;
+
+    outline:
+        none;
+
+    font-family:
+        "Inter", sans-serif;
+
+    font-size:
+        1rem;
+
+    transition:
+        0.2s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color:
+        #70869f;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color:
+        rgba(51,151,255,0.70);
+
+    box-shadow:
+        0 0 0 4px rgba(28,132,255,0.08);
+
+    background:
+        rgba(3,16,31,0.95);
+}
+
+textarea {
+    min-height:
+        150px;
+
+    resize:
+        vertical;
+}
+
+/* =========================================================
+   DOSTĘPNOŚĆ
+   ========================================================= */
+
+.availability-card {
+    padding:
+        35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(14,39,69,0.92),
+            rgba(6,22,40,0.88)
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        24px;
 }
 
 /* =========================================================
@@ -1081,68 +1295,88 @@ textarea {
    ========================================================= */
 
 footer {
-    position: relative;
+    margin-top:
+        100px;
 
-    margin-top: 100px;
+    padding:
+        75px 25px;
 
-    padding: 75px 30px;
-
-    text-align: center;
+    text-align:
+        center;
 
     background:
         linear-gradient(
             180deg,
-            rgba(2, 9, 18, 0.65),
-            #01050c
+            rgba(2,9,18,0.60),
+            #01050b
         );
 
-    border-top: 1px solid rgba(255,255,255,0.06);
+    border-top:
+        1px solid rgba(255,255,255,0.06);
 }
 
 footer h3 {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
+    margin-bottom:
+        12px;
+
+    font-size:
+        1.8rem;
 }
 
 footer p {
-    margin: 8px 0;
-    color: #7790ab;
+    margin:
+        8px 0;
+
+    color:
+        #7890a9;
 }
 
 footer a {
-    color: #65b3ff;
+    color:
+        #61b3ff;
 
-    transition: 0.2s ease;
+    transition:
+        0.2s ease;
 }
 
 footer a:hover {
-    color: white;
+    color:
+        white;
 }
 
 /* =========================================================
-   ANIMACJE WEJŚCIA
+   ANIMACJE
    ========================================================= */
 
 .card,
-.stat,
-.stat-card,
-.price-card,
-.review-card,
-.feature-card,
+.box,
 .offer-card,
-.experience-card {
-    animation: cardAppear 0.7s ease both;
+.experience-card,
+.info-card,
+.feature-card,
+.review-card,
+.price-card,
+.step-card,
+.stat,
+.stat-card {
+    animation:
+        fadeUp 0.65s ease both;
 }
 
-@keyframes cardAppear {
+@keyframes fadeUp {
+
     from {
         opacity: 0;
-        transform: translateY(18px);
+
+        transform:
+            translateY(20px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
@@ -1151,8 +1385,11 @@ footer a:hover {
    ========================================================= */
 
 ::selection {
-    background: rgba(36, 139, 255, 0.45);
-    color: white;
+    color:
+        white;
+
+    background:
+        rgba(27,137,255,0.45);
 }
 
 /* =========================================================
@@ -1160,48 +1397,53 @@ footer a:hover {
    ========================================================= */
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width:
+        10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #020711;
+    background:
+        #020711;
 }
 
 ::-webkit-scrollbar-thumb {
     background:
         linear-gradient(
             #126dd2,
-            #258cff
+            #268fff
         );
 
-    border-radius: 999px;
+    border-radius:
+        999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #3da0ff;
+    background:
+        #3da0ff;
 }
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   TABLET
    ========================================================= */
 
 @media (max-width: 1100px) {
 
     section {
-        padding: 90px 30px;
+        padding:
+            90px 30px;
     }
 
     .hero {
-        padding: 80px 40px;
+        padding:
+            80px 40px;
     }
 
     .hero-image {
-        right: 3%;
-        opacity: 0.55;
-    }
+        right:
+            2%;
 
-    .hero-content {
-        max-width: 700px;
+        opacity:
+            0.55;
     }
 
     .cards,
@@ -1210,111 +1452,130 @@ footer a:hover {
     .offer-grid,
     .experience-grid,
     .why-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .steps {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 }
 
 /* =========================================================
-   RESPONSIVE — MOBILE
+   TELEFON
    ========================================================= */
 
 @media (max-width: 760px) {
 
-    html {
-        scroll-padding-top: 80px;
-    }
-
     body {
-        font-size: 15px;
+        font-size:
+            15px;
     }
 
     section {
-        padding: 75px 18px;
+        padding:
+            75px 18px;
     }
 
     section > h2 {
-        margin-bottom: 45px;
+        margin-bottom:
+            45px;
     }
 
     h1 {
-        font-size: clamp(2.8rem, 14vw, 4.6rem);
+        font-size:
+            clamp(2.8rem, 14vw, 4.5rem);
     }
 
     h2 {
-        font-size: 2.5rem;
+        font-size:
+            2.5rem;
     }
 
     /* HERO */
 
     .hero {
-        min-height: auto;
+        min-height:
+            auto;
 
-        display: block;
+        display:
+            block;
 
-        padding: 70px 22px 90px;
+        padding:
+            70px 22px 90px;
     }
 
     .hero-content {
-        max-width: 100%;
-    }
-
-    .hero-content h1 {
-        margin-top: 24px;
+        max-width:
+            100%;
     }
 
     .hero-content p {
-        font-size: 1rem;
-    }
-
-    .hero-image {
-        position: relative;
-
-        right: auto;
-        bottom: auto;
-
-        display: flex;
-        justify-content: center;
-
-        margin-top: 55px;
-
-        opacity: 1;
-    }
-
-    .hero-image img {
-        width: min(290px, 75vw);
+        font-size:
+            1rem;
     }
 
     .hero-buttons {
-        flex-direction: column;
+        flex-direction:
+            column;
     }
 
     .hero-buttons .btn,
     .hero-buttons button {
-        width: 100%;
+        width:
+            100%;
+    }
+
+    .hero-image {
+        position:
+            relative;
+
+        right:
+            auto;
+
+        bottom:
+            auto;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+
+        margin-top:
+            55px;
+
+        opacity:
+            1;
+    }
+
+    .hero-image img {
+        width:
+            min(290px, 75vw);
     }
 
     /* NAV */
 
     header {
-        position: relative;
+        position:
+            relative;
     }
 
     nav {
-        flex-wrap: wrap;
+        padding:
+            10px;
 
-        padding: 12px 10px;
-
-        gap: 4px;
+        gap:
+            3px;
     }
 
     nav a {
-        padding: 8px 9px;
+        padding:
+            8px 9px;
 
-        font-size: 0.78rem;
+        font-size:
+            0.78rem;
     }
 
     /* GRID */
@@ -1327,50 +1588,62 @@ footer a:hover {
     .features,
     .offer-grid,
     .experience-grid,
-    .steps,
-    .why-grid {
-        grid-template-columns: 1fr;
+    .why-grid,
+    .steps {
+        grid-template-columns:
+            1fr;
     }
 
-    /* CARDS */
+    /* KARTY */
 
     .card,
     .box,
     .offer-card,
     .experience-card,
     .info-card,
-    .feature-card {
-        padding: 25px;
-    }
-
-    .stat,
-    .stat-card {
-        padding: 35px 25px;
+    .feature-card,
+    .review-card,
+    .price-card,
+    .step-card {
+        padding:
+            25px;
     }
 
     /* FORM */
 
     form {
-        padding: 25px 18px;
+        padding:
+            25px 18px;
     }
 
     /* TEST */
 
     .test-promo {
-        margin: 45px 18px;
+        margin:
+            45px 18px;
 
-        padding: 45px 22px;
+        padding:
+            45px 22px;
+    }
+
+    /* KONTAKT */
+
+    #contact .card,
+    .contact-card {
+        padding:
+            35px 20px;
     }
 
     /* FOOTER */
 
     footer {
-        padding: 60px 20px;
+        padding:
+            60px 20px;
     }
 }
 
 /* =========================================================
-   REDUKCJA ANIMACJI
+   BRAK ANIMACJI — DLA UŻYTKOWNIKÓW, KTÓRZY JE OGRANICZAJĄ
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1378,8 +1651,13 @@ footer a:hover {
     *,
     *::before,
     *::after {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important;
+        animation:
+            none !important;
+
+        transition:
+            none !important;
+
+        scroll-behavior:
+            auto !important;
     }
 }
