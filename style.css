@@ -1665,3 +1665,586 @@ img {
     display: flex !important;
     flex-direction: column !important;
 }
+
+/* =========================================================
+   BOOKING / FORMULARZ ZGŁOSZENIOWY
+   ========================================================= */
+
+.booking-page {
+    padding-top: 80px;
+    padding-bottom: 90px;
+}
+
+.booking-page .section-heading {
+    max-width: 850px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.booking-page .section-heading h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    margin: 10px 0 18px;
+    line-height: 1.1;
+}
+
+.booking-page .section-heading p {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #b8c7dc;
+}
+
+
+/* ===== UKŁAD ===== */
+
+.booking-layout {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 28px;
+    align-items: stretch;
+}
+
+
+/* ===== LEWA KARTA ===== */
+
+.booking-info-card {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 38px;
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 43, 84, 0.95),
+            rgba(5, 20, 40, 0.98)
+        );
+
+    border: 1px solid rgba(55, 140, 255, 0.25);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.booking-info-card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    right: -100px;
+    top: -100px;
+
+    background: rgba(0, 119, 255, 0.12);
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+.booking-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(8, 124, 255, 0.15);
+    border: 1px solid rgba(8, 124, 255, 0.35);
+
+    font-size: 28px;
+
+    margin-bottom: 24px;
+}
+
+.booking-info-card h2 {
+    margin: 0 0 14px;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.booking-info-card > p {
+    margin: 0 0 32px;
+    color: #b8c7dc;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+
+/* ===== PUNKTY ===== */
+
+.booking-points {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.booking-point {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.booking-point > span {
+    flex: 0 0 30px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(8, 124, 255, 0.16);
+    border: 1px solid rgba(8, 124, 255, 0.35);
+
+    color: #4da3ff;
+    font-weight: 800;
+}
+
+.booking-point strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 16px;
+}
+
+.booking-point p {
+    margin: 0;
+    color: #9fb0c8;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* ===== PRAWA KARTA FORMULARZA ===== */
+
+.booking-form-card {
+    padding: 38px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 31, 58, 0.98),
+            rgba(5, 17, 33, 0.98)
+        );
+
+    border: 1px solid rgba(55, 140, 255, 0.28);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ===== NAGŁÓWEK FORMULARZA ===== */
+
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.form-number {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        #087cff,
+        #0056d6
+    );
+
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.form-header h2 {
+    margin: 0 0 5px;
+    font-size: 25px;
+}
+
+.form-header p {
+    margin: 0;
+    color: #9fb0c8;
+    font-size: 14px;
+}
+
+
+/* ===== GRID FORMULARZA ===== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-full {
+    grid-column: 1 / -1;
+}
+
+
+/* ===== POLE ===== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #dbe7f5;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+
+    min-height: 50px;
+
+    background: #07182d;
+
+    border: 1px solid rgba(120, 160, 210, 0.25);
+
+    border-radius: 12px;
+
+    transition: 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: #087cff;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 124, 255, 0.12);
+}
+
+.input-wrapper > span {
+    width: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    height: 50px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    padding: 0 14px 0 0;
+
+    box-sizing: border-box;
+}
+
+.input-wrapper input::placeholder {
+    color: #71839d;
+}
+
+.input-wrapper select {
+    cursor: pointer;
+}
+
+.input-wrapper select option {
+    background: #081a31;
+    color: white;
+}
+
+
+/* ===== DATA ===== */
+
+input[type="datetime-local"] {
+    color-scheme: dark;
+}
+
+
+/* ===== TEXTAREA ===== */
+
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    resize: vertical;
+
+    min-height: 130px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(120, 160, 210, 0.25);
+
+    background: #07182d;
+
+    color: white;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s ease;
+}
+
+.form-group textarea::placeholder {
+    color: #71839d;
+}
+
+.form-group textarea:focus {
+    border-color: #087cff;
+
+    box-shadow:
+        0 0 0 3px rgba(8, 124, 255, 0.12);
+}
+
+.form-group small {
+    color: #71839d;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ===== PRZYCISK ===== */
+
+.booking-submit {
+    width: 100%;
+
+    margin-top: 28px;
+
+    min-height: 56px;
+
+    border: none;
+    border-radius: 13px;
+
+    background: linear-gradient(
+        135deg,
+        #087cff,
+        #0056d6
+    );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+.booking-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(8, 124, 255, 0.28);
+
+    filter: brightness(1.08);
+}
+
+.booking-submit:active {
+    transform: translateY(0);
+}
+
+
+/* ===== INFORMACJA POD FORMULARZEM ===== */
+
+.form-note {
+    margin-top: 20px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 9px;
+
+    color: #8fa3bd;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+.form-note p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* ===== DOLNY KONTAKT ===== */
+
+.booking-bottom {
+    max-width: 1150px;
+
+    margin: 28px auto 0;
+
+    padding: 22px 28px;
+
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: rgba(8, 124, 255, 0.06);
+
+    border: 1px solid rgba(8, 124, 255, 0.16);
+}
+
+.booking-bottom > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.booking-bottom span {
+    color: #8fa3bd;
+    font-size: 13px;
+}
+
+.booking-bottom strong {
+    font-size: 16px;
+}
+
+.booking-bottom a {
+    color: #4da3ff;
+    text-decoration: none;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.booking-bottom a:hover {
+    color: #80beff;
+}
+
+
+/* =========================================================
+   RESPONSYWNOŚĆ
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .booking-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-info-card,
+    .booking-form-card {
+        padding: 30px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .booking-page {
+        padding-top: 55px;
+        padding-bottom: 60px;
+    }
+
+    .booking-page .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .booking-page .section-heading h1 {
+        font-size: 36px;
+    }
+
+    .booking-page .section-heading p {
+        font-size: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-full {
+        grid-column: auto;
+    }
+
+    .booking-info-card,
+    .booking-form-card {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .form-header {
+        align-items: flex-start;
+    }
+
+    .form-header h2 {
+        font-size: 21px;
+    }
+
+    .booking-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .booking-page .section-heading h1 {
+        font-size: 31px;
+    }
+
+    .booking-info-card h2 {
+        font-size: 25px;
+    }
+
+    .booking-info-card,
+    .booking-form-card {
+        padding: 20px;
+    }
+
+    .booking-point {
+        gap: 10px;
+    }
+
+    .booking-point > span {
+        flex-basis: 27px;
+        width: 27px;
+        height: 27px;
+    }
+}
