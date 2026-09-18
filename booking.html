@@ -1,89 +1,433 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
-    <link rel="icon" href="images/dkmath-logo.png">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Umów korepetycje z matematyki online z DK Math. Wypełnij formularz i wybierz dogodny termin.">
-
-    <title>DK Math - Umów Lekcję</title>
+    <title>Umów lekcję | DK Math</title>
+    <meta
+        name="description"
+        content="Umów pierwszą lekcję matematyki online z DK Math."
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <section class="booking-section">
+    <!-- ================= HEADER ================= -->
 
-        <h1>🚀 Umów pierwszą lekcję</h1>
+    <header class="site-header">
+        <div class="container navbar">
 
-        <p class="booking-text">
-            Wypełnij formularz, a skontaktuję się z Tobą
-            i wspólnie ustalimy najlepszy termin zajęć.
-        </p>
+            <a href="index.html" class="brand">
+                <img src="images/dkmath-logo.png" alt="DK Math">
+                <div>
+                    <strong>DK MATH</strong>
+                    <span>Matematyka bez stresu</span>
+                </div>
+            </a>
 
-        <div class="benefits">
-
-            <div>✅ Indywidualne podejście</div>
-
-            <div>✅ Lekcje online</div>
-
-            <div>✅ Pomoc przed sprawdzianami</div>
-
-            <div>✅ Materiały i zadania</div>
-
-        </div>
-
-        <div class="card booking-card">
-
-            <input
-                type="text"
-                id="imie"
-                placeholder="👤 Imię i nazwisko"
-                required>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="📧 Adres e-mail"
-                required>
-
-            <select id="klasa">
-                <option>Klasa 4-8 szkoły podstawowej</option>
-                <option>Liceum</option>
-                <option>Technikum</option>
-                <option>Matura podstawowa</option>
-                <option>Matura rozszerzona</option>
-            </select>
-
-            <input
-                type="datetime-local"
-                id="termin"
-                required>
-
-            <textarea
-                id="wiadomosc"
-                placeholder="Opisz, czego potrzebujesz, z czym masz problem lub do czego chcesz się przygotować..."
-                rows="6"></textarea>
-
-            <button onclick="bookLesson()">
-                🚀 Wyślij zgłoszenie
+            <button
+                class="menu-btn"
+                onclick="toggleMenu()"
+                aria-label="Otwórz menu"
+            >
+                ☰
             </button>
 
-            <p style="text-align: center; margin-top: 15px; color: #aaa;">
-                📧 Odpowiedź otrzymasz na podany adres e-mail.
-            </p>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Strona główna</a>
+                <a href="index.html#oferta">Oferta</a>
+                <a href="index.html#cennik">Cennik</a>
+                <a href="test.html">Test poziomujący</a>
+                <a href="booking.html" class="nav-active">Umów lekcję</a>
+                <a href="login.html" class="nav-login">Panel ucznia</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- ================= BOOKING ================= -->
+
+    <main>
+
+        <section class="section booking-page">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        PIERWSZY KROK
+                    </span>
+
+                    <h1>
+                        Umów pierwszą lekcję
+                    </h1>
+
+                    <p>
+                        Wypełnij krótki formularz, a skontaktuję się z Tobą
+                        i wspólnie ustalimy najlepszy termin zajęć.
+                    </p>
+
+                </div>
+
+
+                <div class="booking-layout">
+
+                    <!-- LEWA STRONA -->
+
+                    <div class="booking-info">
+
+                        <div class="booking-info-card">
+
+                            <div class="booking-icon">
+                                🚀
+                            </div>
+
+                            <h2>
+                                Zacznijmy od matematyki
+                            </h2>
+
+                            <p>
+                                Napisz kilka informacji o sobie i swoich
+                                potrzebach. Dzięki temu łatwiej będzie
+                                dopasować zajęcia.
+                            </p>
+
+                            <div class="booking-points">
+
+                                <div class="booking-point">
+                                    <span>✓</span>
+                                    <div>
+                                        <strong>Indywidualne podejście</strong>
+                                        <p>
+                                            Zajęcia dopasowane do poziomu ucznia.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="booking-point">
+                                    <span>✓</span>
+                                    <div>
+                                        <strong>Lekcje online</strong>
+                                        <p>
+                                            Wygodna nauka bez wychodzenia z domu.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="booking-point">
+                                    <span>✓</span>
+                                    <div>
+                                        <strong>Sprawdziany i egzaminy</strong>
+                                        <p>
+                                            Przygotowanie do bieżących testów
+                                            oraz egzaminu ósmoklasisty.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="booking-point">
+                                    <span>✓</span>
+                                    <div>
+                                        <strong>Materiały i zadania</strong>
+                                        <p>
+                                            Dodatkowe materiały pomagające
+                                            utrwalić wiedzę.
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRAWA STRONA — FORMULARZ -->
+
+                    <div class="booking-form-card">
+
+                        <div class="form-header">
+                            <span class="form-number">01</span>
+
+                            <div>
+                                <h2>
+                                    Formularz zgłoszeniowy
+                                </h2>
+
+                                <p>
+                                    Podaj swoje dane i wybierz preferowany termin.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <form id="bookingForm" onsubmit="bookLesson(); return false;">
+
+                            <div class="form-grid">
+
+                                <!-- IMIĘ -->
+
+                                <div class="form-group">
+
+                                    <label for="imie">
+                                        Imię i nazwisko
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <span>👤</span>
+
+                                        <input
+                                            type="text"
+                                            id="imie"
+                                            name="imie"
+                                            placeholder="Np. Jan Kowalski"
+                                            required
+                                        >
+                                    </div>
+
+                                </div>
+
+
+                                <!-- EMAIL -->
+
+                                <div class="form-group">
+
+                                    <label for="email">
+                                        Adres e-mail
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <span>✉️</span>
+
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            placeholder="twoj@email.com"
+                                            required
+                                        >
+                                    </div>
+
+                                </div>
+
+
+                                <!-- TELEFON -->
+
+                                <div class="form-group">
+
+                                    <label for="telefon">
+                                        Numer telefonu
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <span>📱</span>
+
+                                        <input
+                                            type="tel"
+                                            id="telefon"
+                                            name="telefon"
+                                            placeholder="Np. 500 600 700"
+                                        >
+                                    </div>
+
+                                </div>
+
+
+                                <!-- KLASA -->
+
+                                <div class="form-group">
+
+                                    <label for="klasa">
+                                        Klasa / poziom
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <span>🎓</span>
+
+                                        <select
+                                            id="klasa"
+                                            name="klasa"
+                                            required
+                                        >
+                                            <option value="">
+                                                Wybierz klasę
+                                            </option>
+
+                                            <option value="Klasa 4-8 szkoły podstawowej">
+                                                Klasa 4–8 szkoły podstawowej
+                                            </option>
+
+                                            <option value="Egzamin ósmoklasisty">
+                                                Egzamin ósmoklasisty
+                                            </option>
+
+                                            <option value="Szkoła średnia">
+                                                Szkoła średnia
+                                            </option>
+
+                                            <option value="Inne">
+                                                Inne
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- TERMIN -->
+
+                                <div class="form-group form-full">
+
+                                    <label for="termin">
+                                        Preferowany termin
+                                    </label>
+
+                                    <div class="input-wrapper">
+                                        <span>📅</span>
+
+                                        <input
+                                            type="datetime-local"
+                                            id="termin"
+                                            name="termin"
+                                            required
+                                        >
+                                    </div>
+
+                                    <small>
+                                        Termin jest propozycją — wspólnie potwierdzimy
+                                        dokładną godzinę.
+                                    </small>
+
+                                </div>
+
+
+                                <!-- WIADOMOŚĆ -->
+
+                                <div class="form-group form-full">
+
+                                    <label for="wiadomosc">
+                                        Wiadomość
+                                    </label>
+
+                                    <textarea
+                                        id="wiadomosc"
+                                        name="wiadomosc"
+                                        rows="5"
+                                        placeholder="Napisz, czego potrzebujesz, z czym masz problem lub do czego chcesz się przygotować..."
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BUTTON -->
+
+                            <button
+                                type="submit"
+                                class="booking-submit"
+                            >
+                                <span>🚀</span>
+                                Wyślij zgłoszenie
+                            </button>
+
+
+                            <div class="form-note">
+                                <span>✉️</span>
+
+                                <p>
+                                    Po wysłaniu zgłoszenia skontaktuję się
+                                    z Tobą na podany adres e-mail.
+                                </p>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+                <!-- KONTAKT -->
+
+                <div class="booking-bottom">
+
+                    <div>
+                        <span>Masz pytanie?</span>
+
+                        <strong>
+                            Napisz bezpośrednio:
+                        </strong>
+                    </div>
+
+                    <a href="mailto:kontakt.dkmath@gmail.com">
+                        ✉️ kontakt.dkmath@gmail.com
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <strong>DK MATH</strong>
+                <p>
+                    Matematyka bez stresu.
+                </p>
+            </div>
+
+            <div>
+                <span>Kontakt</span>
+                <a href="mailto:kontakt.dkmath@gmail.com">
+                    kontakt.dkmath@gmail.com
+                </a>
+            </div>
+
+            <div>
+                <span>Online</span>
+                <p>
+                    Lekcje matematyki online
+                </p>
+            </div>
 
         </div>
 
-    </section>
+        <div class="footer-bottom">
+            © 2026 DK Math. Wszystkie prawa zastrzeżone.
+        </div>
+
+    </footer>
+
+
+    <!-- ================= JS ================= -->
 
     <script src="booking.js"></script>
 
-</body>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("navMenu");
 
+            if (menu) {
+                menu.classList.toggle("show");
+            }
+        }
+    </script>
+
+</body>
 </html>
