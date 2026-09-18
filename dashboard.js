@@ -421,3 +421,110 @@ function logout() {
     window.location.href = "index.html";
 
 }
+
+// ========================================
+// MOJE REZERWACJE
+// ========================================
+
+fetch("/student-bookings/" + encodeURIComponent(user))
+
+    .then(res => res.json())
+
+    .then(bookings => {
+
+        const container =
+            document.getElementById("myBookings");
+
+        if (!bookings || bookings.length === 0) {
+
+            container.innerHTML = `
+                <div style="
+                    padding:20px;
+                    border-radius:12px;
+                    background:rgba(255,255,255,0.04);
+                ">
+                    <p>
+                        📭 Nie masz jeszcze żadnych rezerwacji.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        let html = "";
+
+
+        bookings.forEach(booking => {
+
+            let statusIcon = "🟡";
+
+            if (booking.status === "Zaakceptowane") {
+                statusIcon = "🟢";
+            }
+
+            if (booking.status === "Odrzucone") {
+                statusIcon = "🔴";
+            }
+
+
+            html += `
+
+                <div style="
+                    padding:20px;
+                    margin-bottom:15px;
+                    border-radius:15px;
+                    background:rgba(255,255,255,0.04);
+                    border:1px solid rgba(255,255,255,0.08);
+                ">
+
+                    <h3>
+                        ${statusIcon}
+                        Zgłoszenie na lekcję
+                    </h3>
+
+                    <p>
+                        <strong>📅 Termin:</strong>
+                        ${booking.termin}
+                    </p>
+
+                    <p>
+                        <strong>🎓 Klasa:</strong>
+                        ${booking.klasa}
+                    </p>
+
+                    <p>
+                        <strong>📌 Status:</strong>
+                        ${booking.status}
+                    </p>
+
+                    <p>
+                        <strong>💬 Wiadomość:</strong>
+                        ${booking.wiadomosc || "Brak"}
+                    </p>
+
+                </div>
+
+            `;
+
+        });
+
+
+        container.innerHTML = html;
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        document.getElementById("myBookings").innerHTML = `
+            <p>
+                ❌ Nie udało się pobrać rezerwacji.
+            </p>
+        `;
+
+    });
+
+    
