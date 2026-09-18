@@ -1,196 +1,305 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <link rel="icon" href="images/dkmath-logo.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DK Math - Administrator</title>
-<link rel="stylesheet" href="style.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DK Math - Panel Administratora</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <section>
-<button onclick="logoutAdmin()" class="btn">
-Wyloguj administratora
-</button>
-<h1>Panel Administratora</h1>
-<div class="cards">
-<div class="card">
 
-<h2>Statystyki</h2>
+    <!-- GÓRA PANELU -->
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:20px;
+        flex-wrap:wrap;
+        margin-bottom:30px;
+    ">
 
-<div id="stats"></div>
+        <div>
+            <h1 style="margin-bottom:5px;">
+                👨‍💼 Panel Administratora
+            </h1>
 
-</div>
-<div class="card">
-<h2 id="usersCount">0</h2>
-<p>Uczniów</p>
-</div>
+            <p style="margin:0; color:#94a3b8;">
+                Zarządzanie DK Math
+            </p>
+        </div>
 
-<div class="card">
-<h2 id="tasksCount">0</h2>
-<p>Zadań</p>
-</div>
+        <button onclick="logoutAdmin()" class="btn">
+            🚪 Wyloguj administratora
+        </button>
 
-<div class="card">
-<h2 id="opinionsCount">0</h2>
-<p>Opinii</p>
-</div>
+    </div>
 
-<div class="card">
-<h2 id="bookingsCount">0</h2>
-<p>Rezerwacji</p>
-</div>
-<div class="card">
-<h2 id="visitsCount">0</h2>
-<p>Odwiedzin strony</p>
-</div>
 
-</div>
-<div class="card">
+    <!-- STATYSTYKI -->
+    <div class="cards">
 
-    <h2>👨‍🎓 Lista uczniów</h2>
+        <div class="card">
+            <h2 id="usersCount">0</h2>
+            <p>👨‍🎓 Uczniów</p>
+        </div>
 
-    <h3>➕ Dodaj ucznia</h3>
+        <div class="card">
+            <h2 id="tasksCount">0</h2>
+            <p>📝 Zadań</p>
+        </div>
 
-    <input type="text" id="newImie" placeholder="Imię">
-    <input type="text" id="newNazwisko" placeholder="Nazwisko">
-    <input type="email" id="newEmail" placeholder="E-mail">
-    <input type="text" id="newLogin" placeholder="Login">
-    <input type="password" id="newHaslo" placeholder="Hasło">
+        <div class="card">
+            <h2 id="opinionsCount">0</h2>
+            <p>⭐ Opinii</p>
+        </div>
 
-    <button onclick="addUser()">
-        ➕ Dodaj ucznia
-    </button>
+        <div class="card">
+            <h2 id="bookingsCount">0</h2>
+            <p>📅 Rezerwacji</p>
+        </div>
 
-    <hr style="margin:30px 0;">
+        <div class="card">
+            <h2 id="visitsCount">0</h2>
+            <p>👁️ Odwiedzin strony</p>
+        </div>
 
-    <h3>📋 Uczniowie</h3>
+    </div>
 
-<input
-    type="text"
-    id="searchStudent"
-    placeholder="🔎 Szukaj po imieniu, nazwisku, loginie lub e-mailu"
-    oninput="searchStudents()"
-    style="width:100%; margin-bottom:20px;"
->
 
-<div id="users"></div>
+    <!-- DODAWANIE UCZNIA + LISTA -->
+    <div class="card">
 
-</div>
+        <h2>👨‍🎓 Zarządzanie uczniami</h2>
 
-<div class="card">
+        <p style="color:#94a3b8;">
+            Dodawaj, wyszukuj i usuwaj konta uczniów.
+        </p>
 
-<h2>Dodaj zadanie</h2>
 
-<input type="text" id="login" placeholder="Login ucznia">
+        <!-- DODAJ UCZNIA -->
+        <div style="
+            padding:25px;
+            margin-top:20px;
+            border-radius:15px;
+            background:rgba(255,255,255,0.04);
+        ">
 
-<input type="text" id="zadanie" placeholder="Treść zadania">
+            <h3>➕ Dodaj ucznia</h3>
 
-<button onclick="addTask()">
-Dodaj zadanie
-</button>
-<div class="card">
+            <input
+                type="text"
+                id="newImie"
+                placeholder="Imię"
+            >
 
-<h2>Dodaj lekcję</h2>
-<div class="card">
+            <input
+                type="text"
+                id="newNazwisko"
+                placeholder="Nazwisko"
+            >
 
-<h2>Dodaj materiał</h2>
+            <input
+                type="email"
+                id="newEmail"
+                placeholder="E-mail"
+            >
 
-<input
-type="text"
-id="materialLogin"
-placeholder="Login ucznia">
+            <input
+                type="text"
+                id="newLogin"
+                placeholder="Login"
+            >
 
-<input
-type="text"
-id="materialName"
-placeholder="Nazwa materiału">
+            <input
+                type="password"
+                id="newHaslo"
+                placeholder="Hasło"
+            >
 
-<input
-type="text"
-id="materialLink"
-placeholder="Link do PDF">
+            <button onclick="addUser()" class="btn">
+                ➕ Dodaj ucznia
+            </button>
 
-<button onclick="addMaterial()">
-Dodaj materiał
-</button>
+        </div>
 
-</div>
-<input type="text"
-id="lessonLogin"
-placeholder="Login ucznia">
 
-<input type="date"
-id="lessonDate">
+        <!-- WYSZUKIWARKA -->
+        <div style="margin-top:30px;">
 
-<input type="time"
-id="lessonTime">
+            <h3>📋 Lista uczniów</h3>
 
-<input type="text"
-id="lessonLink"
-placeholder="https://meet.google.com/mmp-ycfc-yve">
+            <input
+                type="text"
+                id="searchStudent"
+                placeholder="🔎 Szukaj po imieniu, nazwisku, loginie lub e-mailu"
+                oninput="searchStudents()"
+                style="width:100%;"
+            >
 
-<button onclick="addLesson()">
-Dodaj lekcję
-</button>
+        </div>
 
-</div>
-</div>
-<div class="card">
 
-<h2>Zmień hasło ucznia</h2>
+        <!-- LISTA -->
+        <div id="users" style="margin-top:20px;"></div>
 
-<input type="text" id="changeLogin"
-placeholder="Login ucznia">
+    </div>
 
-<input type="text" id="newPassword"
-placeholder="Nowe hasło">
 
-<button onclick="changePassword()">
-Zmień hasło
-</button>
+    <!-- ZADANIA -->
+    <div class="card">
 
-</div>
-<div class="card">
+        <h2>📝 Dodaj zadanie</h2>
 
-<h2>Zgłoszenia na lekcje</h2>
+        <input
+            type="text"
+            id="login"
+            placeholder="Login ucznia"
+        >
 
-<div id="bookings"></div>
+        <input
+            type="text"
+            id="zadanie"
+            placeholder="Treść zadania"
+        >
 
-</div>
+        <button onclick="addTask()" class="btn">
+            ➕ Dodaj zadanie
+        </button>
 
-<div class="card">
+    </div>
 
-<h2>Opinie uczniów</h2>
 
-<div id="opinions"></div>
+    <!-- LEKCJA -->
+    <div class="card">
 
-</div>
+        <h2>📅 Dodaj lekcję</h2>
 
-<div id="opinions"></div>
+        <input
+            type="text"
+            id="lessonLogin"
+            placeholder="Login ucznia"
+        >
 
-</div>
-<div id="bookings"></div>
+        <input
+            type="date"
+            id="lessonDate"
+        >
 
-</div>
+        <input
+            type="time"
+            id="lessonTime"
+        >
+
+        <input
+            type="text"
+            id="lessonLink"
+            placeholder="Link do Google Meet"
+        >
+
+        <button onclick="addLesson()" class="btn">
+            ➕ Dodaj lekcję
+        </button>
+
+    </div>
+
+
+    <!-- MATERIAŁ -->
+    <div class="card">
+
+        <h2>📚 Dodaj materiał</h2>
+
+        <input
+            type="text"
+            id="materialLogin"
+            placeholder="Login ucznia"
+        >
+
+        <input
+            type="text"
+            id="materialName"
+            placeholder="Nazwa materiału"
+        >
+
+        <input
+            type="text"
+            id="materialLink"
+            placeholder="Link do PDF / materiału"
+        >
+
+        <button onclick="addMaterial()" class="btn">
+            ➕ Dodaj materiał
+        </button>
+
+    </div>
+
+
+    <!-- ZMIANA HASŁA -->
+    <div class="card">
+
+        <h2>🔑 Zmień hasło ucznia</h2>
+
+        <input
+            type="text"
+            id="changeLogin"
+            placeholder="Login ucznia"
+        >
+
+        <input
+            type="text"
+            id="newPassword"
+            placeholder="Nowe hasło"
+        >
+
+        <button onclick="changePassword()" class="btn">
+            🔑 Zmień hasło
+        </button>
+
+    </div>
+
+
+    <!-- REZERWACJE -->
+    <div class="card">
+
+        <h2>📅 Zgłoszenia na lekcje</h2>
+
+        <div id="bookings"></div>
+
+    </div>
+
+
+    <!-- OPINIE -->
+    <div class="card">
+
+        <h2>⭐ Opinie uczniów</h2>
+
+        <div id="opinions"></div>
+
+    </div>
+
 </section>
+
 
 <script src="admin.js"></script>
 
-</body>
+
 <script>
 
-if(
-localStorage.getItem("adminLogged")
-!== "true"
-){
-   window.location.href = "panel-deniz-2026.html";
+if (localStorage.getItem("adminLogged") !== "true") {
+
+    window.location.href = "panel-deniz-2026.html";
+
 }
 
-
-
-
 </script>
+
+</body>
+
 </html>
