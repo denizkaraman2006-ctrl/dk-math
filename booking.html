@@ -1,82 +1,89 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <link rel="icon" href="images/dkmath-logo.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DK Math - Umów Lekcję</title>
-<link rel="stylesheet" href="style.css">
-</head>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Umów korepetycje z matematyki online z DK Math. Wypełnij formularz i wybierz dogodny termin.">
+
+    <title>DK Math - Umów Lekcję</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
 
-<section class="booking-section">
+    <section class="booking-section">
 
-<h1>🚀 Umów pierwszą lekcję</h1>
+        <h1>🚀 Umów pierwszą lekcję</h1>
 
-<p class="booking-text">
-Wypełnij formularz, a skontaktuję się z Tobą
-i wspólnie ustalimy najlepszy termin zajęć.
-</p>
+        <p class="booking-text">
+            Wypełnij formularz, a skontaktuję się z Tobą
+            i wspólnie ustalimy najlepszy termin zajęć.
+        </p>
 
-<div class="benefits">
+        <div class="benefits">
 
-<div>✅ Indywidualne podejście</div>
+            <div>✅ Indywidualne podejście</div>
 
-<div>✅ Lekcje online</div>
+            <div>✅ Lekcje online</div>
 
-<div>✅ Pomoc przed sprawdzianami</div>
+            <div>✅ Pomoc przed sprawdzianami</div>
 
-<div>✅ Materiały i zadania</div>
+            <div>✅ Materiały i zadania</div>
 
-</div>
+        </div>
 
-<div class="card booking-card">
+        <div class="card booking-card">
 
-<input
-type="text"
-id="imie"
-placeholder="👤 Imię i nazwisko">
+            <input
+                type="text"
+                id="imie"
+                placeholder="👤 Imię i nazwisko"
+                required>
 
-<input
-type="email"
-id="email"
-placeholder="📧 Adres e-mail">
+            <input
+                type="email"
+                id="email"
+                placeholder="📧 Adres e-mail"
+                required>
 
-<input
-type="tel"
-id="telefon"
-placeholder="📱 Telefon">
+            <select id="klasa">
+                <option>Klasa 4-8 szkoły podstawowej</option>
+                <option>Liceum</option>
+                <option>Technikum</option>
+                <option>Matura podstawowa</option>
+                <option>Matura rozszerzona</option>
+            </select>
 
-<select id="klasa">
-<option>Klasa 4-8 szkoły podstawowej</option>
-<option>Liceum</option>
-<option>Technikum</option>
-<option>Matura podstawowa</option>
-<option>Matura rozszerzona</option>
-</select>
+            <input
+                type="datetime-local"
+                id="termin"
+                required>
 
-<input
-type="datetime-local"
-id="termin">
+            <textarea
+                id="wiadomosc"
+                placeholder="Opisz, czego potrzebujesz, z czym masz problem lub do czego chcesz się przygotować..."
+                rows="6"></textarea>
 
-<textarea
-id="wiadomosc"
-placeholder="Opisz czego potrzebujesz, z czym masz problem lub do czego chcesz się przygotować..."
-rows="6"></textarea>
+            <button onclick="bookLesson()">
+                🚀 Wyślij zgłoszenie
+            </button>
 
-<button onclick="bookLesson()">
-🚀 Wyślij zgłoszenie
-</button>
+            <p style="text-align: center; margin-top: 15px; color: #aaa;">
+                📧 Odpowiedź otrzymasz na podany adres e-mail.
+            </p>
 
-</div>
+        </div>
 
-</section>
+    </section>
 
-<script src="booking.js"></script>
+    <script src="booking.js"></script>
 
 </body>
 
-</body>
 </html>
