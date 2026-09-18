@@ -270,13 +270,13 @@
         }
 
         .score {
-            font-size: 60px;
-            font-weight: bold;
-            margin: 20px 0;
-            background: linear-gradient(90deg, #a78bfa, #f472b6);
-            
-            -webkit-text-fill-color: transparent;
-        }
+    font-size: 60px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: white;
+    background: none;
+    -webkit-text-fill-color: white;
+}
 
         .result-message {
             color: #cbd5e1;
@@ -492,9 +492,25 @@
 
         <h2>Test zakończony!</h2>
 
-        <div id="score" class="score">
-            0/20
-        </div>
+        <div
+    id="score"
+    class="score"
+    style="
+        font-size: 60px !important;
+        font-weight: bold !important;
+        margin: 20px 0 !important;
+        color: white !important;
+        background: none !important;
+        background-image: none !important;
+       background-clip: initial !important;
+-webkit-background-clip: initial !important;
+-webkit-text-fill-color: white !important;
+        height: auto !important;
+        min-height: 0 !important;
+    "
+>
+    0/20
+</div>
 
         <div id="resultMessage" class="result-message"></div>
 
