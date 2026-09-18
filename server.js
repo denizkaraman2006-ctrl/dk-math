@@ -27,12 +27,7 @@ CREATE TABLE IF NOT EXISTS visits (
     data TEXT
 )
 `);
-db.run(`
-CREATE TABLE IF NOT EXISTS available_slots (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    termin TEXT
-)
-`);
+
 app.get("/", (req, res) => {
 
     db.run(
@@ -151,6 +146,53 @@ app.get("/users", (req, res) => {
     );
 
 });
+app.post("/add-user", (req, res) => {
+
+    const { imie, nazwisko, email, login, haslo } = req.body;
+
+    if (!imie || !nazwisko || !email || !login || !haslo) {
+        return res.send("Uzupełnij wszystkie pola");
+    }
+
+    db.run(
+        `INSERT INTO users
+        (imie, nazwisko, email, login, haslo)
+        VALUES (?, ?, ?, ?, ?)`,
+        [imie, nazwisko, email, login, haslo],
+        function(err) {
+
+            if (err) {
+                return res.send("Login już istnieje");
+            }
+
+            res.send("Uczeń został dodany");
+        }
+    );
+});
+
+
+app.post("/delete-user", (req, res) => {
+
+    const { id } = req.body;
+
+    if (!id) {
+        return res.send("Brak ID ucznia");
+    }
+
+    db.run(
+        "DELETE FROM users WHERE id = ?",
+        [id],
+        function(err) {
+
+            if (err) {
+                return res.send("Błąd podczas usuwania");
+            }
+
+            res.send("Uczeń został usunięty");
+        }
+    );
+});
+
 db.run(`
 CREATE TABLE IF NOT EXISTS tasks (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

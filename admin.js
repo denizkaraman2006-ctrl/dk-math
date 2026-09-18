@@ -340,3 +340,64 @@ function addMaterial(){
     });
 
 }
+
+function addUser(){
+
+    const imie = document.getElementById("newImie").value;
+    const nazwisko = document.getElementById("newNazwisko").value;
+    const email = document.getElementById("newEmail").value;
+    const login = document.getElementById("newLogin").value;
+    const haslo = document.getElementById("newHaslo").value;
+
+    fetch("/add-user", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            imie,
+            nazwisko,
+            email,
+            login,
+            haslo
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+
+        alert(data);
+
+        if(data === "Uczeń został dodany"){
+            location.reload();
+        }
+
+    });
+}
+
+
+function deleteUser(id){
+
+    if(!confirm("Czy na pewno chcesz usunąć tego ucznia?")){
+        return;
+    }
+
+    fetch("/delete-user", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: id
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+
+        alert(data);
+
+        if(data === "Uczeń został usunięty"){
+            location.reload();
+        }
+
+    });
+}

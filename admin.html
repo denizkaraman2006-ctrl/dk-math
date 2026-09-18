@@ -50,9 +50,25 @@ Wyloguj administratora
 </div>
 <div class="card">
 
-<h2>Lista uczniów</h2>
+    <h2>👨‍🎓 Lista uczniów</h2>
 
-<div id="users"></div>
+    <h3>➕ Dodaj ucznia</h3>
+
+    <input type="text" id="newImie" placeholder="Imię">
+    <input type="text" id="newNazwisko" placeholder="Nazwisko">
+    <input type="email" id="newEmail" placeholder="E-mail">
+    <input type="text" id="newLogin" placeholder="Login">
+    <input type="password" id="newHaslo" placeholder="Hasło">
+
+    <button onclick="addUser()">
+        ➕ Dodaj ucznia
+    </button>
+
+    <hr style="margin:30px 0;">
+
+    <h3>📋 Uczniowie</h3>
+
+    <div id="users"></div>
 
 </div>
 
@@ -162,8 +178,7 @@ if(
 localStorage.getItem("adminLogged")
 !== "true"
 ){
-    window.location.href =
-    "loginadmin.html";
+   window.location.href = "panel-deniz-2026.html";
 }
 
 
