@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <link rel="icon" href="images/dkmath-logo.png">
+
+    <title>DK Math - Tablica</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050b18;
+            color: white;
+        }
+
+        /* =========================
+           GÓRNY PANEL
+        ========================= */
+
+        .topbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 0 20px;
+            background: #081225;
+            border-bottom: 1px solid rgba(255,255,255,0.10);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 180px;
+        }
+
+        .logo-area img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+
+        .logo-title {
+            font-size: 19px;
+            font-weight: 800;
+        }
+
+        .logo-subtitle {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .room-info {
+            text-align: center;
+        }
+
+        .room-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .room-status {
+            color: #22c55e;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .top-btn {
+            border: 1px solid rgba(255,255,255,0.10);
+            background: #111c30;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 13px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-btn:hover {
+            background: #172640;
+        }
+
+        /* =========================
+           GŁÓWNY OBSZAR
+        ========================= */
+
+        .workspace {
+            height: calc(100vh - 70px);
+            display: flex;
+            position: relative;
+        }
+
+        /* =========================
+           LEWY PANEL
+        ========================= */
+
+        .toolbar {
+            width: 75px;
+            background: #081225;
+            border-right: 1px solid rgba(255,255,255,0.10);
+            padding: 12px 9px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .tool {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #111c30;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 21px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tool:hover {
+            background: #172640;
+        }
+
+        .tool.active {
+            background: #087cff;
+            border-color: #087cff;
+        }
+
+        .separator {
+            width: 42px;
+            height: 1px;
+            background: rgba(255,255,255,0.10);
+            margin: 5px 0;
+        }
+
+        /* =========================
+           TABLICA
+        ========================= */
+
+        .board-area {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #dfe5ec;
+        }
+
+        #board {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        /* =========================
+           PRAWY PANEL
+        ========================= */
+
+        .side-panel {
+            width: 270px;
+            background: #081225;
+            border-left: 1px solid rgba(255,255,255,0.10);
+            padding: 18px;
+            z-index: 5;
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .panel-box {
+            padding: 15px;
+            border-radius: 14px;
+            background: #111c30;
+            border: 1px solid rgba(255,255,255,0.07);
+            margin-bottom: 14px;
+        }
+
+        .panel-label {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .color-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .color {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .color.active {
+            border-color: white;
+        }
+
+        .black {
+            background: #111827;
+        }
+
+        .blue {
+            background: #087cff;
+        }
+
+        .red {
+            background: #ef4444;
+        }
+
+        .green {
+            background: #22c55e;
+        }
+
+        .yellow {
+            background: #eab308;
+        }
+
+        .white {
+            background: white;
+            border: 1px solid #64748b;
+        }
+
+        .size-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #size {
+            width: 100%;
+        }
+
+        .size-value {
+            width: 35px;
+            text-align: center;
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        .action-btn {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            background: #111c30;
+            color: white;
+            cursor: pointer;
+            margin-top: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .action-btn:hover {
+            background: #172640;
+        }
+
+        .clear-btn {
+            background: #b91c1c;
+        }
+
+        .clear-btn:hover {
+            background: #991b1b;
+        }
+
+        /* =========================
+           DÓŁ TABLICY
+        ========================= */
+
+        .board-bottom {
+            position: absolute;
+            left: 90px;
+            right: 285px;
+            bottom: 15px;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        .zoom-box {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px;
+            background: rgba(8,18,37,0.92);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 12px;
+        }
+
+        .zoom-btn {
+            width: 34px;
+            height: 34px;
+            border: none;
+            background: #111c30;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .zoom-value {
+            min-width: 55px;
+            text-align: center;
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        /* =========================
+           TEKST NA TABLICY
+        ========================= */
+
+        .text-input {
+            position: absolute;
+            display: none;
+            z-index: 20;
+            min-width: 180px;
+            padding: 8px;
+            border: 2px solid #087cff;
+            border-radius: 6px;
+            outline: none;
+            font-size: 20px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .side-panel {
+                display: none;
+            }
+
+            .logo-subtitle {
+                display: none;
+            }
+
+            .room-info {
+                display: none;
+            }
+
+            .board-bottom {
+                right: 15px;
+                left: 90px;
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .topbar {
+                height: 60px;
+                padding: 0 10px;
+            }
+
+            .workspace {
+                height: calc(100vh - 60px);
+            }
+
+            .logo-title {
+                font-size: 16px;
+            }
+
+            .logo-area img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .top-btn {
+                padding: 8px 9px;
+                font-size: 12px;
+            }
+
+            .toolbar {
+                width: 62px;
+            }
+
+            .tool {
+                width: 44px;
+                height: 44px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     GÓRNY PANEL
+========================= -->
+
+<div class="topbar">
+
+    <div class="logo-area">
+
+        <img
+            src="images/dkmath-logo.png"
+            alt="DK Math"
+        >
+
+        <div>
+
+            <div class="logo-title">
+                DK Math
+            </div>
+
+            <div class="logo-subtitle">
+                Wirtualna tablica
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="room-info">
+
+        <div class="room-title">
+            🖊️ Moja tablica
+        </div>
+
+        <div class="room-status">
+            ● Tablica gotowa
+        </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+        <button
+            class="top-btn"
+            onclick="undo()"
+        >
+            ↩️
+        </button>
+
+        <button
+            class="top-btn"
+            onclick="redo()"
+        >
+            ↪️
+        </button>
+
+        <button
+            class="top-btn"
+            onclick="window.location.href='dashboard.html'"
+        >
+            🏠
+        </button>
+
+    </div>
+
+</div>
+
+
+<div class="workspace">
+
+
+    <!-- =========================
+         NARZĘDZIA
+    ========================= -->
+
+    <div class="toolbar">
+
+        <button
+            class="tool active"
+            id="penTool"
+            onclick="setTool('pen')"
+            title="Długopis"
+        >
+            🖊️
+        </button>
+
+
+        <button
+            class="tool"
+            onclick="setTool('eraser')"
+            title="Gumka"
+        >
+            🧽
+        </button>
+
+
+        <button
+            class="tool"
+            onclick="setTool('line')"
+            title="Linia"
+        >
+            📏
+        </button>
+
+
+        <button
+            class="tool"
+            onclick="setTool('rectangle')"
+            title="Prostokąt"
+        >
+            ⬜
+        </button>
+
+
+        <button
+            class="tool"
+            onclick="setTool('circle')"
+            title="Koło"
+        >
+            ⚪
+        </button>
+
+
+        <button
+            class="tool"
+            onclick="setTool('text')"
+            title="Tekst"
+        >
+            T
+        </button>
+
+
+        <div class="separator"></div>
+
+
+        <button
+            class="tool"
+            onclick="undo()"
+            title="Cofnij"
+        >
+            ↩️
+        </button>
+
+
+        <button
+            class="tool"
+            onclick="redo()"
+            title="Ponów"
+        >
+            ↪️
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         TABLICA
+    ========================= -->
+
+    <div class="board-area">
+
+        <canvas id="board"></canvas>
+
+        <input
+            id="textInput"
+            class="text-input"
+            type="text"
+            placeholder="Wpisz tekst..."
+        >
+
+
+        <div class="board-bottom">
+
+            <div class="zoom-box">
+
+                <button
+                    class="zoom-btn"
+                    onclick="changeZoom(-10)"
+                >
+                    −
+                </button>
+
+                <div
+                    class="zoom-value"
+                    id="zoomValue"
+                >
+                    100%
+                </div>
+
+                <button
+                    class="zoom-btn"
+                    onclick="changeZoom(10)"
+                >
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PANEL USTAWIEŃ
+    ========================= -->
+
+    <div class="side-panel">
+
+        <div class="panel-title">
+            ⚙️ Narzędzia tablicy
+        </div>
+
+
+        <div class="panel-box">
+
+            <div class="panel-label">
+                Kolor
+            </div>
+
+            <div class="color-row">
+
+                <button
+                    class="color black active"
+                    onclick="setColor('#111827', this)"
+                ></button>
+
+                <button
+                    class="color blue"
+                    onclick="setColor('#087cff', this)"
+                ></button>
+
+                <button
+                    class="color red"
+                    onclick="setColor('#ef4444', this)"
+                ></button>
+
+                <button
+                    class="color green"
+                    onclick="setColor('#22c55e', this)"
+                ></button>
+
+                <button
+                    class="color yellow"
+                    onclick="setColor('#eab308', this)"
+                ></button>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel-box">
+
+            <div class="panel-label">
+                Grubość
+            </div>
+
+            <div class="size-row">
+
+                <input
+                    type="range"
+                    id="size"
+                    min="1"
+                    max="30"
+                    value="4"
+                    oninput="changeSize(this.value)"
+                >
+
+                <div
+                    class="size-value"
+                    id="sizeValue"
+                >
+                    4
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="panel-box">
+
+            <div class="panel-label">
+                Tablica
+            </div>
+
+            <button
+                class="action-btn"
+                onclick="saveBoard()"
+            >
+                💾 Zapisz tablicę
+            </button>
+
+            <button
+                class="action-btn"
+                onclick="downloadBoard()"
+            >
+                📥 Pobierz tablicę
+            </button>
+
+            <button
+                class="action-btn clear-btn"
+                onclick="clearBoard()"
+            >
+                🗑️ Wyczyść tablicę
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    const canvas = document.getElementById("board");
+    const ctx = canvas.getContext("2d");
+
+    let drawing = false;
+
+    let tool = "pen";
+
+    let color = "#111827";
+
+    let brushSize = 4;
+
+    let zoom = 100;
+
+    let startX = 0;
+    let startY = 0;
+
+    let history = [];
+    let historyIndex = -1;
+
+
+    /* =========================
+       ROZMIAR TABLICY
+    ========================= */
+
+    function resizeCanvas() {
+
+        const oldCanvas = document.createElement("canvas");
+
+        oldCanvas.width = canvas.width;
+        oldCanvas.height = canvas.height;
+
+        if (canvas.width && canvas.height) {
+            oldCanvas
+                .getContext("2d")
+                .drawImage(canvas, 0, 0);
+        }
+
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+
+        ctx.fillStyle = "white";
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        if (oldCanvas.width && oldCanvas.height) {
+
+            ctx.drawImage(
+                oldCanvas,
+                0,
+                0,
+                oldCanvas.width,
+                oldCanvas.height,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "resize",
+        resizeCanvas
+    );
+
+
+    resizeCanvas();
+
+
+    /* =========================
+       HISTORIA
+    ========================= */
+
+    function saveHistory() {
+
+        if (historyIndex <
+            history.length - 1) {
+
+            history =
+                history.slice(
+                    0,
+                    historyIndex + 1
+                );
+
+        }
+
+        history.push(
+            canvas.toDataURL()
+        );
+
+        historyIndex =
+            history.length - 1;
+
+        if (history.length > 30) {
+
+            history.shift();
+
+            historyIndex--;
+
+        }
+
+    }
+
+
+    function restoreHistory(index) {
+
+        if (
+            index < 0 ||
+            index >= history.length
+        ) {
+            return;
+        }
+
+        const image = new Image();
+
+        image.onload = function() {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            ctx.drawImage(
+                image,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+        };
+
+        image.src = history[index];
+
+    }
+
+
+    function undo() {
+
+        if (historyIndex > 0) {
+
+            historyIndex--;
+
+            restoreHistory(
+                historyIndex
+            );
+
+        }
+
+    }
+
+
+    function redo() {
+
+        if (
+            historyIndex <
+            history.length - 1
+        ) {
+
+            historyIndex++;
+
+            restoreHistory(
+                historyIndex
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       NARZĘDZIA
+    ========================= */
+
+    function setTool(newTool) {
+
+        tool = newTool;
+
+        document
+            .querySelectorAll(".tool")
+            .forEach(button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            });
+
+        if (newTool === "pen") {
+
+            document
+                .getElementById("penTool")
+                .classList.add("active");
+
+        }
+
+    }
+
+
+    function setColor(newColor, element) {
+
+        color = newColor;
+
+        document
+            .querySelectorAll(".color")
+            .forEach(button => {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            });
+
+        element.classList.add("active");
+
+    }
+
+
+    function changeSize(value) {
+
+        brushSize =
+            Number(value);
+
+        document
+            .getElementById("sizeValue")
+            .innerText = value;
+
+    }
+
+
+    /* =========================
+       POZYCJA MYSZY
+    ========================= */
+
+    function getPosition(event) {
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+        return {
+
+            x:
+                event.clientX -
+                rect.left,
+
+            y:
+                event.clientY -
+                rect.top
+
+        };
+
+    }
+
+
+    /* =========================
+       START RYSOWANIA
+    ========================= */
+
+    canvas.addEventListener(
+        "pointerdown",
+        function(event) {
+
+            if (tool === "text") {
+
+                createText(
+                    event
+                );
+
+                return;
+
+            }
+
+            drawing = true;
+
+            const pos =
+                getPosition(event);
+
+            startX = pos.x;
+            startY = pos.y;
+
+            ctx.beginPath();
+
+            ctx.moveTo(
+                startX,
+                startY
+            );
+
+            ctx.lineWidth =
+                brushSize;
+
+            ctx.lineCap = "round";
+
+            ctx.strokeStyle =
+                tool === "eraser"
+                    ? "white"
+                    : color;
+
+        }
+    );
+
+
+    /* =========================
+       RYSOWANIE
+    ========================= */
+
+    canvas.addEventListener(
+        "pointermove",
+        function(event) {
+
+            if (!drawing) {
+                return;
+            }
+
+            const pos =
+                getPosition(event);
+
+            if (tool === "pen" ||
+                tool === "eraser") {
+
+                ctx.lineTo(
+                    pos.x,
+                    pos.y
+                );
+
+                ctx.stroke();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       KONIEC
+    ========================= */
+
+    canvas.addEventListener(
+        "pointerup",
+        function(event) {
+
+            if (!drawing) {
+                return;
+            }
+
+            drawing = false;
+
+            const pos =
+                getPosition(event);
+
+
+            if (tool === "line") {
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    startX,
+                    startY
+                );
+
+                ctx.lineTo(
+                    pos.x,
+                    pos.y
+                );
+
+                ctx.strokeStyle =
+                    color;
+
+                ctx.lineWidth =
+                    brushSize;
+
+                ctx.stroke();
+
+            }
+
+
+            if (tool === "rectangle") {
+
+                ctx.beginPath();
+
+                ctx.strokeStyle =
+                    color;
+
+                ctx.lineWidth =
+                    brushSize;
+
+                ctx.strokeRect(
+                    startX,
+                    startY,
+                    pos.x - startX,
+                    pos.y - startY
+                );
+
+            }
+
+
+            if (tool === "circle") {
+
+                const radius =
+                    Math.sqrt(
+                        Math.pow(
+                            pos.x - startX,
+                            2
+                        ) +
+                        Math.pow(
+                            pos.y - startY,
+                            2
+                        )
+                    );
+
+                ctx.beginPath();
+
+                ctx.strokeStyle =
+                    color;
+
+                ctx.lineWidth =
+                    brushSize;
+
+                ctx.arc(
+                    startX,
+                    startY,
+                    radius,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.stroke();
+
+            }
+
+
+            saveHistory();
+
+        }
+    );
+
+
+    canvas.addEventListener(
+        "pointerleave",
+        function() {
+
+            if (drawing) {
+                drawing = false;
+                saveHistory();
+            }
+
+        }
+    );
+
+
+    /* =========================
+       TEKST
+    ========================= */
+
+    function createText(event) {
+
+        const pos =
+            getPosition(event);
+
+        const input =
+            document.getElementById(
+                "textInput"
+            );
+
+        input.style.display =
+            "block";
+
+        input.style.left =
+            pos.x + "px";
+
+        input.style.top =
+            pos.y + "px";
+
+        input.value = "";
+
+        input.focus();
+
+
+        function finishText() {
+
+            const text =
+                input.value.trim();
+
+            if (text) {
+
+                ctx.fillStyle =
+                    color;
+
+                ctx.font =
+                    `${Math.max(16, brushSize * 5)}px Arial`;
+
+                ctx.fillText(
+                    text,
+                    pos.x,
+                    pos.y + 25
+                );
+
+                saveHistory();
+
+            }
+
+            input.style.display =
+                "none";
+
+            input.removeEventListener(
+                "keydown",
+                keyHandler
+            );
+
+        }
+
+
+        function keyHandler(e) {
+
+            if (e.key === "Enter") {
+
+                finishText();
+
+            }
+
+        }
+
+
+        input.addEventListener(
+            "keydown",
+            keyHandler
+        );
+
+    }
+
+
+    /* =========================
+       ZOOM
+    ========================= */
+
+    function changeZoom(amount) {
+
+        zoom += amount;
+
+        if (zoom < 50) {
+            zoom = 50;
+        }
+
+        if (zoom > 200) {
+            zoom = 200;
+        }
+
+        document
+            .getElementById("zoomValue")
+            .innerText =
+            zoom + "%";
+
+    }
+
+
+    /* =========================
+       WYCZYŚĆ
+    ========================= */
+
+    function clearBoard() {
+
+        if (
+            !confirm(
+                "Czy na pewno chcesz wyczyścić tablicę?"
+            )
+        ) {
+            return;
+        }
+
+        ctx.fillStyle = "white";
+
+        ctx.fillRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        saveHistory();
+
+    }
+
+
+    /* =========================
+       ZAPIS
+    ========================= */
+
+    function saveBoard() {
+
+        localStorage.setItem(
+            "dkMathWhiteboard",
+            canvas.toDataURL()
+        );
+
+        alert(
+            "✅ Tablica została zapisana."
+        );
+
+    }
+
+
+    /* =========================
+       WCZYTANIE
+    ========================= */
+
+    function loadBoard() {
+
+        const saved =
+            localStorage.getItem(
+                "dkMathWhiteboard"
+            );
+
+        if (!saved) {
+
+            saveHistory();
+
+            return;
+
+        }
+
+        const image =
+            new Image();
+
+        image.onload = function() {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            ctx.drawImage(
+                image,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            saveHistory();
+
+        };
+
+        image.src = saved;
+
+    }
+
+
+    /* =========================
+       POBIERANIE PNG
+    ========================= */
+
+    function downloadBoard() {
+
+        const link =
+            document.createElement("a");
+
+        link.download =
+            "DK-Math-tablica.png";
+
+        link.href =
+            canvas.toDataURL(
+                "image/png"
+            );
+
+        link.click();
+
+    }
+
+
+    /* =========================
+       START
+    ========================= */
+
+    loadBoard();
+
+</script>
+
+</body>
+
+</html>
