@@ -405,3 +405,27 @@ function deleteUser(id){
 
     });
 }
+function searchStudents(){
+
+    const search = document
+        .getElementById("searchStudent")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const students = document
+        .getElementById("users")
+        .children;
+
+    for(let student of students){
+
+        const text = student.innerText.toLowerCase();
+
+        if(text.includes(search)){
+            student.style.display = "";
+        }else{
+            student.style.display = "none";
+        }
+
+    }
+}

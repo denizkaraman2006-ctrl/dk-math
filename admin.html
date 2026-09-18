@@ -68,7 +68,15 @@ Wyloguj administratora
 
     <h3>📋 Uczniowie</h3>
 
-    <div id="users"></div>
+<input
+    type="text"
+    id="searchStudent"
+    placeholder="🔎 Szukaj po imieniu, nazwisku, loginie lub e-mailu"
+    oninput="searchStudents()"
+    style="width:100%; margin-bottom:20px;"
+>
+
+<div id="users"></div>
 
 </div>
 
