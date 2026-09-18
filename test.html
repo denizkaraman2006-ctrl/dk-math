@@ -10,414 +10,518 @@
     <title>DK Math - Test poziomujący</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #172235;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-wrapper {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            box-sizing: border-box;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .test-logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .test-header h1 {
+            margin: 5px 0 12px;
+            font-size: 38px;
+        }
+
+        .test-header p {
+            color: #cbd5e1;
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+
+        .test-card {
+            background: #202d42;
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 9px;
+            background: #334155;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 35px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 5%;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            border-radius: 20px;
+            transition: width 0.4s ease;
+        }
+
+        .question-number {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 20px;
+            background: #312e81;
+            color: #ddd6fe;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .question {
+            font-size: 25px;
+            line-height: 1.5;
+            margin: 0 0 28px;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .answer {
+            position: relative;
+        }
+
+        .answer input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .answer label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            border: 2px solid #3b4a61;
+            border-radius: 15px;
+            background: #182438;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s ease;
+        }
+
+        .answer label:hover {
+            border-color: #8b5cf6;
+            background: #25334b;
+            transform: translateY(-2px);
+        }
+
+        .answer-letter {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #334155;
+            font-weight: bold;
+        }
+
+        .answer input:checked + label {
+            border-color: #a78bfa;
+            background: #312e81;
+            box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.15);
+        }
+
+        .answer input:checked + label .answer-letter {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .test-button {
+            border: none;
+            border-radius: 12px;
+            padding: 14px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .back-button {
+            background: #334155;
+            color: white;
+        }
+
+        .next-button {
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            color: white;
+            margin-left: auto;
+        }
+
+        .test-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.92;
+        }
+
+        .start-screen {
+            text-align: center;
+        }
+
+        .start-icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .start-screen h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .start-screen p {
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .test-rules {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .rule {
+            background: #182438;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 18px 10px;
+        }
+
+        .rule-icon {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .rule strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .start-button {
+            width: 100%;
+            max-width: 400px;
+            border: none;
+            border-radius: 14px;
+            padding: 17px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            transition: 0.2s;
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+        }
+
+        .result-screen {
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 75px;
+        }
+
+        .result-screen h2 {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+        .score {
+            font-size: 60px;
+            font-weight: bold;
+            margin: 20px 0;
+            background: linear-gradient(90deg, #a78bfa, #f472b6);
+            
+            -webkit-text-fill-color: transparent;
+        }
+
+        .result-message {
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .result-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .result-buttons a,
+        .result-buttons button {
+            display: inline-block;
+            border: none;
+            text-decoration: none;
+            border-radius: 12px;
+            padding: 14px 22px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .retry-button {
+            background: #334155;
+            color: white;
+        }
+
+        .lesson-button {
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .warning {
+            color: #fbbf24;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+
+            .test-wrapper {
+                padding: 25px 12px 40px;
+            }
+
+            .test-card {
+                padding: 22px 17px;
+                border-radius: 18px;
+            }
+
+            .test-header h1 {
+                font-size: 28px;
+            }
+
+            .question {
+                font-size: 21px;
+            }
+
+            .answer label {
+                padding: 15px;
+                font-size: 16px;
+            }
+
+            .test-rules {
+                grid-template-columns: 1fr;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .next-button {
+                margin-left: 0;
+            }
+
+            .score {
+                font-size: 50px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="login-box" style="max-width: 750px;">
+<div class="test-wrapper">
 
-        <h1>🧠 Test poziomujący z matematyki</h1>
+    <div class="test-header">
+
+        <img
+            src="images/dkmath-logo.png"
+            alt="DK Math"
+            class="test-logo"
+        >
+
+        <h1>🧠 Test poziomujący</h1>
 
         <p>
-            Sprawdź swój poziom matematyki przed rozpoczęciem nauki.
+            Sprawdź swój poziom matematyki
         </p>
 
         <p>
-            Test składa się z 20 pytań.
-            <strong>Nie korzystaj z kalkulatora.</strong>
+            Klasy 4–8 • przygotowanie do egzaminu ósmoklasisty
         </p>
-
-        <hr>
-
-        <h3>1. Oblicz: 347 + 286</h3>
-
-        <label>
-            <input type="radio" name="q1" value="623">
-            623
-        </label>
-
-        <label>
-            <input type="radio" name="q1" value="633">
-            633
-        </label>
-
-        <label>
-            <input type="radio" name="q1" value="643">
-            643
-        </label>
-
-        <hr>
-
-        <h3>2. Oblicz: 840 : 12</h3>
-
-        <label>
-            <input type="radio" name="q2" value="60">
-            60
-        </label>
-
-        <label>
-            <input type="radio" name="q2" value="70">
-            70
-        </label>
-
-        <label>
-            <input type="radio" name="q2" value="80">
-            80
-        </label>
-
-        <hr>
-
-        <h3>3. Oblicz: 3 × (12 - 5) + 8</h3>
-
-        <label>
-            <input type="radio" name="q3" value="21">
-            21
-        </label>
-
-        <label>
-            <input type="radio" name="q3" value="29">
-            29
-        </label>
-
-        <label>
-            <input type="radio" name="q3" value="35">
-            35
-        </label>
-
-        <hr>
-
-        <h3>4. Zamień ułamek 3/4 na liczbę dziesiętną.</h3>
-
-        <label>
-            <input type="radio" name="q4" value="0.25">
-            0,25
-        </label>
-
-        <label>
-            <input type="radio" name="q4" value="0.75">
-            0,75
-        </label>
-
-        <label>
-            <input type="radio" name="q4" value="1.25">
-            1,25
-        </label>
-
-        <hr>
-
-        <h3>5. Oblicz: 2/3 + 1/6</h3>
-
-        <label>
-            <input type="radio" name="q5" value="1/2">
-            1/2
-        </label>
-
-        <label>
-            <input type="radio" name="q5" value="5/6">
-            5/6
-        </label>
-
-        <label>
-            <input type="radio" name="q5" value="1">
-            1
-        </label>
-
-        <hr>
-
-        <h3>6. Oblicz 25% z 240.</h3>
-
-        <label>
-            <input type="radio" name="q6" value="50">
-            50
-        </label>
-
-        <label>
-            <input type="radio" name="q6" value="60">
-            60
-        </label>
-
-        <label>
-            <input type="radio" name="q6" value="80">
-            80
-        </label>
-
-        <hr>
-
-        <h3>7. Kurtka kosztowała 200 zł. Obniżono ją o 30%. Ile kosztuje po obniżce?</h3>
-
-        <label>
-            <input type="radio" name="q7" value="130">
-            130 zł
-        </label>
-
-        <label>
-            <input type="radio" name="q7" value="140">
-            140 zł
-        </label>
-
-        <label>
-            <input type="radio" name="q7" value="170">
-            170 zł
-        </label>
-
-        <hr>
-
-        <h3>8. Rozwiąż równanie: 4x - 7 = 21</h3>
-
-        <label>
-            <input type="radio" name="q8" value="6">
-            x = 6
-        </label>
-
-        <label>
-            <input type="radio" name="q8" value="7">
-            x = 7
-        </label>
-
-        <label>
-            <input type="radio" name="q8" value="8">
-            x = 8
-        </label>
-
-        <hr>
-
-        <h3>9. Oblicz: 2⁴ + 3²</h3>
-
-        <label>
-            <input type="radio" name="q9" value="17">
-            17
-        </label>
-
-        <label>
-            <input type="radio" name="q9" value="25">
-            25
-        </label>
-
-        <label>
-            <input type="radio" name="q9" value="32">
-            32
-        </label>
-
-        <hr>
-
-        <h3>10. Oblicz: √169</h3>
-
-        <label>
-            <input type="radio" name="q10" value="12">
-            12
-        </label>
-
-        <label>
-            <input type="radio" name="q10" value="13">
-            13
-        </label>
-
-        <label>
-            <input type="radio" name="q10" value="14">
-            14
-        </label>
-
-        <hr>
-
-        <h3>11. Prostokąt ma boki 8 cm i 13 cm. Jaki ma obwód?</h3>
-
-        <label>
-            <input type="radio" name="q11" value="21">
-            21 cm
-        </label>
-
-        <label>
-            <input type="radio" name="q11" value="42">
-            42 cm
-        </label>
-
-        <label>
-            <input type="radio" name="q11" value="104">
-            104 cm
-        </label>
-
-        <hr>
-
-        <h3>12. Trójkąt ma podstawę 12 cm i wysokość 7 cm. Oblicz jego pole.</h3>
-
-        <label>
-            <input type="radio" name="q12" value="42">
-            42 cm²
-        </label>
-
-        <label>
-            <input type="radio" name="q12" value="84">
-            84 cm²
-        </label>
-
-        <label>
-            <input type="radio" name="q12" value="38">
-            38 cm²
-        </label>
-
-        <hr>
-
-        <h3>13. Trójkąt prostokątny ma przyprostokątne 6 cm i 8 cm. Ile wynosi przeciwprostokątna?</h3>
-
-        <label>
-            <input type="radio" name="q13" value="9">
-            9 cm
-        </label>
-
-        <label>
-            <input type="radio" name="q13" value="10">
-            10 cm
-        </label>
-
-        <label>
-            <input type="radio" name="q13" value="12">
-            12 cm
-        </label>
-
-        <hr>
-
-        <h3>14. Dwa kąty trójkąta mają 65° i 45°. Ile wynosi trzeci kąt?</h3>
-
-        <label>
-            <input type="radio" name="q14" value="60">
-            60°
-        </label>
-
-        <label>
-            <input type="radio" name="q14" value="70">
-            70°
-        </label>
-
-        <label>
-            <input type="radio" name="q14" value="80">
-            80°
-        </label>
-
-        <hr>
-
-        <h3>15. Na mapie w skali 1:100 000 odległość wynosi 7 cm. Jaka jest rzeczywista odległość?</h3>
-
-        <label>
-            <input type="radio" name="q15" value="5">
-            5 km
-        </label>
-
-        <label>
-            <input type="radio" name="q15" value="7">
-            7 km
-        </label>
-
-        <label>
-            <input type="radio" name="q15" value="70">
-            70 km
-        </label>
-
-        <hr>
-
-        <h3>16. Samochód przejechał 180 km w 2 godziny i 15 minut. Jaka była średnia prędkość?</h3>
-
-        <label>
-            <input type="radio" name="q16" value="60">
-            60 km/h
-        </label>
-
-        <label>
-            <input type="radio" name="q16" value="80">
-            80 km/h
-        </label>
-
-        <label>
-            <input type="radio" name="q16" value="90">
-            90 km/h
-        </label>
-
-        <hr>
-
-        <h3>17. W klasie jest 30 uczniów. 40% z nich to dziewczęta. Ilu jest chłopców?</h3>
-
-        <label>
-            <input type="radio" name="q17" value="12">
-            12
-        </label>
-
-        <label>
-            <input type="radio" name="q17" value="18">
-            18
-        </label>
-
-        <label>
-            <input type="radio" name="q17" value="20">
-            20
-        </label>
-
-        <hr>
-
-        <h3>18. W pudełku jest 5 czerwonych, 3 niebieskie i 2 zielone kule. Jakie jest prawdopodobieństwo wylosowania czerwonej?</h3>
-
-        <label>
-            <input type="radio" name="q18" value="1/2">
-            1/2
-        </label>
-
-        <label>
-            <input type="radio" name="q18" value="1/3">
-            1/3
-        </label>
-
-        <label>
-            <input type="radio" name="q18" value="1/5">
-            1/5
-        </label>
-
-        <hr>
-
-        <h3>19. Oblicz średnią liczb: 6, 8, 10, 12, 14.</h3>
-
-        <label>
-            <input type="radio" name="q19" value="8">
-            8
-        </label>
-
-        <label>
-            <input type="radio" name="q19" value="10">
-            10
-        </label>
-
-        <label>
-            <input type="radio" name="q19" value="12">
-            12
-        </label>
-
-        <hr>
-
-        <h3>20. Ogród ma 18 m długości i 12 m szerokości. Oblicz jego pole.</h3>
-
-        <label>
-            <input type="radio" name="q20" value="180">
-            180 m²
-        </label>
-
-        <label>
-            <input type="radio" name="q20" value="216">
-            216 m²
-        </label>
-
-        <label>
-            <input type="radio" name="q20" value="360">
-            360 m²
-        </label>
-
-        <br><br>
-
-        <button onclick="checkTest()">
-            🧮 Sprawdź wynik
-        </button>
-
-        <h2 id="result"></h2>
 
     </div>
 
-    <script src="test.js"></script>
+
+    <!-- EKRAN STARTOWY -->
+
+    <div id="startScreen" class="test-card start-screen">
+
+        <div class="start-icon">🚀</div>
+
+        <h2>Gotowy na wyzwanie?</h2>
+
+        <p>
+            Ten test pomoże określić, które zagadnienia z matematyki
+            masz już opanowane, a nad którymi warto jeszcze popracować.
+        </p>
+
+        <div class="test-rules">
+
+            <div class="rule">
+                <div class="rule-icon">📝</div>
+                <strong>20 pytań</strong>
+            </div>
+
+            <div class="rule">
+                <div class="rule-icon">⏱️</div>
+                <strong>Bez limitu czasu</strong>
+            </div>
+
+            <div class="rule">
+                <div class="rule-icon">🧮</div>
+                <strong>Bez kalkulatora</strong>
+            </div>
+
+        </div>
+
+        <p>
+            <strong>Ważne:</strong> wybierz odpowiedź, która Twoim zdaniem
+            jest prawidłowa. Nie przejmuj się, jeśli nie znasz wszystkich odpowiedzi.
+        </p>
+
+        <button class="start-button" onclick="startTest()">
+            🚀 Rozpocznij test
+        </button>
+
+    </div>
+
+
+    <!-- TEST -->
+
+    <div id="testScreen" class="test-card hidden">
+
+        <div class="progress-info">
+
+            <span id="questionCounter">Pytanie 1 z 20</span>
+
+            <span id="progressPercent">5%</span>
+
+        </div>
+
+        <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+
+        <div id="questionContainer"></div>
+
+
+        <div class="buttons">
+
+            <button
+                id="backButton"
+                class="test-button back-button"
+                onclick="previousQuestion()"
+            >
+                ← Wstecz
+            </button>
+
+            <button
+                id="nextButton"
+                class="test-button next-button"
+                onclick="nextQuestion()"
+            >
+                Dalej →
+            </button>
+
+        </div>
+
+        <div id="warning" class="warning"></div>
+
+    </div>
+
+
+    <!-- WYNIK -->
+
+    <div id="resultScreen" class="test-card result-screen hidden">
+
+        <div id="resultIcon" class="result-icon">
+            🎉
+        </div>
+
+        <h2>Test zakończony!</h2>
+
+        <div id="score" class="score">
+            0/20
+        </div>
+
+        <div id="resultMessage" class="result-message"></div>
+
+        <div class="result-buttons">
+
+            <button
+                class="retry-button"
+                onclick="restartTest()"
+            >
+                🔄 Rozwiąż ponownie
+            </button>
+
+            <a
+                href="booking.html"
+                class="lesson-button"
+            >
+                📚 Umów korepetycje
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="test.js"></script>
 
 </body>
 </html>
